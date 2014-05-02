@@ -625,9 +625,6 @@ function site_router(){
     if(count($url) == 1 && $url[0] == 'login'){
         require 'tpl-login.php'; 
         die();
-    }else if(count($url) == 1 && $url[0] == 'editer-profil'){
-        require 'tpl-edit-profil.php'; 
-        die();
     }else if(count($url) == 1 && $url[0] == 'deconnexion'){
         wp_logout();
         header('location:'.$root);
@@ -655,3 +652,11 @@ function modify_contact_methods($profile_fields) {
     return $profile_fields;
 }
 add_filter('user_contactmethods', 'modify_contact_methods');
+
+
+add_filter( 'body_class', 'my_neat_body_class');
+function my_neat_body_class( $classes ) {
+     if ( is_page('login') )
+          $classes[] = 'neat-stuff';
+     return $classes;
+}

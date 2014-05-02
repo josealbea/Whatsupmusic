@@ -1,4 +1,7 @@
 <?php
+/* 
+* Template Name: Creation post
+*/
 get_header();
 if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] )) {
 	// Validation du contenu

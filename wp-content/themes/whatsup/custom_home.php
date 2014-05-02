@@ -21,7 +21,7 @@ get_header();
                             <?php if ($post) : ?>
                             <?php setup_postdata($post_object); ?>
                                <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
-                                    <a target="_blank" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+                                    <a target="_blank" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('slider-thumb'); ?></a>
                                     <div class="carousel-caption">
                                         <h2><?php echo get_the_title(); ?> </h2>
                                         <p><?php the_excerpt(); ?></p>

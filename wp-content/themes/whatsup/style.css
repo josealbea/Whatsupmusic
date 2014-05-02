@@ -86,6 +86,7 @@ body.author small{background-color: #FFFFFF;
 h2.agenda-title {
 	font-family: 'Novecentowide Normal';
 	text-align: center;
+	margin: 0;
 }
 #agenda {
 	margin: 15px 0;

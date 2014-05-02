@@ -625,7 +625,7 @@ function site_router(){
     if(count($url) == 1 && $url[0] == 'login/'){
         require 'tpl-login.php'; 
         die();
-    }else if(count($url) == 1 && $url[0] == 'deconnexion/'){
+    }else if(count($url) == 1 && $url[0] == 'deconnexion'){
         wp_logout();
         header('location:'.$root);
         die();
@@ -671,4 +671,5 @@ function my_neat_body_class( $classes ) {
 
 if ( function_exists( 'add_image_size' ) ) { 
     add_image_size( 'agenda-thumb', 180, 110, true );
+    add_image_size( 'slider-thumb', 598, 598, true );
 }

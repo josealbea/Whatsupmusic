@@ -32,7 +32,11 @@ class WJ_Upgrade extends WYSIJA_object {
 	}
 
 	public function update_warning() {
-		if ( ! is_admin()  ){
+		if ( ! is_admin() ){
+			return;
+		}
+
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return;
 		}
 
@@ -306,6 +310,10 @@ class WJ_Upgrade extends WYSIJA_object {
 		global $title, $parent_file, $submenu_file;
 
 		if ( strtoupper( $_SERVER['REQUEST_METHOD'] ) === 'POST' && in_array( $current_screen->id, array( 'update-core', 'plugins' ) ) ) {
+			if ( !isset( $_POST['checked'] ) ){
+				return;
+			}
+
 			$plugins = (array) $_POST['checked'];
 			$plugins = array_map( 'urldecode', $plugins );
 

@@ -165,7 +165,7 @@ class WYSIJA_help_backloader extends WYSIJA_help{
 							'mailpoet-select2-l10n',
 							'mailpoet_l10n_select2',
 							array(
-								'noMatches' => __( 'No Results where found', WYSIJA ),
+								'noMatches' => __( 'No Results were found', WYSIJA ),
 								'inputTooShort' => __( 'Please enter <%= chars %> more character<%= plural %>', WYSIJA ),
 								'inputTooLong' => __( 'Please delete <%= chars %> character<%= plural %>', WYSIJA ),
 								'selectionTooBig' => __( 'You can only select <%= chars %> item<%= plural %>', WYSIJA ),
@@ -215,7 +215,7 @@ class WYSIJA_help_backloader extends WYSIJA_help{
 								'image' => __( 'Image' ),
 								'of' => __( 'of' ),
 								'close' => __( 'Close' ),
-								'noif rames' => __( 'This feature requires inline frames. You have if rames disabled or your browser does not support them.' ),
+								'noif rames' => __( 'This feature requires inline frames. You have iframes disabled or your browser does not support them.' ),
 								'l10n_print_after' => 'try{convertEntities( thickboxL10n );}catch( e ){};',
 							)
 						);
@@ -232,6 +232,11 @@ class WYSIJA_help_backloader extends WYSIJA_help{
 						wp_enqueue_style( 'wysija-editor-css', WYSIJA_URL . 'css/wysija-editor.css', array(), WYSIJA::get_version() );
 						wp_enqueue_script( 'wysija-colorpicker', WYSIJA_URL . 'js/excolor/jquery.modcoder.excolor.js', array(), WYSIJA::get_version() );
 
+						if ( version_compare( $GLOBALS['wp_version'], '3.9', '>=' ) ){
+							wp_enqueue_style( 'mailpoet-tinymce', WYSIJA_URL . 'css/tmce/editor.css', array(), WYSIJA::get_version() );
+						}
+
+
 						/* MailPoet editor i18n */
 						wp_localize_script( 'wysija-editor', 'Wysija_i18n', $controller->jsTrans );
 						break;
@@ -241,8 +246,8 @@ class WYSIJA_help_backloader extends WYSIJA_help{
 						break;
 
 					case 'wysija-tooltip':
-						wp_enqueue_script( 'jquery-qtip', WYSIJA_URL . 'js/qtip2/jquery.qtip.min.js', array( 'jquery' ), WYSIJA::get_version() );
-						wp_enqueue_style( 'jquery-qtip-css', WYSIJA_URL . 'css/qtip2/jquery.qtip.min.css' );
+						wp_enqueue_script( 'mailpoet.tooltip', WYSIJA_URL . 'js/vendor/bootstrap.tooltip.js', array( 'jquery' ), WYSIJA::get_version(), true );
+						wp_enqueue_style( 'mailpoet.tooltip', WYSIJA_URL . 'css/vendor/bootstrap.tooltip.css', array(), WYSIJA::get_version(), 'screen' );
 						break;
 
 					default:

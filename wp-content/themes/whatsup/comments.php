@@ -37,20 +37,20 @@
             comment_form( array(
                 'id_form'       => 'comment',
                 'id_submit'     => 'submit',
-                'title_reply'   => __('Leave a reply','dw'),
+                'title_reply'   => __('Poster un commentaire','dw'),
                 'comment_field' => '<textarea name="comment" id="comment"></textarea>',
                 'comment_notes_after' => '',
                 'fields'        => apply_filters( 'comment_form_default_fields', array(
                     'author' =>
-                        '<p class="comment-form-author"><label for="author">' . __( 'Your Name', 'dw' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label> ' .
+                        '<p class="comment-form-author"><label for="author">' . __( 'Votre nom', 'dw' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label> ' .
                         '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
                         '" size="30"  /></p>',
 
                     'email' =>
-                        '<p class="comment-form-email"><label for="email">' . __( 'Your Email', 'dw' ) . ( $req ? '<span class="required">*</span>' : '' ) .'</label> ' . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+                        '<p class="comment-form-email"><label for="email">' . __( 'Votre email', 'dw' ) . ( $req ? '<span class="required">*</span>' : '' ) .'</label> ' . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
                         '" size="30"  /></p>'
                 ) ),
-                'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment *', 'noun', 'dw' ). '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' . '</textarea></p>',
+                'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . _x( 'Commentaire *', 'noun', 'dw' ). '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' . '</textarea></p>',
             ) ); 
         ?>
     </div>

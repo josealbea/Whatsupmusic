@@ -660,3 +660,7 @@ function my_neat_body_class( $classes ) {
           $classes[] = 'neat-stuff';
      return $classes;
 }
+
+if ( function_exists( 'add_image_size' ) ) { 
+    add_image_size( 'agenda-thumb', 180, 110, true );
+}

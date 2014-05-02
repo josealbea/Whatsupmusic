@@ -13,6 +13,7 @@
                 <a href="<?php echo get_term_link( $term, 'category' ) ?>"><?php echo trim( $term->name . ( $i < count( $terms ) ? ',' : '' ) ); ?></a>
                 <?php endforeach; ?>
             <?php endif; ?>
+            <i class="icon-eye-open"></i>&nbsp;<?php echo do_shortcode('[post_view]'); ?>&nbsp;
         </div>
     </header>
     <?php endif; ?>

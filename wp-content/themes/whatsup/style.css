@@ -121,11 +121,17 @@ h2.agenda-title {
 }
 
 .image-agenda img {
+<<<<<<< HEAD
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+=======
 	height: 110px !important;
     left: 0px !important;
     position: absolute;
     width: 100%;
     z-index: 1;
+>>>>>>> 0ff53b0d4835e28d85c8b4027314a3fd3b9faf3a
 }
 
 .image-agenda .agenda-date {
@@ -145,7 +151,7 @@ h2.agenda-title {
 	font-size: 16px;
 }
 .background{ 
-	margin: 63px auto 0; 
+	margin: 63px auto; 
 	text-align: left; 
 	width: 35%; 
 	background: transparent; 
@@ -196,7 +202,7 @@ h2.agenda-title {
 	text-shadow: 1px 1px 2px #000000; 
 	width:100%; 
 	} 
-	body.inscription #inner-wrap ,body.login #inner-wrap ,body.proposer-article #inner-wrap{
+	body.inscription,body.login,body.proposer-article #inner-wrap{
 		background:url(assets/img/bg-floue.jpg);
 		background-size:cover;
 		background-repeat: no-repeat;
@@ -208,6 +214,13 @@ h2.agenda-title {
 	}
 
 	.align{display:inline-block;}
+	@media screen and (max-width: 980px) {
+	body.inscription #inner-wrap,body.login #inner-wrap{
+		background:url(assets/img/bg-floue.jpg);
+		background-size:cover;
+		background-repeat: no-repeat;
+	}
+}
 
 	/********* RESPOSIVE ***********/
 @media screen and (max-width: 710px) {

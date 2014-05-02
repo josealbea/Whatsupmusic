@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Connexion
+Template Name: Inscription
 */
 $error = false;
 if(!empty($_POST)){

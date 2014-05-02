@@ -45,13 +45,18 @@ if(!empty($_POST)){
             <?php endif ?>
 
             <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
-                <input class="form-control" placeholder="Login" type="text" value="<?php echo isset($d['user_login']) ? $d['user_login'] : ''; ?>" name="user_login" id="user_login"> 
 
-                <input class="form-control" placeholder="Email" type="text" value="<?php echo isset($d['user_email']) ? $d['user_email'] : ''; ?>" name="user_email" id="user_email"> 
+                <label for="user_login">Votre login</label>
+                <input class="form-control" placeholder="John-Doe" type="text" value="<?php echo isset($d['user_login']) ? $d['user_login'] : ''; ?>" name="user_login" id="user_login"> 
 
-                <input class="form-control" placeholder="Votre mot de passe" type="password" value="<?php echo isset($d['user_pass']) ? $d['user_pass'] : ''; ?>" name="user_pass" id="user_pass">
+                <label for="user_email">Votre email</label>
+                <input class="form-control" placeholder="johndoe@gmail.com" type="text" value="<?php echo isset($d['user_email']) ? $d['user_email'] : ''; ?>" name="user_email" id="user_email"> 
 
-                <input class="form-control" placeholder="Confirmez votre mot de passe" type="password" value="<?php echo isset($d['user_pass2']) ? $d['user_pass2'] : ''; ?>" name="user_pass2" id="user_pass2">
+                <label for="user_pass2">Votre mot de passe</label>
+                <input class="form-control" placeholder="••••••••" type="password" value="<?php echo isset($d['user_pass']) ? $d['user_pass'] : ''; ?>" name="user_pass" id="user_pass">
+
+                <label for="user_pass2">Confirmez votre mot de passe</label>
+                <input class="form-control" placeholder="••••••••" type="password" value="<?php echo isset($d['user_pass2']) ? $d['user_pass2'] : ''; ?>" name="user_pass2" id="user_pass2">
 
                 <input class="button" type="submit" value="Inscription" >
 

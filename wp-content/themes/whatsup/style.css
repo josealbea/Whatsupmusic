@@ -142,7 +142,7 @@ h2.agenda-title {
 	font-size: 16px;
 }
 .background{ 
-	margin: 100px auto 0; 
+	margin: 63px auto 0; 
 	text-align: left; 
 	width: 35%; 
 	background: transparent; 
@@ -193,7 +193,7 @@ h2.agenda-title {
 	text-shadow: 1px 1px 2px #000000; 
 	width:100%; 
 	} 
-	body.inscription,body.login,body.proposer-article{
+	body.inscription #inner-wrap ,body.login #inner-wrap ,body.proposer-article #inner-wrap{
 		background:url(assets/img/bg-floue.jpg);
 		background-size:cover;
 		background-repeat: no-repeat;
@@ -201,6 +201,7 @@ h2.agenda-title {
 	body.inscription h1,body.login h1,body.proposer-article h1{
 		color:#FFF;
 		text-shadow:1px 1px 2px #555;
+		text-align: center;
 	}
 
 	.align{display:inline-block;}
@@ -218,4 +219,7 @@ h2.agenda-title {
 	    width: 100%;
 	}
 	body.author small{width: 100%;}
+	.background{ 
+	width: 90%;
+	} 
 }

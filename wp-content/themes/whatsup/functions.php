@@ -622,17 +622,18 @@ function site_router(){
     $root = str_replace('index.php','',$_SERVER['SCRIPT_NAME']);
     $url  = str_replace($root ,'',$_SERVER['REQUEST_URI']);
     $url  = explode('/',$url); 
-    if(count($url) == 1 && $url[0] == 'login'){
+    if(count($url) == 1 && $url[0] == 'login/'){
         require 'tpl-login.php'; 
         die();
-    }else if(count($url) == 1 && $url[0] == 'deconnexion'){
+    }else if(count($url) == 1 && $url[0] == 'deconnexion/'){
         wp_logout();
         header('location:'.$root);
         die();
-    } else if(count($url) == 1 && $url[0] == 'inscription'){
+    } else if(count($url) == 1 && $url[0] == 'inscription/'){
         require 'tpl-register.php'; 
         die();
-    } else if(count($url) == 1 && $url[0] == 'proposer-article'){
+    } 
+        else if(count($url) == 1 && $url[0] == 'proposer-article/'){
         require 'tpl-create-post.php'; 
         die();
     }
@@ -656,7 +657,14 @@ add_filter('user_contactmethods', 'modify_contact_methods');
 
 add_filter( 'body_class', 'my_neat_body_class');
 function my_neat_body_class( $classes ) {
-     if ( is_page('login') )
-          $classes[] = 'neat-stuff';
+     if ( is_page('login') ){
+          $classes[] = 'login';
+      }
+      if ( is_page('inscription') ){
+          $classes[] = 'inscription';
+      }
+      if ( is_page('proposer-article') ){
+          $classes[] = 'proposer-article';
+      }
      return $classes;
 }

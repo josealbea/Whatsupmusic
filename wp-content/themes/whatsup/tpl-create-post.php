@@ -34,18 +34,22 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] )) {
  
 do_action('wp_insert_post', 'wp_insert_post');
 ?>
-<div id="main" role="main">
     <div class="single-page row-fluid background">
     	<h1>Proposition d'un article</h1>
 		<div id="postbox">
 			<form id="new_post" name="new_post" method="post" action="">
-				<input placeholder="Titre de l'article" type="text" id="title" name="title" class="form-control" />
 
-				<textarea class="form-control" placeholder="Description de l'article" class="form-control" id="description" tabindex="3" name="description"></textarea>
-				
-				<?php wp_dropdown_categories( 'show_option_none=Catégorie&tab_index=4&taxonomy=category&class=form-control '); ?>
-					
-				<input placeholder="Vos mots clés" type="text" class="form-control" value="" name="post_tags" id="post_tags"/>
+				<label for="title">Votre titre :</label>
+				<input type="text" id="title" name="title" class="form-control" />
+
+				<label for="description">Description de l'article</label>
+				<textarea class="form-control" class="form-control" id="description" tabindex="3" name="description" rows="4"></textarea>
+
+				<label for="">Votre catégorie :</label>
+				<?php wp_dropdown_categories( 'tab_index=4&taxonomy=category&class=form-control '); ?>
+
+				<label for="post_tags">Vos mots clés</label>	
+				<input type="text" class="form-control" value="" name="post_tags" id="post_tags"/>
 
 				<input type="submit" value="Proposer mon article" id="submit" name="submit" class="button"/>
 
@@ -57,5 +61,4 @@ do_action('wp_insert_post', 'wp_insert_post');
 		</div>
 	<!--// Formulaire -->
 	</div>
-</div>
 <?php get_footer(); ?>

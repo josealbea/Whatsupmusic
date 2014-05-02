@@ -30,9 +30,12 @@ if(!empty($_POST)){
             <?php endif ?>
 
             <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
-                <input class="form-control" type="text" name="user_login" id="user_login" placeholder="Login"> 
+                <label for="user_login">Votre login</label>
+                <input class="form-control" type="text" name="user_login" id="user_login" placeholder="John-Doe">
 
-                <input class="form-control" type="text" name="user_password" id="user_password" placeholder="Votre mot de passe">
+
+                <label for="user_password">Votre mot de passe</label>
+                <input class="form-control" type="text" name="user_password" id="user_password" placeholder="••••••••">
 
                 <input class="form-control align" type="checkbox" name="remember" id="remember" value="1">
                 <label for="remember" class="align">Se souvenir de moi</label>

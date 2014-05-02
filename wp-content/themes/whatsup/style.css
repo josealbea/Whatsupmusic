@@ -121,7 +121,7 @@ h2.agenda-title {
 
 .image-agenda img {
 	height: 110px !important;
-    left: 0 !important;
+    left: 0px !important;
     position: absolute;
     width: 100%;
     z-index: 1;

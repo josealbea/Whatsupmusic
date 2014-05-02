@@ -42,7 +42,7 @@ $category_id = $categories[0]->cat_ID;
             <div class="block-inner">
                 <h2 class="agenda-title">Evenements à venir</h2>
                 <ul id="agenda">
-                    <?php $loop = new WP_Query( array( 'post_type' => 'agenda', 'posts_per_page' => 7, 'meta_key' => 'date','orderby' => 'meta_value_num', 'order' => 'ASC' ) ); ?>
+                    <?php $loop = new WP_Query( array( 'post_type' => 'agenda', 'posts_per_page' => 7, 'meta_key' => 'date','orderby' => 'meta_value_num', 'order' => 'ASC', 'cat' => $category_id  ) ); ?>
 
                 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                     <?php if (strtotime(get_field('date')) >= mktime() ) : ?>

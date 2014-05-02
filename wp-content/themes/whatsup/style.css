@@ -81,19 +81,6 @@ body.author small{background-color: #FFFFFF;
     padding: 1em;
     text-align: center;
     width: 53%;}
-@media screen and (max-width: 710px) {
-	#page-autor-right {
-    		float:none;
-    		margin-top: -20px;
-    		width:100%;
-		}
-	#page-autor-left {
-    float: none;
-    position:inherit;
-    width: 100%;
-}
-body.author small{width: 100%;}
-}
 
 /* AGENDA */
 h2.agenda-title {
@@ -156,10 +143,8 @@ h2.agenda-title {
 	font-weight: bold;
 	font-size: 16px;
 }
-
-body{ background-image:url('bg.jpg'); background-size: cover; background-repeat: no-repeat; } 
 .background{ 
-	margin: 100px auto 0; 
+	margin: 63px auto 0; 
 	text-align: left; 
 	width: 35%; 
 	background: transparent; 
@@ -176,7 +161,6 @@ body{ background-image:url('bg.jpg'); background-size: cover; background-repeat:
 	color: #555555; 
 	display: block; 
 	font-size: 14px;
-	height: 34px; 
 	line-height: 1.42857; 
 	margin-bottom: 15px; 
 	padding: 6px 12px; 
@@ -211,5 +195,33 @@ body{ background-image:url('bg.jpg'); background-size: cover; background-repeat:
 	text-shadow: 1px 1px 2px #000000; 
 	width:100%; 
 	} 
-	.inscription{color: #FFFFFF; text-align: center; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);}
+	body.inscription #inner-wrap ,body.login #inner-wrap ,body.proposer-article #inner-wrap{
+		background:url(assets/img/bg-floue.jpg);
+		background-size:cover;
+		background-repeat: no-repeat;
+	}
+	body.inscription h1,body.login h1,body.proposer-article h1{
+		color:#FFF;
+		text-shadow:1px 1px 2px #555;
+		text-align: center;
+	}
+
 	.align{display:inline-block;}
+
+	/********* RESPOSIVE ***********/
+@media screen and (max-width: 710px) {
+	#page-autor-right {
+		float:none;
+		margin-top: -20px;
+		width:100%;
+	}
+	#page-autor-left {
+	    float: none;
+	    position:inherit;
+	    width: 100%;
+	}
+	body.author small{width: 100%;}
+	.background{ 
+	width: 90%;
+	} 
+}

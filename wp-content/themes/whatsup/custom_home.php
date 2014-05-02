@@ -204,6 +204,21 @@ get_header();
                 </article>     
             <?php endwhile; ?>
         <?php endif; ?>
+        <article id="block-social-facebook" class="block grid-sizer format-image" style="position: absolute; left: 851px; top: 62px;">
+            <div class="block-inner" style="height: 282px;">
+                <div class="view-social">
+                    <img src="<?php bloginfo('template_directory'); ?>assets/img/fb.png" style="max-height: none; width: 100%; top: 0px;">
+                    <div class="mask fb">
+                        <div class="social-content">
+                            <p>
+                                What's Up Music sur 
+                                <a href="https://www.facebook.com/pages/Whats-Up-Rock-Family/138037362906184">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
         <?php $loop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 1, 'cat' => '7' ) ); ?>
         <?php if ($loop->have_posts()) : ?>
             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>

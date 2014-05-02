@@ -12,6 +12,18 @@
 .gallery-caption {}
 .bypostauthor {}
 
+html, body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+}	
+
+#outer-wrap {
+	margin: 0 auto;
+	min-height: 100%;
+	position: relative;
+}
+
 /* STYLE COULEUR MENU CATEGORIES */
 body.category-musique article.status-publish .mask .block-title,
 body.category-musique article.status-publish .carousel-caption h4,
@@ -121,17 +133,11 @@ h2.agenda-title {
 }
 
 .image-agenda img {
-<<<<<<< HEAD
-	width: 100%;
-	position: absolute;
-	z-index: 1;
-=======
 	height: 110px !important;
     left: 0px !important;
     position: absolute;
     width: 100%;
     z-index: 1;
->>>>>>> 0ff53b0d4835e28d85c8b4027314a3fd3b9faf3a
 }
 
 .image-agenda .agenda-date {
@@ -202,10 +208,8 @@ h2.agenda-title {
 	text-shadow: 1px 1px 2px #000000; 
 	width:100%; 
 	} 
-	body.inscription,body.login,body.proposer-article{
+	body.inscription,body.login,body.proposer-article #inner-wrap{
 		background:url(assets/img/bg-floue.jpg);
-		position: relative;
-		z-index: 99;
 		background-size:cover;
 		background-repeat: no-repeat;
 	}
@@ -222,10 +226,6 @@ h2.agenda-title {
 		background-size:cover;
 		background-repeat: no-repeat;
 	}
-	#inner-wrap { 
-		background: transparent;
-	}
-}
 
 	/********* RESPOSIVE ***********/
 @media screen and (max-width: 710px) {

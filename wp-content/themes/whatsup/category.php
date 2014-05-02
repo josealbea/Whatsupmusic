@@ -42,24 +42,27 @@ $category_id = $categories[0]->cat_ID;
             <div class="block-inner">
                 <h2 class="agenda-title">Evenements à venir</h2>
                 <ul id="agenda">
-                    <?php $loop = new WP_Query( array( 'post_type' => 'agenda', 'posts_per_page' => 7, 'meta_key' => 'date','orderby' => 'meta_value_num', 'order' => 'ASC', 'cat' => $category_id  ) ); ?>
+                    <?php $loop = new WP_Query( array( 'post_type' => 'agenda', 'posts_per_page' => 7, 'cat' => $category_id, 'meta_key' => 'date','orderby' => 'meta_value_num', 'order' => 'ASC' ) ); ?>
 
                 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                <?php $image = get_field('image'); ?>
                     <?php if (strtotime(get_field('date')) >= mktime() ) : ?>
                         <li>
-                            <div class="agenda-date">
-                                <div class="agenda-month"><?php echo date("M", strtotime(get_field('date'))); ?></div>
-                                <div class="agenda-day"><?php echo date("d", strtotime(get_field('date'))); ?></div>
-                            </div>
-                            <div class="agenda-note">
+                            <div class="desc-agenda">
                                 <span class="event-title">
-    				                <?php the_field('titre'); ?>
+                                    <?php the_field('titre'); ?>
                                 </span>
                                 <span class="event-where">
                                     <?php the_field('lieu'); ?>
                                 </span>
+                                <span class="event-more">
+                                    <a href="<?php the_permalink(); ?>">Plus d'infos sur cet évènement</a>
+                                </span>
                             </div>
-                            <a href="<?php the_permalink(); ?>">More</a>
+                            <div class="image-agenda">
+                                <img src="<?php echo $image['sizes']['agenda-thumb']; ?>" style="width: 100% !important; left: 0 !important; height: 110px !important;" />
+                                <div class="agenda-date"><?php echo date("d/m", strtotime(get_field('date'))); ?></div>
+                            </div>
                         </li>
                     <?php endif; ?>
                 <?php endwhile; ?>

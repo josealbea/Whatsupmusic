@@ -637,6 +637,10 @@ function site_router(){
         require 'tpl-create-post.php'; 
         die();
     }
+    else if(count($url) == 1 && $url[0] == 'editer-profil/'){
+        require 'tpl-edit-profil.php'; 
+        die();
+    }
 }
 
 add_filter('show_admin_bar','__return_false'); 

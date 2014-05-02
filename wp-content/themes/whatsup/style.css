@@ -120,9 +120,17 @@ h2.agenda-title {
 }
 
 .image-agenda img {
+<<<<<<< HEAD
 	width: 100%;
 	position: absolute;
 	z-index: 1;
+=======
+	height: 110px !important;
+    left: 0px !important;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+>>>>>>> 0ff53b0d4835e28d85c8b4027314a3fd3b9faf3a
 }
 
 .image-agenda .agenda-date {

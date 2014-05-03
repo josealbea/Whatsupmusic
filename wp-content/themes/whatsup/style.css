@@ -220,11 +220,29 @@ h2.agenda-title {
 	}
 
 	.align{display:inline-block;}
+
+	/******* AGENDA *****/
+	.single-agenda h1{
+		text-align: center;
+	}
+	.single-agenda p{
+		text-align: justify;
+	}
+	.agenda-description{
+		padding-left: 20px;
+	}
+
+	/******* FIN AGENDA *****/
+
+
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
 		background:url(assets/img/bg-floue.jpg);
 		background-size:cover;
 		background-repeat: no-repeat;
+	}
+	.agenda-description{
+		padding-left: 0;
 	}
 
 	/********* RESPOSIVE ***********/

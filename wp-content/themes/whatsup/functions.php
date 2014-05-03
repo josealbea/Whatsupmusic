@@ -588,7 +588,7 @@ function custom_post_type() {
 		'label'               => __( 'agenda', 'text_domain' ),
 		'description'         => __( 'Les évènements', 'text_domain' ),
 		'labels'              => $labels,
-		'supports'            => array( ),
+		'supports'            => array(),
 		'taxonomies'          => array( 'category', 'post_tag' ),
 		'hierarchical'        => false,
 		'public'              => true,

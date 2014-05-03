@@ -12,28 +12,28 @@ get_header();
     <div id="main" role="main" class="masonry" >
         <article id="block-main" class="block w2 format-gallery" >
             <div class="block-inner">
-                <div id="carousel-instagram" class="carousel slide">
-                    <div class="carousel-inner">
-                        <?php $first = true; ?>
-                        <?php while (has_sub_field('slider', 'option')) : ?>
-                            <?php $post_object = get_sub_field('article'); ?>
-                            <?php $post = $post_object; ?>
-                            <?php if ($post) : ?>
-                            <?php setup_postdata($post_object); ?>
-                               <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
-                                    <a target="_blank" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('slider-thumb'); ?></a>
-                                    <div class="carousel-caption">
-                                        <h2><?php echo get_the_title(); ?> </h2>
-                                        <p><?php the_excerpt(); ?></p>
-                                    </div>
+                <div id="myCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                    <?php $first = true; ?>
+                    <?php while (has_sub_field('slider', 'option')) : ?>
+                        <?php $post_object = get_sub_field('article'); ?>
+                        <?php $post = $post_object; ?>
+                        <?php if ($post) : ?>
+                        <?php setup_postdata($post_object); ?>
+                           <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
+                                <a target="_blank" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('slider-thumb'); ?></a>
+                                <div class="carousel-caption">
+                                    <h2><?php echo get_the_title(); ?> </h2>
+                                    <p><?php the_excerpt(); ?></p>
                                 </div>
-                                <?php wp_reset_postdata(); ?>
-                            <?php endif; ?>
-                        <?php endwhile; ?>
-                    </div>
-                    <a class="carousel-control left" href="#carousel-instagram" data-slide="prev"><i class="icon-chevron-left"></i></a>
-                    <a class="carousel-control right" href="#carousel-instagram" data-slide="next"><i class="icon-chevron-right"></i></a>
+                            </div>
+                            <?php wp_reset_postdata(); ?>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
                 </div>
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev"><i class="icon-chevron-left"> </i></a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="icon-chevron-right"> </i></a>
+            </div>
             </div>
         </article>
         <article id="block-agenda" class="block w2" >
@@ -207,15 +207,9 @@ get_header();
         <article id="block-social-facebook" class="block grid-sizer format-image" style="position: absolute; left: 851px; top: 62px;">
             <div class="block-inner" style="height: 282px;">
                 <div class="view-social">
-                    <img src="<?php bloginfo('template_directory'); ?>assets/img/fb.png" style="max-height: none; width: 100%; top: 0px;">
-                    <div class="mask fb">
-                        <div class="social-content">
-                            <p>
-                                What's Up Music sur 
-                                <a href="https://www.facebook.com/pages/Whats-Up-Rock-Family/138037362906184">
-                            </p>
-                        </div>
-                    </div>
+                    <a href="https://www.facebook.com/pages/Whats-Up-Rock-Family/138037362906184">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/img/fb.png" style="max-height: none; width: 100%; top: 0px;">
+                    </a>
                 </div>
             </div>
         </article>
@@ -247,6 +241,15 @@ get_header();
                 </article>   
             <?php endwhile; ?>
         <?php endif; ?>  
+        <article id="block-social-twitter" class="block grid-sizer format-image" data-post-id="183" style="position: absolute; left: 900px; top: 1320px;">
+            <div class="block-inner" style="height: 298px;">
+                <div class="view-social">
+                    <a href="">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/img/tw.png" style="max-height: none; width: 100%; top: 0px;">
+                    </a>
+                </div>
+            </div>
+        </article>
         <?php $loop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 1, 'cat' => '11' ) ); ?>
         <?php if ($loop->have_posts()) : ?>
             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>

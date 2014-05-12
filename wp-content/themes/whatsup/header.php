@@ -41,6 +41,7 @@
                     ?>
                     <div class="social-link">
                         <ul>
+                            <li id="account_link"><a href=""><i class="icon-user"></i></a></li>    
                             <?php if( $facebook ) : ?>
                             <li id="facebook_link"><a href="<?php echo $facebook ?>" class="facebook"><i class="icon-facebook"></i></a></li>
                             <?php endif; ?>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Guest Poster\n"
 "POT-Creation-Date: 2013-07-31 09:55+0700\n"
-"PO-Revision-Date: 2014-05-11 19:19+0100\n"
+"PO-Revision-Date: 2014-05-12 11:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: Toan Nguyen\n"
 "MIME-Version: 1.0\n"
@@ -330,7 +330,7 @@ msgstr "Enregistrer les changements"
 
 #: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:36
 msgid "Please login to access your post"
-msgstr ""
+msgstr "Merci de vous connecter pour voir la liste de vos articles"
 
 #: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:59
 msgid "Keyword"

@@ -109,3 +109,10 @@ div.control-group input[type="text"], input[type="password"], input[type="email"
 .carousel h2 {
 	color: #FFFFFF;
 }
+
+.social-link li#account_link:hover a {
+	background: #F4F4F4;
+}
+.social-link li#account_link:hover a i {
+	color: #707070;
+}

@@ -2,48 +2,22 @@
 /*
 Template Name: Connexion
 */
-$error = false; 
-if(!empty($_POST)){
-    $user = wp_signon($_POST);
-    if(is_wp_error($user)){
-        $error = $user->get_error_message(); 
-    }else{
-        header('location:profil');
-    }
-}else{
-    $user = wp_get_current_user();
-    if($user->ID != 0){
-        header('location:profil');
-    }
-}
-?>
-<?php get_header();?>
+$user = wp_get_current_user();
+if($user->ID != 0){
+    wp_redirect( home_url() );
+}get_header();?>
 
     <div class="single">
         <div class="post background">
-            <h1>Connexion</h1>
-
-            <?php if ($error): ?>
-                <div class="error">
-                    <?php echo $error; ?>
-                </div>
-            <?php endif ?>
-
-            <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
-                <label for="user_login">Votre login</label>
-                <input class="form-control" type="text" name="user_login" id="user_login" placeholder="John-Doe">
-
-
-                <label for="user_password">Votre mot de passe</label>
-                <input class="form-control" type="text" name="user_password" id="user_password" placeholder="••••••••">
-
-                <input class="form-control align" type="checkbox" name="remember" id="remember" value="1">
-                <label for="remember" class="align">Se souvenir de moi</label>
-
-                <input class="button" type="submit" value="Connexion">
-
-            </form>
-
+            <h1><?php the_title(); ?></h1>
+            <?php 
+                if ( have_posts() ) {
+                    while ( have_posts() ) {
+                        the_post(); 
+                        the_content();
+                    }
+                }
+            ?>
         </div>
     </div>
 

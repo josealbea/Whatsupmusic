@@ -9,7 +9,7 @@ if( ! function_exists('dw_get_twitter_count') ) {
 if( ! function_exists('dw_get_facebook_count') ) {
     function dw_get_facebook_count($url){
         $facebookcount = json_decode( dw_file_get_content( 'http://graph.facebook.com/'.$url ) );
-        return isset($facebookcount->shares) ? $facebookcount->shares : 0;
+        return isset($facebookcount->likes) ? $facebookcount->likes : 0;
     }
 }
 

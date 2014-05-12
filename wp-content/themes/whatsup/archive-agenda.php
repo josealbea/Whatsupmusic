@@ -2,7 +2,13 @@
 global $paged, $block_class, $paged, $wpdb;
 
 get_header(); 
-?>  
+?>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="<?php bloginfo('template_directory')?>/assets/js/jquery.geocomplete.js"></script>
+
+    <script src="../jquery.geocomplete.js"></script>
 <h1>Les Agendas</h1>
 <form action="" method="post">
             <label>Type d'événements :</label>
@@ -20,28 +26,30 @@ get_header();
                 }
                 ?>
             </select>
+
+
             
             <label>Lieu de l'événement :</label>
-            <?php $lieux = $wpdb->get_results( "SELECT meta_value FROM `wp_postmeta` where meta_key = 'lieu'");
-            ?>
-            <select name="lieu">
-            <?php
-                foreach ($lieux as $lieu) {
-                    echo '<option value="'.$lieu->meta_value.'">'.$lieu->meta_value.'</option><br />'; 
-                }
-                ?>
-            </select>
+
+            <form>
+      <input id="geocomplete" type="text" placeholder="Type in an address" size="90" />
+    </form>
+            <script>
+      jQuery(function(){
+        
+        jQuery("#geocomplete").geocomplete();
+        
+      });
+    </script>
             
-            <label>Date de l'événement :</label>
-            <?php $dates = $wpdb->get_results( "SELECT meta_value FROM `wp_postmeta` where meta_key = 'date'");
-            ?>
-            <select name="date">
-            <?php
-                foreach ($dates as $date) {
-                    echo '<option value="'.$date->meta_value.'">'.$date->meta_value.'</option><br />'; 
-                }
-                ?>
-            </select>
+             <script>
+                jQuery(function() {
+                    jQuery( "#datepicker" ).datepicker({
+                    });
+                });
+                </script>
+                <p>Date: <input type="text" id="datepicker"></p>
+            
             <input type="submit" value="Lancer recherche" name="valider" class="button" />
 
 </form>

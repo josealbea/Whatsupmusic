@@ -1,0 +1,577 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Guest Poster\n"
+"POT-Creation-Date: 2013-07-31 09:55+0700\n"
+"PO-Revision-Date: 2014-05-10 17:13+0100\n"
+"Last-Translator: \n"
+"Language-Team: Toan Nguyen\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr_FR\n"
+"X-Poedit-SearchPath-0: D:\\toan\\codecayon\\wp-frontend-form\\wp-frontend-"
+"form\n"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/functions.php:140
+msgid "Complete"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/functions.php:144
+msgid "Pending"
+msgstr "En attente"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/functions.php:194
+msgid "Previous"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/functions.php:204
+msgid "Next"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-admin.php:8
+msgid "WP FrontEnd Form"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-admin.php:15
+msgid "General"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-admin.php:16
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:13
+msgid "Payment"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-admin.php:17
+msgid "Notification"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-admin.php:18
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:57
+msgid "Email"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-admin.php:19
+msgid "Debug"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-admin.php:43
+msgid "Guest Poster Options"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:17
+msgid "Please enter Account"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:20
+msgid "Please enter Password"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:59
+msgid "Please enter post title!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:63
+msgid "Please enter post content!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:91
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:248
+msgid "Please enter Recaptcha."
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:110
+msgid "Please enter this field"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:183
+msgid "Post success!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:188
+msgid "Post success and waiting for approve, Click <a href=\""
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:206
+msgid "This username does not exist, please try other"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:217
+msgid "Login success"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:230
+msgid "Please enter username"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:233
+msgid "This username had already signup ago, please choose other"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:236
+msgid "Email invalid"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:239
+msgid "This email had already signup ago, please choose other"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:242
+msgid "Password invalid"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:272
+msgid ""
+"<div class=\"alert alert-success\">Congratulations, Signup success!</div>"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:275
+msgid "Signup error, please try again!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:304
+msgid "Please confirm new password!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:309
+msgid "Update profile success!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:312
+msgid "error, Please try again!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:322
+msgid "Withdrawal amount must greater than $"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:325
+msgid "Withdrawal amount must over your balance"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:329
+msgid "error, Please enter a valid email!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:333
+msgid "error, Please confirm email!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:357
+msgid "Withdrawal success"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:359
+msgid "Withdrawal error, please try again!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:383
+msgid "Invalid item or Amount null"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:388
+msgid "You had paid for this post ago!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:394
+msgid "OK"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:399
+msgid "You do not have right role to access this feature!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:436
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:140
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:200
+msgid "Withdrawal to "
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:466
+msgid "Delete success"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:469
+msgid "Failure delete, please try again"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:473
+msgid "You can not delete this post"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-cpt-table.php:9
+msgid "Poster Payment"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-cron.php:10
+msgid "5 minutes"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-cron.php:14
+msgid "10 minutes"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-cron.php:18
+msgid "15 minutes"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-cron.php:22
+msgid "30 minutes"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:15
+msgid "You had enable Recaptcha, but have a invalid private key"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:21
+msgid "You had enable Recaptcha, but have a invalid Publish key"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:27
+msgid "Just a Test Message"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:27
+msgid "Just a Test Message From "
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:30
+msgid ""
+"Email sending failed, We recomment you use <a href=\"http://coffee2code.com/"
+"wp-plugins/configure-smtp/\" target=\"_blank\">Configure SMTP</a> plugin for "
+"SMTP email sending"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:37
+msgid ""
+"You had enable reject alert, but We not found Messages Template for alert"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:45
+msgid ""
+"You had enable approve alert, but We not found Messages Template for alert"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-debug.php:54
+msgid "Congratulation!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:11
+msgid "Messages for Author"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:12
+msgid "Post Infomations"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:18
+msgid "Poster Transactions Info"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:29
+msgid "Write something else for response to this Author!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:58
+msgid "Written by: <span class=\"label label-info\">"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:60
+msgid "Email: <span class=\"label label-info\">"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:62
+msgid "Post status: <span class=\"label label-info\">"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:65
+msgid "Paid: "
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:68
+msgid "Paid: No"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:115
+msgid "Transaction Amount"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:124
+msgid "Paid For Item"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:135
+msgid "Paypal account"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:144
+msgid "Transaction Receiver"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-meta.php:153
+msgid "PayPal Transaction ID "
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-options.php:118
+msgid "Your articles rejected"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-options.php:133
+msgid "Congratulation! Your articles approved"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-options.php:173
+msgid "Save changes!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:36
+msgid "Please login to access your post"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:59
+msgid "Keyword"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:70
+msgid "Post Status"
+msgstr "Statut de l'article"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:71
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:356
+msgid "Post Title"
+msgstr "Titre de l'article"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:72
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:16
+msgid "Date"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:101
+msgid "Delete"
+msgstr "Supprimer"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:102
+msgid "Edit"
+msgstr "Modifier"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:120
+msgid "We found no post on this page. Please refine your search criteria!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:129
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:562
+msgid "Post type not exist!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:139
+msgid "Signup Form"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:140
+msgid "Signup"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:145
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:191
+msgid "You are already signed in on our site."
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:184
+msgid "Sign In Form"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:185
+msgid "Sign In"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:198
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:335
+msgid "Remember me"
+msgstr "Se souvenir de moi"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:243
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:355
+msgid "Required"
+msgstr "Requis"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:257
+msgid "Choose a "
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:304
+msgid "Invalid meta post"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:321
+msgid "Account"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:327
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:76
+msgid "Password"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:340
+msgid "Sign in"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:349
+msgid "You can not change this post!"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:357
+msgid "Post Content"
+msgstr "Contenu de l'article"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:466
+msgid "Separated by comma"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:483
+msgid "Featured Image"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:500
+msgid "Discussion"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:503
+msgid "Allow comments."
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:517
+msgid "Allow trackbacks and pingbacks on this page."
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-shortcode.php:553
+msgid "Confirm, Post it!"
+msgstr "Soumettre cet article"
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:9
+msgid "TID"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:11
+msgid "Transaction"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:13
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:106
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:171
+msgid "Type"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:14
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:109
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:174
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:229
+msgid "Amount"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:15
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:110
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:175
+msgid "Status"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:92
+msgid "Select status..."
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-trans-table.php:101
+msgid "Select type..."
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-user.php:9
+msgid "Balance"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:14
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:18
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:272
+msgid "Guest Poster Profile"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:40
+msgid "Profile"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:44
+msgid "Earnings"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:45
+msgid "History"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:46
+msgid "Withdrawal"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:63
+msgid "Username"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:69
+msgid "Fullname"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:74
+msgid "Change password"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:82
+msgid "Confirm password"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:91
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:251
+msgid "Submit Request"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:102
+msgid "All Earnings"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:107
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:172
+msgid "Article ID"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:108
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:173
+msgid "Article name"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:136
+msgid "<br/>Paypal transaction ID:"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:161
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:219
+msgid "Load more"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:167
+msgid "All History"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:226
+msgid "Current Balance of Earnings"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:230
+msgid "Minimum $50.00"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:236
+msgid "PayPal username"
+msgstr ""
+
+#: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-widget.php:242
+msgid "Confirm PayPal username"
+msgstr ""

@@ -11,23 +11,51 @@
         <div class="social-bar">
             <ul>
                 <?php $url = get_permalink(); ?>
-                <li><a href="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwhatsupmusic.com&width&layout=standard&action=like&show_faces=false&share=false&height=35&appId=741056082574397">facebook</a>
-                <li><a class="facebook" href="http://www.facebook.com/plugins/like.php?href=<?php echo rawurlencode($url); ?>" title="<?php _e('Publier sur Facebook','dw') ?>" target='_blank'><i class="icon-facebook"></i><span><?php echo dw_get_facebook_count( $url ) ?></span></a></li>
-                <li><a  class="twitter" href="https://twitter.com/intent/tweet?source=webclient&amp;text=<?php echo get_the_title() . rawurlencode( $url ) ?>" title="<?php _e('Publier sur Twitter','dw') ?>"  target='_blank'><i class="icon-twitter"></i><span><?php echo dw_get_twitter_count( $url ); ?></span></a></li>
-                <li><a  class="googleplus" href="https://plus.google.com/share?url=<?php echo rawurlencode($url ); ?>" title="<?php _e('Publier sur Google+','dw') ?>" target='_blank'><i class="icon-google-plus"></i><span><?php echo dw_get_plusones_share_count( $url ) ?></span></a></li>
+
+                <li><a onclick="history.back()">facebook</a>
+                <li><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo rawurlencode($url); ?>" title="<?php _e('Publier sur Facebook','dw') ?>" target='_blank'><i class="icon-facebook"></i><span><?php echo dw_get_facebook_count( $url ) ?></span></a></li>
+                <li><a class="twitter" href="https://twitter.com/intent/tweet?source=webclient&amp;text=<?php echo get_the_title() . rawurlencode( $url ) ?>" title="<?php _e('Publier sur Twitter','dw') ?>"  target='_blank'><i class="icon-twitter"></i><span><?php echo dw_get_twitter_count( $url ); ?></span></a></li>
+                <li><a class="googleplus" href="https://plus.google.com/share?url=<?php echo rawurlencode($url ); ?>" title="<?php _e('Publier sur Google+','dw') ?>" target='_blank'><i class="icon-google-plus"></i><span><?php echo dw_get_plusones_share_count( $url ) ?></span></a></li>
                 <li><a href="#comments" class="comment" title="<?php _e('Commenter cet article','dw') ?>"><i class="icon-comment"></i><span><?php comments_number( '0', '1', '%') ?></span></a></li>
                 <li><a class="email" href="mailto:?Subject=<?php echo rawurlencode( get_the_title() ) ?>" title="<?php _e('Envoyer cet article par e-mail','dw') ?>"><i class="icon-envelope-alt"></i></a></li>
-                <li><a  class="print" href="javascript: window.print();" title="<?php _e('Imprimer cet article','dw') ?>"><i class="icon-print"></i></a></li>
+                <li><a class="print" href="javascript: window.print();" title="<?php _e('Imprimer cet article','dw') ?>"><i class="icon-print"></i></a></li>
             </ul>
         </div>
         <div class="single-detail">
             <div class="scroller">
-                <div class="main-content span8">
+                <div class="main-content span12">
                     <?php get_template_part('content','single'); ?>
+                    <div id="author-meta">
+                        <div class="row">
+                            <div class="span12">
+                                <h4>A propos de l'auteur :  <?php the_author_posts_link(); ?></h4>
+                            </div>
+                            <div class="span2">
+                                <?php echo get_avatar( get_the_author_id() , 100 ); ?>
+                            </div>
+                            <div class="span10">
+                                <p><?php the_author_description(); ?></p>
+                            </div>
+                            <div class="span12">
+                                <p><?php the_author_posts_link(); ?> a écrit <?php the_author_posts(); ?> articles sur <a href="<?php echo bloginfo('wpurl'); ?>">What's Up Music</a>.</p>
+                                <div id="author-info">
+                                    <?php if (get_user_meta(get_the_author_id(),'facebook',true)) { ?>
+                                    <a class="fb_link" href="<?php echo get_user_meta(get_the_author_id(),'facebook',true); ?>" title="<?php _e('Voir sa page Facebook','dw') ?>" target='_blank'><i class="icon-facebook"></i></a>
+                                    <?php } if (get_user_meta(get_the_author_id(),'twitter',true)) { ?>
+                                    <a class="twitter_link" href="<?php echo get_user_meta(get_the_author_id(),'twitter',true); ?>" title="<?php _e('Voir sa page Twitter','dw') ?>" target='_blank'><i class="icon-twitter"></i></a>
+                                    <?php } if (get_user_meta(get_the_author_id(),'googleplus',true)) { ?>
+                                    <a class="googleplus_link" href="<?php echo get_user_meta(get_the_author_id(),'googleplus',true); ?>" title="<?php _e('Voir sa page Google Plus','dw') ?>" target='_blank'><i class="icon-google-plus"></i></a>
+                                    <?php } if (get_the_author_meta('user_url')) { ?>
+                                        <a class="website_link" href="<?php echo get_the_author_meta('user_url'); ?>" title="<?php _e('Voir son site','dw') ?>" target='_blank'><i class="icon-link"></i></a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'dw' ), 'after' => '</div>' ) ); ?>
                     <?php comments_template(); ?>
                 </div>
-                <?php get_sidebar(); ?>
+                <?php // get_sidebar(); ?>
             </div>
         </div>
     </div>

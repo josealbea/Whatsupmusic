@@ -146,7 +146,7 @@ $(document).ready(function(){
             <div class="scroller">
                 <div class="main-content">
                     <h1><?php the_field('titre'); ?></h1>
-                    <h2><i class="icon-globe"></i>Lieu : <?php the_field('lieu'); ?></h2>
+                    <h2><i class="icon-globe"></i> Lieu : <?php the_field('lieu'); ?></h2>
                     <div class="agenda-image span4">
                     	<img src="<?php the_field('image'); ?>" alt="<?php the_field('titre'); ?>" width="" height="" />
                     </div>
@@ -155,7 +155,7 @@ $(document).ready(function(){
                     </div>
                     
                     <div class="agenda-maps span12">
-                    	<h2><i class="icon-compass"></i>Itinéraire </h2>
+                    	<h2><i class="icon-compass"></i> Itinéraire </h2>
                     	<?php 
  
 							$location = get_field('adresse');

@@ -3,10 +3,7 @@ global $paged, $block_class, $paged, $wpdb;
 
 get_header(); 
 ?>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-<script src="<?php bloginfo('template_directory')?>/assets/js/jquery.geocomplete.js"></script>
+
 <h1>Les Agendas</h1>
 <form action="" method="post">
             <label>Type d'événements :</label>
@@ -30,11 +27,15 @@ get_header();
             <label>Lieu de l'événement :</label>
 
            
-      <input id="geocomplete" type="text" placeholder="Type in an address" size="90" />
+      <input id="geocomplete" type="text" placeholder="Type in an address" size="90" name="geocomplete"/>
+        Latitude:   <input name="lat" type="text" value="">
+        Longitude:  <input name="lng" type="text" value="">
+        Address:    <input name="formatted_address" type="text" value="">
+
             <script>
       jQuery(function(){
         
-        jQuery("#geocomplete").geocomplete();
+        jQuery("#geocomplete").geocomplete({ details: "form" });
         
       });
     </script>
@@ -45,7 +46,7 @@ get_header();
                     });
                 });
                 </script>
-                <p>Date: <input type="text" id="datepicker"></p>
+                <p>Date: <input type="text" id="datepicker" name="datepicker"></p>
             
             <input type="submit" value="Lancer recherche" name="valider" class="button" />
 

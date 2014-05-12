@@ -4,7 +4,7 @@ global $paged, $block_class, $paged;
 get_header();   
 ?>  
 <?php if( have_posts() ) : the_post(); ?>
-    <div id="page-autor-left" class="headline">
+    <div id="page-autor-left" class="headline span7">
         <div class="headline-wrap">
             <header class="entry-header">
 		          <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
@@ -25,7 +25,7 @@ get_header();
             </header>
         </div>
     </div>
-<div id="page-autor-right">
+<div id="page-autor-right" class="span11">
     <div id="main" role="main" class="masonry" >
         <?php $first = true; rewind_posts(); ?>
         <?php  while( have_posts() ) : the_post(); ?>

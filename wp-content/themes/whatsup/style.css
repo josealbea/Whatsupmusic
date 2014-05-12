@@ -78,20 +78,16 @@ body.author #reseaux-sociaux{
 }
 body.author #reseaux-sociaux a{margin-right: 4px}
 #page-autor-left{
-	float:left;
-	width:40%;
 	position: fixed;
+	margin-left: 0;
+	background: #FFFFFF;
 }
-#page-autor-right{float: right;
-    margin-top: -20px;
-    width: 56%;}
+#page-autor-right{float: right;margin-left:0;}
 .headline .headline-wrap {margin:0 !important;}
-body.author small{background-color: #FFFFFF;
+body.author small{
     float: right;
     font-size: 14px;
-    line-height: 1.5;
     padding: 1em;
-    text-align: center;
     width: 53%;}
 
 /* AGENDA */
@@ -244,7 +240,7 @@ h2.agenda-title {
 	.agenda-description{
 		padding-left: 0;
 	}
-
+}
 	/********* RESPOSIVE ***********/
 @media screen and (max-width: 710px) {
 	#page-autor-right {
@@ -261,4 +257,6 @@ h2.agenda-title {
 	.background{ 
 	width: 90%;
 	} 
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
 }

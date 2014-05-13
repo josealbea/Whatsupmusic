@@ -45,7 +45,22 @@
                     ?>
                     <div class="social-link">
                         <ul>
-                            <li id="account_link"><a href=""><i class="icon-user"></i></a></li>    
+                            <li id="account_link"><a href="#"><i class="icon-user"></i></a>
+                                <?php if ( is_user_logged_in() ) { ?>
+                                    <ul class="sub-menu">
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/author/<?php echo get_the_author_meta( 'user_login', wp_get_current_user()->ID); ?>">Mon compte</a></li>
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/editer-profil">Modifier mon compte</a></li>
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/liste-articles">Mes articles</a></li>
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/deconnexion">Déconnexion</a></li>
+                                    </ul>
+                                <?php } else { ?>
+                                    
+                                    <ul class="sub-menu">
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/connexion">Connexion</a></li>
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/inscription">Inscription</a></li>
+                                    </ul>
+                                <?php } ?>
+                            </li>    
                             <?php if( $facebook ) : ?>
                             <li id="facebook_link"><a href="<?php echo $facebook ?>" class="facebook"><i class="icon-facebook"></i></a></li>
                             <?php endif; ?>

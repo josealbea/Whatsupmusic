@@ -21,7 +21,7 @@ get_header();
                         <?php if ($post) : ?>
                         <?php setup_postdata($post_object); ?>
                            <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
-                                <a target="_blank" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('slider-thumb'); ?>
+                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('slider-thumb'); ?>
                                 <div class="carousel-caption">
                                     <h2><?php echo get_the_title(); ?> </h2>
                                     <p><?php the_excerpt(); ?></p>
@@ -78,7 +78,7 @@ get_header();
                                 <?php the_post_thumbnail() ?>
                             <?php endif; ?>
                             <div class="mask">
-                                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                                <a href="<?php the_permalink(); ?>" class="info">
                                     <div class="mask-content">
                                         <h2 class="block-title">Musique :<br /><?php the_title(); ?></h2>
                                         <span class="line"></span>
@@ -106,7 +106,7 @@ get_header();
                                 <?php the_post_thumbnail() ?>
                             <?php endif; ?>
                             <div class="mask">
-                                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                                <a href="<?php the_permalink(); ?>" class="info">
                                     <div class="mask-content">
                                         <h2 class="block-title">Mode : <br /><?php the_title(); ?></h2>
                                         <span class="line"></span>
@@ -159,7 +159,7 @@ get_header();
                                 <?php the_post_thumbnail() ?>
                             <?php endif; ?>
                             <div class="mask">
-                                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                                <a href="<?php the_permalink(); ?>" class="info">
                                     <div class="mask-content">
                                         <h2 class="block-title">Art : <br /><?php the_title(); ?></h2>
                                         <span class="line"></span>
@@ -187,7 +187,7 @@ get_header();
                                 <?php the_post_thumbnail() ?>
                             <?php endif; ?>
                             <div class="mask">
-                                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                                <a href="<?php the_permalink(); ?>" class="info">
                                     <div class="mask-content">
                                         <h2 class="block-title">Cinéma : <br /><?php the_title(); ?></h2>
                                         <span class="line"></span>
@@ -224,7 +224,7 @@ get_header();
                                 <?php the_post_thumbnail() ?>
                             <?php endif; ?>
                             <div class="mask">
-                                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                                <a href="<?php the_permalink(); ?>" class="info">
                                     <div class="mask-content">
                                         <h2 class="block-title">Geek :<br /><?php the_title(); ?></h2>
                                         <span class="line"></span>
@@ -261,7 +261,7 @@ get_header();
                                 <?php the_post_thumbnail() ?>
                             <?php endif; ?>
                             <div class="mask">
-                                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                                <a href="<?php the_permalink(); ?>" class="info">
                                     <div class="mask-content">
                                         <h2 class="block-title">Sport :<br /><?php the_title(); ?></h2>
                                         <span class="line"></span>

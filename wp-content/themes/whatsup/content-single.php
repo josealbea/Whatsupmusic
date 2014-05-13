@@ -14,6 +14,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
             <i class="icon-eye-open"></i>&nbsp;<?php echo do_shortcode('[post_view]'); ?>&nbsp;
+            <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
         </div>
     </header>
     <?php endif; ?>

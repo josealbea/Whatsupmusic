@@ -1,8 +1,15 @@
-<?php  
-?>
 			<footer class="site-footer" role="contentinfo">
 				<small>
-				<?php _e('Copyright &copy; 2014 par','dw') ?> <a href="#">What's Up music.</a> 
+				<?php //_e('Copyright &copy; 2014 par','dw') ?>
+				<div class="footer_1">
+					<?php wp_nav_menu( array( 'theme_location' => 'footer_1') );  ?>
+				</div>
+				<div class="footer_logo">
+					<?php dw_fixel_logo() ?>
+				</div>
+				<div class="footer_2">
+					<?php wp_nav_menu( array( 'theme_location' => 'footer_2') );  ?>
+				</div>
 				</small>
 			</footer>
 			<?php get_sidebar('top'); ?>

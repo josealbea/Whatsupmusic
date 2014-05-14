@@ -14,6 +14,7 @@
  */
 
 require_once realpath( dirname( __file__ ) ) . "/wp-report-post-form-template.php";
+global $report;
 
 function wp_report_post_render_form()
 {
@@ -31,6 +32,7 @@ function wp_report_post_render_form()
         default:
             $entry = "div.wp-report-post-body";
     }
+    $report = '<span><a href="#" post-id="'. the_ID() .'" class="wp-report-post-link"><i class="wp-report-post-sign"></i>'. _e( $linktext ). '</span></a>';
 ?>
 <script type="text/javascript">
  jQuery(document).ready(function($)
@@ -38,7 +40,7 @@ function wp_report_post_render_form()
  <?php
     if ( $placement != 2 )
     {
-?>
+        ?>
     $("<?php echo $entry; ?>").append('<span><a href="#" post-id="<?php the_ID(); ?>" class="wp-report-post-link"><?php if ( $icon ) { ?><i class="wp-report-post-sign"></i><?php } ?><?php _e( $linktext ); ?></span></a>');
 <?php
     }

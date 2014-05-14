@@ -113,6 +113,8 @@ if( ! function_exists('dw_fixel_setup') ) {
         add_theme_support( 'automatic-feed-links' );
         add_theme_support( 'post-formats', array( 'gallery', 'video' ) );
         register_nav_menu( 'primary', __( 'Primary Menu', 'dw' ) );
+        register_nav_menu( 'footer_1', __( 'Menu Footer 1', 'dw' ) );
+        register_nav_menu( 'footer_2', __( 'Menu Footer 2', 'dw' ) );
         add_theme_support( 'post-thumbnails' );
         set_post_thumbnail_size( 598, 598 ); // Unlimited height, soft crop
     }

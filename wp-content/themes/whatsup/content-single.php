@@ -1,3 +1,4 @@
+<?php global $wti_like_post; ?>
 <article> 
     <?php if( ! is_page() ) : ?>
     <header class="entry-header">
@@ -14,7 +15,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
             <i class="icon-eye-open"></i>&nbsp;<?php echo do_shortcode('[post_view]'); ?>&nbsp;
-            <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+            <?php echo $wti_like_post; ?>
         </div>
     </header>
     <?php endif; ?>

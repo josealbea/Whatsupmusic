@@ -32,7 +32,7 @@ function wp_report_post_render_form()
         default:
             $entry = "div.wp-report-post-body";
     }
-    $report = '<span><a href="#" post-id="'. the_ID() .'" class="wp-report-post-link"><i class="wp-report-post-sign"></i>'. _e( $linktext ). '</span></a>';
+    $report = '<span class="signaler_article"><a href="#" post-id="'. the_ID() .'" class="wp-report-post-link"><i class="wp-report-post-sign"></i>'. _e( $linktext ). '</span></a>';
 ?>
 <script type="text/javascript">
  jQuery(document).ready(function($)

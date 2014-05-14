@@ -1,5 +1,6 @@
 .watch-action {
-	float: right;
+	 display: inline-block;
+    vertical-align: text-bottom;
 }
 
 .watch-action img {

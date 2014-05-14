@@ -16,7 +16,8 @@
                 <?php endforeach; ?>
             <?php endif; ?>
             <i class="icon-eye-open"></i>&nbsp;<?php echo do_shortcode('[post_view]'); ?>&nbsp;
-            <?php echo $report; ?>
+            <?php echo 'test'.$report; ?>
+            <?php var_dump($report);?>
             <?php echo $wti_like_post; ?>
         </div>
     </header>

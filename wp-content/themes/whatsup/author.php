@@ -1,16 +1,14 @@
 <?php 
-global $paged, $block_class, $paged;
-
+global $paged, $block_class;
 get_header();   
-?>  
-<?php if( have_posts() ) : the_post(); ?>
-    <div id="page-autor-left" class="headline span7">
+?>
+<div id="page-autor-left" class="headline span7">
         <div class="headline-wrap">
             <header class="entry-header">
-		          <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
+                  <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
                   <img class="profil" src="http://lorempixel.com/150/150/sports/" alt="photo-couverture" width="" height=""/>
                   <p class="autor"><?php echo get_the_author(); ?></p>
-		      
+              
                 <?php $author = get_current_user_id(); 
                       $current_author = get_user_by( 'slug', get_query_var( 'author_name' ) );
                       if ($current_author->ID == $author) : 
@@ -24,7 +22,8 @@ get_header();
                 </div>
             </header>
         </div>
-    </div>
+    </div>  
+<?php if( have_posts() ) : the_post(); ?>
 <div id="page-autor-right" class="span11">
     <div id="main" role="main" class="masonry" >
         <?php $first = true; rewind_posts(); ?>
@@ -45,7 +44,6 @@ get_header();
     </div>
 </div>
     <?php dw_show_more_button(); ?>
-<?php else: ?>
-    <?php get_template_part( 'content', 'none' ) ?>
+
 <?php endif; ?>
 <?php get_footer(); ?>

@@ -60,6 +60,7 @@ get_header();
         <?php $query       = array('post_type' => 'agenda','posts_per_page' => 15,'order' => 'DESC');
         $wp_query = new WP_Query($query);
         while ($wp_query->have_posts()):$wp_query->the_post(); 
+         var_dump(get_field('adresse')['lat']); 
                 $block_class = 'block';
                 if( dw_is_featured_post() ) { 
                     $block_class .= ' w2';
@@ -69,7 +70,7 @@ get_header();
                     $block_class .= ' grid-sizer';
                 }
             ?>
-            <?php get_template_part( 'content', get_post_format() ); ?>
+            <?php // get_template_part( 'content', get_post_format() ); ?>
         <?php endwhile; ?>
         <?php dw_paging_nav(); ?>
     </div>

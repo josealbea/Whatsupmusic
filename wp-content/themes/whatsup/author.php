@@ -46,6 +46,7 @@ get_header();
 </div>
     <?php dw_show_more_button(); ?>
 <?php else: ?>
+    <!-- Ici mettre le message si aucun article n'a été rédigé par cet auteur. -->
     <?php get_template_part( 'content', 'none' ) ?>
 <?php endif; ?>
 <?php get_footer(); ?>

@@ -4,7 +4,7 @@ global $paged, $block_class, $paged;
 get_header();   
 ?>  
 <?php if( have_posts() ) : the_post(); ?>
-    <div id="page-autor-left" class="headline span7">
+    <div id="page-autor-left" class="headline span5">
         <div class="headline-wrap">
             <header class="entry-header">
 		          <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>

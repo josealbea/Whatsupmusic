@@ -1,4 +1,4 @@
-<?php global $wti_like_post, $report; ?>
+<?php global $wti_like_post; ?>
 <article> 
     <?php if( ! is_page() ) : ?>
     <header class="entry-header">
@@ -16,9 +16,7 @@
             <?php endif; ?>
             <i class="icon-eye-open"></i>&nbsp;<?php echo do_shortcode('[post_view]'); ?>&nbsp;
             <?php echo $wti_like_post; ?>
-            <?php echo $report; ?>
         </div>
-        
     </header>
     <?php endif; ?>
     <div class="entry-content">

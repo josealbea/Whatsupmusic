@@ -249,7 +249,9 @@ h2.agenda-title {
 	.agenda-description{
 		padding-left: 0;
 	}
+
 }
+.hidden{ visibility: hidden; display: none; }
 	/********* RESPOSIVE ***********/
 @media screen and (max-width: 710px) {
 	#page-autor-right {

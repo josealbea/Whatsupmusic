@@ -230,10 +230,10 @@ h2.agenda-title {
 
 	/******* FIN AGENDA *****/
 	.site-footer small {border-top: 1px solid #666}
-	.menu-menu-footer-1-container li, .menu-menu-footer-2-container li{display: inline-block;margin-right: 50px;}
-	.menu-menu-footer-1-container li:last-child, .menu-menu-footer-2-container li:last-child{margin-right: 0;}
-	.menu-menu-footer-1-container li a, .menu-menu-footer-2-container li a{font-size: 15px;color: #AAA;text-transform: uppercase;}
-	.menu-menu-footer-1-container li a:hover, .menu-menu-footer-2-container li a:hover{color:#FFF;}
+	.footer_1 li, .footer_2 li{display: inline-block;margin-right: 50px;}
+	.footer_1 li:last-child, .footer_2 li:last-child{margin-right: 0;}
+	.footer_1 li a, .footer_2 li a{font-size: 15px;color: #AAA;text-transform: uppercase;}
+	.footer_1 li a:hover, .footer_2 li a:hover{color:#FFF;}
 	.footer_1{margin-bottom: 15px}
 	.footer_1,.footer_2{
     height: 50px;
@@ -266,8 +266,9 @@ h2.agenda-title {
 	}
 	body.author small{width: 100%;}
 	.background{ 
-	width: 90%;
+		width: 90%;
 	} 
 }
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
+	body{background: red !important}
 }

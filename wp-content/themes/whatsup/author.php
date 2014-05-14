@@ -4,7 +4,7 @@ global $paged, $block_class, $paged;
 get_header();   
 ?>  
 <?php if( have_posts() ) : the_post(); ?>
-    <div id="page-autor-left" class="headline span7">
+    <div id="page-autor-left" class="headline span5">
         <div class="headline-wrap">
             <header class="entry-header">
 		          <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
@@ -46,6 +46,7 @@ get_header();
 </div>
     <?php dw_show_more_button(); ?>
 <?php else: ?>
+    <!-- Ici mettre le message si aucun article n'a été rédigé par cet auteur. -->
     <?php get_template_part( 'content', 'none' ) ?>
 <?php endif; ?>
 <?php get_footer(); ?>

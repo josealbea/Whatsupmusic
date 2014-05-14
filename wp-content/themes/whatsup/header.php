@@ -15,7 +15,7 @@
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <?php wp_head(); ?>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/jquery-ui.css">
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="<?php bloginfo('template_directory')?>/assets/js/jquery.geocomplete.js"></script>

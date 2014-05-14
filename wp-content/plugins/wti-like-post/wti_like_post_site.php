@@ -88,7 +88,7 @@ function GetWtiLikePost($arg = null) {
           
           $wti_like_post .= "</div> ";
           $wti_like_post .= "<div class='status-" . $post_id . " status " . $alignment . "'>&nbsp;&nbsp;" . $msg . "</div>";
-          $wti_like_post .= "</div><div class='wti-clear'></div>";
+          //$wti_like_post .= "</div><div class='wti-clear'></div>";
      }
      
      if ($arg == 'put') {

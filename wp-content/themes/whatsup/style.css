@@ -162,7 +162,7 @@ h2.agenda-title {
 	clear: both; 
 }
 
-.form-control {
+.form-control,.input-append input{
 	background-image: none; 
 	border: 1px solid #CCCCCC; 
 	border-radius: 4px; 
@@ -175,30 +175,35 @@ h2.agenda-title {
 	padding: 6px 12px; 
 	transition: border-color 0.15s ease-in-out 0s;
 	box-shadow 0.15s ease-in-out 0s; 
-	width: 100%; }
+	width: 100% !important; }
 
-.button{ 
+.button,.input-append button{ 
 	background: #F0793F;
 	color: #FFF;
+	border: 1px solid #F0793F;
 	border-radius: 2px !important; 
 	cursor: pointer; 
 	display: block; 
 	font-family: 'Novecentowide Normal' !important;
 	font-size: 14px; 
 	font-weight: bold;
-	margin-bottom: 0; 
-	padding: 10px 0; 
+	margin: 10px 0 0; 
+	padding: 10px 0;
 	text-align: center; 
 	vertical-align: middle; 
 	white-space: nowrap; 
-	width:100%; 
+	width:100% !important; 
 	} 
-	body.inscription,body.login,body.proposer-article #inner-wrap{
+	.input-append button{
+		padding: 11px 0;
+		width: 60%;
+	}
+	.page-template-tpl-login-php,.page-template-tpl-edit-profil-php{
 		background:url(assets/img/bg-floue.jpg) !important;
 		background-size:cover !important;
 		background-repeat: no-repeat !important;
 	}
-	body.inscription h1,body.login h1,body.proposer-article h1{
+	body.inscription h1,body.login h1,body.proposer-article h1,h1.editer-profil{
 		color:#FFF;
 		text-shadow:1px 1px 2px #555;
 		text-align: center;
@@ -232,7 +237,7 @@ h2.agenda-title {
 	.post-type-archive-agenda .col-left{ width: 220px;}
 	.hidden{ visibility: hidden; display: none; }
 	.markers-label {color: red;background-color: white;font-family: "Lucida Grande", "Arial", sans-serif;font-size: 10px;font-weight: bold;text-align: center;width: 60px;border: 2px solid black;white-space: nowrap;}
-
+	.page-template-tpl-login-php .site-footer,.page-template-tpl-edit-profil-php .site-footer{display:none;}
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
 		background:url(assets/img/bg-floue.jpg);

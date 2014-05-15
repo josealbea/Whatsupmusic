@@ -228,6 +228,9 @@ h2.agenda-title {
     height: 50px;
     line-height: 50px;
 	}
+	.post-type-archive-agenda .col-left{ width: 220px;}
+	.hidden{ visibility: hidden; display: none; }
+	.markers-label {color: red;background-color: white;font-family: "Lucida Grande", "Arial", sans-serif;font-size: 10px;font-weight: bold;text-align: center;width: 60px;border: 2px solid black;white-space: nowrap;}
 
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
@@ -239,6 +242,7 @@ h2.agenda-title {
 		padding-left: 0;
 	}
 }
+
 	/********* RESPONSIVE ***********/
 @media screen and (max-width: 910px) {
 	#page-autor-right {

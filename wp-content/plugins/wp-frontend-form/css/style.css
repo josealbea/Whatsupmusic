@@ -10,11 +10,28 @@ div.mselect-list-item input[type="checkbox"]{margin: 4px;}
 div.discussion label {display:inline}
 a.mselect-button-add{display:none!important}
 div.control-group input[type="text"], input[type="password"], input[type="email"], .wp-guest-poster-text-field{
-	width: 90%;
-	height: auto;
-	margin:auto;
-	background-color: #ffffff;
-	border: 1px solid #cccccc;
+	background-image: none; 
+	border: 1px solid #CCCCCC; 
+	border-radius: 4px; 
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset; 
+	color: #555555;
+	font-size: 14px;
+	line-height: 1.42857; 
+	margin-bottom: 15px; 
+	padding: 6px 12px; 
+	transition: border-color 0.15s ease-in-out 0s;
+	box-shadow :0.15s ease-in-out 0s; 
+	width: 100%;
+}
+.label, .badge {
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 5px;
+    vertical-align: super;
+    white-space: nowrap;
 }
 form#form-poster-profile{
 	padding: 10px;

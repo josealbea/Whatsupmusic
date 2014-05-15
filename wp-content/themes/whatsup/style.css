@@ -178,36 +178,25 @@ h2.agenda-title {
 	width: 100%; }
 
 .button{ 
-	background: #5a97f7; 
-	/* Old browsers */ background: -moz-linear-gradient(top, #5a97f7 0%, #306cf2 100%); 
-	/* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5a97f7), color-stop(100%,#306cf2)); 
-	/* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, #5a97f7 0%,#306cf2 100%); 
-	/* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, #5a97f7 0%,#306cf2 100%); 
-	/* Opera 11.10+ */ background: -ms-linear-gradient(top, #5a97f7 0%,#306cf2 100%); 
-	/* IE10+ */ background: linear-gradient(to bottom, #5a97f7 0%,#306cf2 100%); 
-	/* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a97f7', endColorstr='#306cf2',GradientType=0 ); 
-	/* IE6-9 */ 
-	border-color: #357EBD; 
-	color: #FFFFFF; 
-	border: 1px solid rgba(0, 0, 0, 0); 
-	border-radius: 4px !important; 
+	background: #F0793F;
+	color: #FFF;
+	border-radius: 2px !important; 
 	cursor: pointer; 
 	display: block; 
+	font-family: 'Novecentowide Normal' !important;
 	font-size: 14px; 
-	font-weight: 400;
-	line-height: 1.42857; 
+	font-weight: bold;
 	margin-bottom: 0; 
-	padding: 6px 12px; 
+	padding: 10px 0; 
 	text-align: center; 
 	vertical-align: middle; 
 	white-space: nowrap; 
-	text-shadow: 1px 1px 2px #000000; 
 	width:100%; 
 	} 
 	body.inscription,body.login,body.proposer-article #inner-wrap{
-		background:url(assets/img/bg-floue.jpg);
-		background-size:cover;
-		background-repeat: no-repeat;
+		background:url(assets/img/bg-floue.jpg) !important;
+		background-size:cover !important;
+		background-repeat: no-repeat !important;
 	}
 	body.inscription h1,body.login h1,body.proposer-article h1{
 		color:#FFF;
@@ -250,8 +239,8 @@ h2.agenda-title {
 		padding-left: 0;
 	}
 }
-	/********* RESPOSIVE ***********/
-@media screen and (max-width: 710px) {
+	/********* RESPONSIVE ***********/
+@media screen and (max-width: 910px) {
 	#page-autor-right {
 		float:none;
 		margin-top: -20px;
@@ -265,8 +254,9 @@ h2.agenda-title {
 	body.author small{width: 100%;}
 	.background{ 
 		width: 90%;
-	} 
+	}
+	.site-footer{display: none;}
 }
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
-	body{background: red !important}
-}
+
+
+

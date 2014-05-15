@@ -192,13 +192,16 @@ h2.agenda-title {
 	text-align: center; 
 	vertical-align: middle; 
 	white-space: nowrap; 
-	width:100% !important; 
+	width:100%; 
+	} 
+	.page-template-tpl-create-post-php .button{
+	width:88%; 
 	} 
 	.input-append button{
 		padding: 11px 0;
 		width: 60%;
 	}
-	.page-template-tpl-login-php,.page-template-tpl-edit-profil-php{
+	.page-template-tpl-login-php,.page-template-tpl-edit-profil-php,.page-template-tpl-create-post-php{
 		background:url(assets/img/bg-floue.jpg) !important;
 		background-size:cover !important;
 		background-repeat: no-repeat !important;
@@ -237,7 +240,7 @@ h2.agenda-title {
 	.post-type-archive-agenda .col-left{ width: 220px;}
 	.hidden{ visibility: hidden; display: none; }
 	.markers-label {color: red;background-color: white;font-family: "Lucida Grande", "Arial", sans-serif;font-size: 10px;font-weight: bold;text-align: center;width: 60px;border: 2px solid black;white-space: nowrap;}
-	.page-template-tpl-login-php .site-footer,.page-template-tpl-edit-profil-php .site-footer{display:none;}
+	.page-template-tpl-login-php .site-footer,.page-template-tpl-edit-profil-php .site-footer,.page-template-tpl-create-post-php .site-footer{display:none;}
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
 		background:url(assets/img/bg-floue.jpg);

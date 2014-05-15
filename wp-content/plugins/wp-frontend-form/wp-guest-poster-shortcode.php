@@ -265,7 +265,7 @@ if(!function_exists('wp_guest_poster_meta')){
 				break;
 				case 'text':
 					$text = get_post_meta($article_id,$args[metakey],true) ? get_post_meta($article_id,$args[metakey],true) : null;
-					$type_html = '<input value="'.$text.'" '.$args['required'].' class="poster-metafield wp-guest-poster-text-field" type="'.$type.'" id="'.$args[metakey].'" name="poster_meta['.$args[metakey].']">';
+					$type_html = '<input value="'.$text.'" '.$args['required'].' class="poster-metafield wp-guest-poster-text-field form-control" type="'.$type.'" id="'.$args[metakey].'" name="poster_meta['.$args[metakey].']">';
 				break;
 				case 'password':
 					$type_html = '<input '.$args['required'].' class="poster-metafield wp-guest-poster-text-field" type="'.$type.'" id="'.$args[metakey].'" name="poster_meta['.$args[metakey].']">';
@@ -279,7 +279,7 @@ if(!function_exists('wp_guest_poster_meta')){
 					$type_html = '<input '.$checked.' '.$args['required'].' class="poster-metafield" type="'.$type.'" id="'.$args[metakey].'" name="poster_meta['.$args[metakey].']">';
 				break;
 				case 'file':
-					$type_html = '<input '.$args['required'].' class="poster-metafield wp-guest-poster-text-field" type="'.$type.'" id="'.$args[metakey].'" name="'.$args[metakey].'">';
+					$type_html = '<input '.$args['required'].' class="poster-metafield wp-guest-poster-text-field form-control" type="'.$type.'" id="'.$args[metakey].'" name="'.$args[metakey].'">';
 				break;
 				case 'hidden':
 					$hidden = 'style="display:none;"';

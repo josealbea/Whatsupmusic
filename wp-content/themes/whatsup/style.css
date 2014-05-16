@@ -164,6 +164,11 @@ h2.agenda-title {
 	border-radius: 4px; 
 	clear: both; 
 }
+.page-template-forgot-password-php .background {
+	position: relative;
+	margin: 0 auto;
+	top:150px;
+}
 
 .form-control,.input-append input{
 	background-image: none; 
@@ -191,7 +196,6 @@ h2.agenda-title {
 	font-size: 14px; 
 	font-weight: bold;
 	margin: 10px 0 0; 
-	padding: 10px 0;
 	text-align: center; 
 	vertical-align: middle; 
 	white-space: nowrap; 
@@ -204,12 +208,12 @@ h2.agenda-title {
 		padding: 11px 0;
 		width: 60%;
 	}
-	.page-template-tpl-login-php,.page-template-tpl-edit-profil-php,.page-template-tpl-create-post-php{
+	.page-template-tpl-login-php,.page-template-tpl-edit-profil-php,.page-template-tpl-create-post-php,.page-template-forgot-password-php{
 		background:url(assets/img/bg-floue.jpg) !important;
 		background-size:cover !important;
 		background-repeat: no-repeat !important;
 	}
-	body.inscription h1,body.login h1,body.proposer-article h1,h1.editer-profil{
+	.page-template-tpl-login-php h1,.page-template-tpl-edit-profil-php h1,.page-template-tpl-create-post-php h1,.page-template-forgot-password-php h1{
 		font-family: 'Novecentowide Normal';
 		color:#FFF;
 		text-shadow:1px 1px 2px #555;
@@ -244,7 +248,10 @@ h2.agenda-title {
 	.post-type-archive-agenda .col-left{ width: 220px;}
 	.hidden{ visibility: hidden; display: none; }
 	.markers-label {color: red;background-color: white;font-family: "Lucida Grande", "Arial", sans-serif;font-size: 10px;font-weight: bold;text-align: center;width: 60px;border: 2px solid black;white-space: nowrap;}
-	.page-template-tpl-login-php .site-footer,.page-template-tpl-edit-profil-php .site-footer,.page-template-tpl-create-post-php .site-footer{display:none;}
+	.page-template-tpl-login-php .site-footer,
+	.page-template-tpl-edit-profil-php .site-footer,
+	.page-template-tpl-create-post-php .site-footer,
+	.page-template-forgot-password-php .site-footer{display:none;}
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
 		background:url(assets/img/bg-floue.jpg);

@@ -113,32 +113,33 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 	
 		<?php while ( have_posts() ) : the_post(); ?>
-			
-			<form class="user_form" id="wp_pass_reset" action="" method="post">			
-			<input type="text" class="text" name="user_input" value="Test" /><br />
-			<input type="hidden" name="action" value="tg_pwd_reset" />
-			<input type="hidden" name="tg_pwd_nonce" value="<?php echo wp_create_nonce("tg_pwd_nonce"); ?>" />
-			<input type="submit" id="submitbtn" class="reset_password" name="submit" value="Reset Password" />					
-			</form>
-			<div id="result"></div> <!-- To hold validation results -->
-			<script type="text/javascript">  						
-			$("#wp_pass_reset").submit(function() {			
-			$('#result').html('<span class="loading">Validating...</span>').fadeIn();
-			var input_data = $('#wp_pass_reset').serialize();
-			$.ajax({
-			type: "POST",
-			url:  "<?php echo get_permalink( $post->ID ); ?>",
-			data: input_data,
-			success: function(msg){
-			$('.loading').remove();
-			$('<div>').html(msg).appendTo('div#result').hide().fadeIn('slow');
-			}
-			});
-			return false;
-			
-			});
-			</script>
-			
+			<div class="background">
+				<h1>Réinitialisation de votre mot de passe</h1>
+				<form class="user_form" id="wp_pass_reset" action="" method="post">			
+					<input type="text" class="form-control" name="user_input" placeholder="Votre nouveau mot de passe" /><br />
+					<input type="hidden" name="action" value="tg_pwd_reset" />
+					<input type="hidden" name="tg_pwd_nonce" value="<?php echo wp_create_nonce("tg_pwd_nonce"); ?>" />
+					<input type="submit" id="submitbtn" class="button" name="submit" value="Reset Password" />					
+				</form>
+				<div id="result"></div> <!-- To hold validation results -->
+				<script type="text/javascript">  						
+				$("#wp_pass_reset").submit(function() {			
+				$('#result').html('<span class="loading">Validating...</span>').fadeIn();
+				var input_data = $('#wp_pass_reset').serialize();
+				$.ajax({
+				type: "POST",
+				url:  "<?php echo get_permalink( $post->ID ); ?>",
+				data: input_data,
+				success: function(msg){
+				$('.loading').remove();
+				$('<div>').html(msg).appendTo('div#result').hide().fadeIn('slow');
+				}
+				});
+				return false;
+				
+				});
+				</script>
+			</div>
 	<?php endwhile; ?>
 		
 	<?php else : ?>

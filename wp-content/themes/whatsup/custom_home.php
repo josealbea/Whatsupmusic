@@ -46,7 +46,8 @@ get_header();
                 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                 <?php $image = get_field('image'); ?>
                     <?php if (strtotime(get_field('date')) >= mktime() ) : ?>
-                        <li>
+                        <a href="<?php the_permalink(); ?>">
+                            <li>
                             <div class="desc-agenda">
                                 <span class="event-title">
                                     <?php the_field('titre'); ?>
@@ -54,15 +55,13 @@ get_header();
                                 <span class="event-where">
                                     <?php the_field('lieu'); ?>
                                 </span>
-                                <span class="event-more">
-                                    <a href="<?php the_permalink(); ?>">Plus d'infos sur cet évènement</a>
-                                </span>
                             </div>
                             <div class="image-agenda">
                                 <img src="<?php echo $image['sizes']['agenda-thumb']; ?>" style="width: 100% !important; left: 0 !important; height: 110px !important;" />
                                 <div class="agenda-date"><?php echo date("d/m", strtotime(get_field('date'))); ?></div>
                             </div>
                         </li>
+                        </a>
                     <?php endif; ?>
                 <?php endwhile; ?>
                 </ul>

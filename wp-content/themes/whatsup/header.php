@@ -52,6 +52,7 @@
                                         <li><a href="<?php bloginfo('wpurl'); ?>/author/<?php echo get_the_author_meta( 'user_login', wp_get_current_user()->ID); ?>">Mon compte</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/editer-profil">Modifier mon compte</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/liste-articles">Mes articles</a></li>
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/proposer-article">Proposer un article</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/deconnexion">Déconnexion</a></li>
                                     </ul>
                                 <?php } else { ?>

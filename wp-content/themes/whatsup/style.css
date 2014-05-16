@@ -116,12 +116,22 @@ h2.agenda-title {
 	width: 66%;
 	padding-left: 3%;
 	padding-top: 10px;
+	height: 110px;
+	position: relative;
 }
 
 .desc-agenda .event-title {
 	font-weight: bold;
 	font-size: 18px;
 	width: 100%;
+}
+
+.desc-agenda .event-where {
+	display: block;
+}
+
+.desc-agenda .event-more {
+	display: block;
 }
 
 .image-agenda {

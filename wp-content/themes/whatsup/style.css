@@ -24,6 +24,10 @@ html, body {
 	position: relative;
 }
 
+h1, h2, h3, h4, h5, h6, .block-title, .entry-title, .btn, #submit, .block.head h1, .block.head h2, .headline .entry-title, .wpcf7-form .wpcf7-submit, .block .block-title {
+	font-family: 'Novecentowide Normal' !important;
+}
+
 /* STYLE COULEUR MENU CATEGORIES */
 body.category-musique article.status-publish .mask .block-title,
 body.category-musique article.status-publish .carousel-caption h4,
@@ -92,7 +96,6 @@ body.author small{
 
 /* AGENDA */
 h2.agenda-title {
-	font-family: 'Novecentowide Normal';
 	text-align: center;
 	margin: 0;
 }
@@ -207,6 +210,7 @@ h2.agenda-title {
 		background-repeat: no-repeat !important;
 	}
 	body.inscription h1,body.login h1,body.proposer-article h1,h1.editer-profil{
+		font-family: 'Novecentowide Normal';
 		color:#FFF;
 		text-shadow:1px 1px 2px #555;
 		text-align: center;

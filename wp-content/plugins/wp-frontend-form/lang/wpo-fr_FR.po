@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Guest Poster\n"
 "POT-Creation-Date: 2013-07-31 09:55+0700\n"
-"PO-Revision-Date: 2014-05-12 11:47+0100\n"
+"PO-Revision-Date: 2014-05-16 14:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: Toan Nguyen\n"
 "MIME-Version: 1.0\n"
@@ -106,7 +106,7 @@ msgstr "Connexion réussie"
 
 #: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:230
 msgid "Please enter username"
-msgstr ""
+msgstr "Nom d'utilisateur obligatoire"
 
 #: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:233
 msgid "This username had already signup ago, please choose other"
@@ -114,7 +114,7 @@ msgstr "Ce nom d'utilisateur est déjà pris, merci d'en choisir un autre"
 
 #: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:236
 msgid "Email invalid"
-msgstr "Email invalide"
+msgstr "Email incorrect"
 
 #: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:239
 msgid "This email had already signup ago, please choose other"
@@ -128,6 +128,8 @@ msgstr "Mot de passe incorrect"
 msgid ""
 "<div class=\"alert alert-success\">Congratulations, Signup success!</div>"
 msgstr ""
+"<div class=\"alert alert-success\">Félicitation, votre inscription a bien "
+"été prise en compte</div>"
 
 #: D:\toan\codecayon\wp-frontend-form\wp-frontend-form/wp-guest-poster-ajax.php:275
 msgid "Signup error, please try again!"

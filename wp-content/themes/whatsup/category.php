@@ -80,7 +80,7 @@ $category_id = $categories[0]->cat_ID;
                                 <?php the_post_thumbnail() ?>
                             <?php endif; ?>
                             <div class="mask">
-                                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                                <a href="<?php the_permalink(); ?>" data-post-id="<?php the_ID(); ?>" class="info">
                                     <div class="mask-content">
                                         <h2 class="block-title">Musique :<br /><?php the_title(); ?></h2>
                                         <span class="line"></span>

@@ -8,7 +8,14 @@ global $paged, $block_class, $paged;
 get_header(); 
 $categories = get_the_category();
 $category_id = $categories[0]->cat_ID;
-?>  
+?>
+<div class="headline">
+    <div class="headline-wrap">
+        <header class="entry-header">
+            <h2 class="entry-title"><?php echo $categories[0]->name;?></h2> 
+        </header>
+    </div>
+</div>
 <?php if( have_posts() ) : ?>
     <?php  while( have_posts() ) : the_post(); ?>
     <div id="main" role="main" class="masonry" >
@@ -48,7 +55,7 @@ $category_id = $categories[0]->cat_ID;
                 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                 <?php $image = get_field('image'); ?>
                     <?php if (strtotime(get_field('date')) >= mktime() ) : ?>
-                        <li>
+                        <li><a href="<?php the_permalink(); ?>">
                             <div class="desc-agenda">
                                 <span class="event-title">
                                     <?php the_field('titre'); ?>
@@ -57,14 +64,14 @@ $category_id = $categories[0]->cat_ID;
                                     <?php the_field('lieu'); ?>
                                 </span>
                                 <span class="event-more">
-                                    <a href="<?php the_permalink(); ?>">Plus d'infos sur cet évènement</a>
+                                   Plus d'infos sur cet évènement
                                 </span>
                             </div>
                             <div class="image-agenda">
                                 <img src="<?php echo $image['sizes']['agenda-thumb']; ?>" style="width: 100% !important; left: 0 !important; height: 110px !important;" />
                                 <div class="agenda-date"><?php echo date("d/m", strtotime(get_field('date'))); ?></div>
                             </div>
-                        </li>
+                        </a></li>
                     <?php endif; ?>
                 <?php endwhile; ?>
                 </ul>

@@ -155,7 +155,7 @@ h2.agenda-title {
 	right: 0;
 	z-index: 2;
 	background: #FFFFFF;
-	box-shadow: -5px 5px 5px rgba(0,0,0,0.4);
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
 	font-size: 16px;
 	padding: 3px 5px;
 	font-weight: bold;
@@ -262,6 +262,7 @@ h2.agenda-title {
 	.page-template-tpl-edit-profil-php .site-footer,
 	.page-template-tpl-create-post-php .site-footer,
 	.page-template-forgot-password-php .site-footer{display:none;}
+	#wp-guest-poster-form .post_content{width:88%;}
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
 		background:url(assets/img/bg-floue.jpg);
@@ -277,7 +278,6 @@ h2.agenda-title {
 @media screen and (max-width: 910px) {
 	#page-autor-right {
 		float:none;
-		margin-top: -20px;
 		width:100%;
 	}
 	#page-autor-left {

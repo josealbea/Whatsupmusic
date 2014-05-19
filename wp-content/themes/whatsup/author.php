@@ -11,15 +11,15 @@ get_header();
                 <div class="infos">
 		          <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
                   <img class="profil" src="http://lorempixel.com/150/150/sports/" alt="photo-couverture" width="" height=""/>
-                  <p class="autor"><?php echo get_the_author(); ?></p>
-		      
-                    <?php $author = get_current_user_id(); 
-                      $current_author = get_user_by( 'slug', get_query_var( 'author_name' ) );
-                      if ($current_author->ID == $author) : 
-                        echo "<p class='edit-author'><i class='icon-user'></i><a href='".home_url()."/editer-profil/' title='Editer mon profil'>Modifier mon profil </a>";
-                        echo "<i class='icon-list'></i>";
-                        echo "<a href='".home_url()."/liste-article/' title='Editer vos articles'>Liste d'articles</a></p>";  
-                      endif; ?>
+                    <div class="infos_user">
+                        <p class="autor"><?php echo get_the_author(); ?></p>
+                            <?php $author = get_current_user_id(); 
+                              $current_author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+                              if ($current_author->ID == $author) : 
+                                echo "<p class='edit-author'><i class='icon-user'></i> <a href='".home_url()."/editer-profil/' title='Editer mon profil'>Modifier mon profil </a></p>";
+                                echo "<p class='edit-author'><i class='icon-list'></i> <a href='".home_url()."/liste-article/' title='Editer mes articles'>Ma liste d'articles</a></p>";  
+                              endif; ?>
+                    </div>
                 </div>
                 <div id="reseaux-sociaux">
                     <a href="#"><img src="<?php bloginfo('template_directory')?>/social/facebook.jpg" alt="" width="" height=""></a>

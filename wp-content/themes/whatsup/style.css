@@ -263,6 +263,10 @@ h2.agenda-title {
 	.page-template-tpl-create-post-php .site-footer,
 	.page-template-forgot-password-php .site-footer{display:none;}
 	#wp-guest-poster-form .post_content{width:88%;}
+	.edit-author{display: block;}
+	.infos_user {
+    	margin-top: -50px;
+	}
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
 		background:url(assets/img/bg-floue.jpg);

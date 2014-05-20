@@ -118,8 +118,10 @@ a .icon-rotate-90:before,a .icon-rotate-180:before,a .icon-rotate-270:before,a .
 .icon-fast-forward:before{content:"\f050";}
 .icon-step-forward:before{content:"\f051";}
 .icon-eject:before{content:"\f052";}
-.icon-chevron-left:before{content:"\f053";padding-left: 20px;}
-.icon-chevron-right:before{content:"\f054";padding-right: 20px;}
+.icon-chevron-left:before{content:"\f053";}
+.icon-chevron-right:before{content:"\f054";}
+.single .icon-chevron-left:before{content:"\f053";padding-left: 20px;}
+.single .icon-chevron-right:before{content:"\f054";padding-right: 20px;}
 .icon-plus-sign:before{content:"\f055";}
 .icon-minus-sign:before{content:"\f056";}
 .icon-remove-sign:before{content:"\f057";}

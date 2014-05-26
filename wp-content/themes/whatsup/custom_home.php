@@ -278,7 +278,29 @@ get_header();
                 </article> 
             <?php endwhile; ?>
         <?php endif; ?> 
-        <?php $results = $wpdb->get_results('SELECT post_id, SUM(value) AS like_count, post_title, post_date, post_name FROM wp_wti_like_post L, wp_posts P WHERE L.post_id = P.ID AND post_status = "publish" AND value > 0 AND MONTH(date_time) = MONTH(CURDATE()) GROUP BY post_id ORDER BY like_count DESC, post_title');?> 
+        <?php $results = $wpdb->get_results("SELECT COUNT( p.id ) post_count, SUM(value) AS like_count, u.ID, DATE_FORMAT( post_date, '%Y-%m' ) post_month FROM wp_wti_like_post L, `wp_posts` p, `wp_users` u WHERE post_status = 'publish' AND post_type = 'post' AND u.ID = post_author GROUP BY post_author, post_month ORDER BY post_count DESC LIMIT 0,1");?> 
+            <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
+                <div class="block-inner">
+                    <?php
+                    $user_info = get_userdata($results[0]->ID);
+                    //var_dump($user_info);
+                    ?>
+
+                    <div class="view-video">
+                           <?php echo get_avatar($results[0]->ID); ?>
+                        <div class="mask">
+                            <a href="<?php bloginfo('url');?>/author/<?php echo $user_info->data->user_login;?>/" class="info">
+                                <div class="mask-content">
+                                    <h2 class="block-title"><?php echo $user_info->data->display_name;?></h2>
+                                    <h3 class="line">Auteur du mois avec <?php echo $results[0]->like_count;?> Likes</h3>
+                                    <a href="">Voir son profil</a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <?php $results = $wpdb->get_results('SELECT post_id, SUM(value) AS like_count, post_title, post_date, post_name FROM wp_wti_like_post L, wp_posts P WHERE L.post_id = P.ID AND post_status = "publish" AND value > 0 AND MONTH(date_time) = MONTH(CURDATE()) GROUP BY post_id ORDER BY like_count DESC, post_title LIMIT 0,1');?> 
             <article id="post-<?php $results[0]->post_id; ?>" class="post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
                     <div class="view-video">

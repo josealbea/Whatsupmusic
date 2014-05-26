@@ -211,19 +211,19 @@ h2.agenda-title {
 	white-space: nowrap; 
 	width:100%; 
 	} 
-	.page-template-tpl-create-post-php .button{
+	.page-template-tpl-create-post-php .button,.page-template-tpl-create-lookbook-php .button{
 	width:88%; 
 	} 
 	.input-append button{
 		padding: 11px 0;
 		width: 60%;
 	}
-	.page-template-tpl-login-php,.page-template-tpl-edit-profil-php,.page-template-tpl-create-post-php,.page-template-forgot-password-php{
+	.page-template-tpl-login-php,.page-template-tpl-edit-profil-php,.page-template-tpl-create-post-php,.page-template-forgot-password-php,.page-template-tpl-create-lookbook-php{
 		background:url(assets/img/bg-floue.jpg) !important;
 		background-size:cover !important;
 		background-repeat: no-repeat !important;
 	}
-	.page-template-tpl-login-php h1,.page-template-tpl-edit-profil-php h1,.page-template-tpl-create-post-php h1,.page-template-forgot-password-php h1{
+	.page-template-tpl-login-php h1,.page-template-tpl-edit-profil-php h1,.page-template-tpl-create-post-php h1,.page-template-forgot-password-php h1,.page-template-tpl-create-lookbook-php h1{
 		font-family: 'Novecentowide Normal';
 		color:#FFF;
 		text-shadow:1px 1px 2px #555;
@@ -261,8 +261,9 @@ h2.agenda-title {
 	.page-template-tpl-login-php .site-footer,
 	.page-template-tpl-edit-profil-php .site-footer,
 	.page-template-tpl-create-post-php .site-footer,
-	.page-template-forgot-password-php .site-footer{display:none;}
-	#wp-guest-poster-form .post_content{width:88%;}
+	.page-template-forgot-password-php .site-footer,
+	.page-template-tpl-create-lookbook-php .site-footer{display:none;}
+	#wp-guest-poster-form .post_content {width:88%;}
 	.edit-author{display: block;}
 	.infos_user {
     	margin-top: -50px;

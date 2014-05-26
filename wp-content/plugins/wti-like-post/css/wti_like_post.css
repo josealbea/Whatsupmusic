@@ -53,10 +53,12 @@
 }
 
 .status {
-	color: gray;
+	/*color: gray;
 	padding: 0 7px 0 7px;
 	font-size: 14px;
 	line-height: 18px;	
+	*/
+	display: none;
 }
 .status .status_msg {
 	width: auto;
@@ -103,9 +105,11 @@
 
 /*** START FIRST THUMB UP/DOWN STYLE ***/	
 .lbg-style1 img,  .unlbg-style1 img{
-	width: 14px;
 	height: 16px;
-	float:left;
+    left: 24px;
+    position: absolute;
+    top: 80px;
+    width: 14px;
 }
 
 .lbg-style1 img{
@@ -125,7 +129,10 @@
 }
 
 .lbg-style1 .lc {
-	color: green;
+	color: #008000;
+    left: 18px;
+    position: absolute;
+    top: 120px;
 }
 .unlbg-style1 .unlc {
 	color: red;		

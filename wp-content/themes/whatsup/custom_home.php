@@ -281,11 +281,7 @@ get_header();
         <?php $results = $wpdb->get_results("SELECT COUNT( p.id ) post_count, SUM(value) AS like_count, u.ID, DATE_FORMAT( post_date, '%Y-%m' ) post_month FROM wp_wti_like_post L, `wp_posts` p, `wp_users` u WHERE post_status = 'publish' AND post_type = 'post' AND u.ID = post_author GROUP BY post_author, post_month ORDER BY post_count DESC LIMIT 0,1");?> 
             <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
-                    <?php
-                    $user_info = get_userdata($results[0]->ID);
-                    //var_dump($user_info);
-                    ?>
-
+                    <?php $user_info = get_userdata($results[0]->ID);?>
                     <div class="view-video">
                            <?php echo get_avatar($results[0]->ID); ?>
                         <div class="mask">

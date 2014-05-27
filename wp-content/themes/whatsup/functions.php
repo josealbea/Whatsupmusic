@@ -36,8 +36,6 @@ if( ! function_exists('dw_setup') ) {
         require_once( trailingslashit(DW_DIR) . 'inc/social-flickr.php' );
         require_once( trailingslashit(DW_DIR) . 'inc/widgets.php' );
         require_once( trailingslashit(DW_DIR) . 'inc/social-share-count.php' );
-        require_once( trailingslashit(DW_DIR) . 'inc/widgets/dw-next_posts.php' );
-        require_once( trailingslashit(DW_DIR) . 'inc/widgets/dw-flickrs.php' );
         require_once( trailingslashit(DW_DIR) . 'inc/shortcode-bootstrap/shortcode-bootstrap.php' );
         require_once( trailingslashit(DW_DIR) . 'inc/shortcode-bootstrap/inc/dws_grid.php');
         require_once( trailingslashit(DW_DIR) . 'inc/shortcode-bootstrap/inc/dws_outer_grid.php');
@@ -146,7 +144,7 @@ if( ! function_exists('dw_comment') ) {
             global $post;
         ?>
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php if ( '0' == $comment->comment_approved ) : ?>
-                <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'dw' ); ?></p>
+                <p class="comment-awaiting-moderation"><?php _e( 'Votre commentaire est en attente de validation.', 'dw' ); ?></p>
             <?php endif; ?>
             <article id="comment-<?php comment_ID(); ?>" class="comment">
                   <div class="comment-avatar round-img">

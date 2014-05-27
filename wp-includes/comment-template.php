@@ -1266,7 +1266,7 @@ function get_comment_reply_link($args = array(), $comment = null, $post = null) 
 	if ( get_option('comment_registration') && ! is_user_logged_in() )
 		$link = '<a rel="nofollow" class="comment-reply-login" href="' . esc_url( wp_login_url( get_permalink() ) ) . '">' . $login_text . '</a>';
 	else
-		$link = "<a class='comment-reply-link' href='" . esc_url( add_query_arg( 'replytocom', $comment->comment_ID ) ) . "#" . $respond_id . "' onclick='return addComment.moveForm(\"$add_below-$comment->comment_ID\", \"$comment->comment_ID\", \"$respond_id\", \"$post->ID\")'>$reply_text</a>";
+		$link = "<a class='comment-reply-link' href='" . esc_url( add_query_arg( 'replytocom', $comment->comment_ID ) ) . "#" . $respond_id . "' onclick='return addComment.moveForm(\"$add_below-$comment->comment_ID\", \"$comment->comment_ID\", \"$respond_id\", \"$post->ID\")'>Répondre</a>";
 
 	/**
 	 * Filter the comment reply link.
@@ -1338,7 +1338,7 @@ function get_post_reply_link($args = array(), $post = null) {
 	if ( get_option('comment_registration') && ! is_user_logged_in() )
 		$link = '<a rel="nofollow" href="' . wp_login_url( get_permalink() ) . '">' . $login_text . '</a>';
 	else
-		$link = "<a rel='nofollow' class='comment-reply-link' href='" . get_permalink($post->ID) . "#$respond_id' onclick='return addComment.moveForm(\"$add_below-$post->ID\", \"0\", \"$respond_id\", \"$post->ID\")'>$reply_text</a>";
+		$link = "<a rel='nofollow' class='comment-reply-link' href='" . get_permalink($post->ID) . "#$respond_id' onclick='return addComment.moveForm(\"$add_below-$post->ID\", \"0\", \"$respond_id\", \"$post->ID\")'>Répondre</a>";
 
 	$formatted_link = $before . $link . $after;
 	/**
@@ -1717,7 +1717,7 @@ class Walker_Comment extends Walker {
 			<?php printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>' ), get_comment_author_link() ); ?>
 		</div>
 		<?php if ( '0' == $comment->comment_approved ) : ?>
-		<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ) ?></em>
+		<em class="comment-awaiting-moderation"><?php _e( 'Votre commentaire est en cours de validation.' ) ?></em>
 		<br />
 		<?php endif; ?>
 
@@ -1770,7 +1770,7 @@ class Walker_Comment extends Walker {
 					</div><!-- .comment-metadata -->
 
 					<?php if ( '0' == $comment->comment_approved ) : ?>
-					<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></p>
+					<p class="comment-awaiting-moderation"><?php _e( 'Votre commentaire est en cours de validation.' ); ?></p>
 					<?php endif; ?>
 				</footer><!-- .comment-meta -->
 

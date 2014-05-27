@@ -3,7 +3,7 @@
     <?php if ( have_comments() ) : ?>
     <div class="comments-area">
         <h4 class="comments-count">
-            <?php printf( _n( 'One comment', '%1$s comments', get_comments_number(), 'dw' ), number_format_i18n( get_comments_number() ) ); ?>
+            <?php printf( _n( 'Un commentaire', '%1$s commentaires', get_comments_number(), 'dw' ), number_format_i18n( get_comments_number() ) ); ?>
         </h4>
         <ul id="comment-list" class="post-list">
             <?php

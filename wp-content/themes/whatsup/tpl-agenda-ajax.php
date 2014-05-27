@@ -22,45 +22,56 @@ if (isset($_POST['geocomplete']) && !empty($_POST['geocomplete'])) {
 		$lng = $output->results[0]->geometry->location->lng;
 	}
 }
-
 // Get every event info
 foreach ($_POST['event_lat'] as $latitude) {
-	$postId  = $_POST['post_id'][$i];
-
     if ($latitude != '' && !empty($latitude) && $_POST['event_lng'] != '' && !empty($_POST['event_lng'])) {
-		$dateQuery   = '';
-		$eventsQuery = array();
-    	if (isset($_POST['datepicker']) && !empty($_POST['datepicker'])) {
-    		$dateQuery = $wpdb->get_results('SELECT PM.meta_value FROM wp_postmeta PM WHERE PM.meta_key = "date" AND DATE(PM.meta_value) = DATE("' . $_POST['datepicker'] . '") AND PM.post_id = ' . $postId);
-    		if (count($dateQuery)) {
-	    		$eventsQuery = $wpdb->get_results('SELECT PM.post_id, ROUND(6353 * 2 * ASIN(SQRT(POWER(SIN((' . $lat .' - abs(' . $latitude . ')) * pi()/180 / 2),2) + COS(' . $lat . ' * pi()/180 ) * COS( abs(' . $latitude . ') *  pi()/180) * POWER(SIN((' . $lng . ' - ' . $_POST['event_lng'][$i] . ') *  pi()/180 / 2), 2) )), 2) as distance
-		                                            FROM wp_posts P 
-		                                            INNER JOIN wp_postmeta PM ON P.id = PM.post_id 
-		                                            WHERE PM.post_id = ' . $postId . '
-		                                            AND P.post_type = "agenda"
-		                                            AND PM.meta_key = "adresse";');
-	    	}
-    	} else {
-    		$eventsQuery = $wpdb->get_results('SELECT PM.post_id, ROUND(6353 * 2 * ASIN(SQRT(POWER(SIN((' . $lat .' - abs(' . $latitude . ')) * pi()/180 / 2),2) + COS(' . $lat . ' * pi()/180 ) * COS( abs(' . $latitude . ') *  pi()/180) * POWER(SIN((' . $lng . ' - ' . $_POST['event_lng'][$i] . ') *  pi()/180 / 2), 2) )), 2) as distance
-	                                            FROM wp_posts P 
-	                                            INNER JOIN wp_postmeta PM ON P.id = PM.post_id 
-	                                            WHERE PM.post_id = ' . $postId . '
-	                                            AND P.post_type = "agenda"
-	                                            AND PM.meta_key = "adresse";');
-    	}
-        
-        foreach ($eventsQuery as $event) {
-            if ($event->distance < 10) {
-                $eventInfos = $wpdb->get_results('SELECT PM.post_id, PM.meta_key, PM.meta_value 
-                                                    FROM wp_posts P 
-                                                    INNER JOIN wp_postmeta PM ON P.id = PM.post_id 
-                                                    WHERE PM.post_id = ' . $postId . '
-                                                    AND P.post_type = "agenda"
-                                                    AND (PM.meta_key = "date" OR PM.meta_key = "adresse" OR PM.meta_key = "titre");');
-                if (!isset($events[$i])) {
-                    $events[$postId] = array();
+        $postId   = $_POST['post_id'][$i];
+        $continue = true;
+        // Check event type
+        if (isset($_POST['cats']) && strtolower($_POST['cats']) != strtolower("Non classé")) {
+            $terms = get_the_terms($postId, 'category' );
+            if ($terms && ! is_wp_error($terms)) {
+                $term_slugs_arr = array();
+                foreach ($terms as $term) {
+                    $term_slugs_arr[] = $term->slug;
                 }
-                foreach ($eventInfos as $info) {
+                $terms_slug_str = join( " ", $term_slugs_arr);
+            }
+            if (strtolower($terms_slug_str) != strtolower($_POST['cats'])) {
+                $continue = false;
+            }
+        }
+
+        // If the event type matches, we get the event
+        if ($continue == true) {
+            // Prepare query string for date
+            $dateQuery   = '';
+            $eventsQuery = array();
+            if (isset($_POST['datepicker']) && !empty($_POST['datepicker'])) {
+                $dateQuery = 'AND (SELECT DATE(PM.meta_value) as pm_date FROM wp_posts P INNER JOIN wp_postmeta PM ON P.id = PM.post_id WHERE PM.post_id = ' . $postId . ' AND PM.meta_key = "date") = DATE("' . $_POST['datepicker'] . '")';
+            }
+
+            $eventInfos = $wpdb->get_results('SELECT PM.post_id, PM.meta_key, PM.meta_value 
+                                                FROM wp_posts P 
+                                                INNER JOIN wp_postmeta PM ON P.id = PM.post_id 
+                                                WHERE PM.post_id = ' . $postId . '
+                                                AND P.post_type = "agenda"
+                                                ' . $dateQuery . ';');
+
+            $distanceQuery = $wpdb->get_row('SELECT PM.post_id, ROUND(6353 * 2 * ASIN(SQRT(POWER(SIN((' . $lat .' - abs(' . $latitude . ')) * pi()/180 / 2),2) + COS(' . $lat . ' * pi()/180 ) * COS( abs(' . $latitude . ') *  pi()/180) * POWER(SIN((' . $lng . ' - ' . $_POST['event_lng'][$i] . ') *  pi()/180 / 2), 2) )), 2) as distance
+                                                FROM wp_posts P 
+                                                INNER JOIN wp_postmeta PM ON P.id = PM.post_id 
+                                                WHERE PM.post_id = ' . $postId . '
+                                                AND P.post_type = "agenda"
+                                                AND PM.meta_key = "adresse";');
+            
+            foreach ($eventInfos as $info) {
+                if ($distanceQuery->distance < 10) {
+                    
+                    if (!isset($events[$postId])) {
+                        $events[$postId] = array();
+                    }
+
                     if ($info->meta_key == 'date') {
                         $events[$postId]['date'] = $info->meta_value;
                     } else if ($info->meta_key == 'adresse') {
@@ -68,8 +79,9 @@ foreach ($_POST['event_lat'] as $latitude) {
                     } else if ($info->meta_key == 'titre') {
                     	$events[$postId]['title'] = $info->meta_value;
                     }
+
+                    $events[$postId]['distance'] = $distanceQuery->distance;
                 }
-                $events[$postId]['distance'] = $event->distance;
             }
         }
     }

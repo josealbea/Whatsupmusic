@@ -168,7 +168,7 @@ h2.agenda-title {
 .background{ 
 	margin: 63px auto; 
 	text-align: left; 
-	width: 35%; 
+	width: 45%; 
 	background: transparent; 
 	padding: 10px 20px; 
 	border-radius: 4px; 
@@ -273,6 +273,7 @@ h2.agenda-title {
     width: 100% !important;
     height: 100% !important;
 }
+.checkbox input{width: inherit;}
 	@media screen and (max-width: 980px) {
 	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
 		background:url(assets/img/bg-floue.jpg);

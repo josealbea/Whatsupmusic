@@ -57,17 +57,21 @@ foreach ($_POST['event_lat'] as $latitude) {
                                                 WHERE PM.post_id = ' . $postId . '
                                                 AND P.post_type = "agenda"
                                                 ' . $dateQuery . ';');
+            $distanceQuery = false;
+            if ($lat && $lng) {
+                $distanceQuery = $wpdb->get_row('SELECT PM.post_id, ROUND(6353 * 2 * ASIN(SQRT(POWER(SIN((' . $lat .' - abs(' . $latitude . ')) * pi()/180 / 2),2) + COS(' . $lat . ' * pi()/180 ) * COS( abs(' . $latitude . ') *  pi()/180) * POWER(SIN((' . $lng . ' - ' . $_POST['event_lng'][$i] . ') *  pi()/180 / 2), 2) )), 2) as distance
+                                                    FROM wp_posts P 
+                                                    INNER JOIN wp_postmeta PM ON P.id = PM.post_id 
+                                                    WHERE PM.post_id = ' . $postId . '
+                                                    AND P.post_type = "agenda"
+                                                    AND PM.meta_key = "adresse";');
+            }
 
-            $distanceQuery = $wpdb->get_row('SELECT PM.post_id, ROUND(6353 * 2 * ASIN(SQRT(POWER(SIN((' . $lat .' - abs(' . $latitude . ')) * pi()/180 / 2),2) + COS(' . $lat . ' * pi()/180 ) * COS( abs(' . $latitude . ') *  pi()/180) * POWER(SIN((' . $lng . ' - ' . $_POST['event_lng'][$i] . ') *  pi()/180 / 2), 2) )), 2) as distance
-                                                FROM wp_posts P 
-                                                INNER JOIN wp_postmeta PM ON P.id = PM.post_id 
-                                                WHERE PM.post_id = ' . $postId . '
-                                                AND P.post_type = "agenda"
-                                                AND PM.meta_key = "adresse";');
-            
             foreach ($eventInfos as $info) {
-                if ($distanceQuery->distance < 10) {
-                    
+                if ($distanceQuery && $distanceQuery->distance < 10) {
+                    $events[$postId]['distance'] = $distanceQuery->distance;
+                }
+                if (!$distanceQuery || $distanceQuery->distance < 10) {
                     if (!isset($events[$postId])) {
                         $events[$postId] = array();
                     }
@@ -80,7 +84,6 @@ foreach ($_POST['event_lat'] as $latitude) {
                     	$events[$postId]['title'] = $info->meta_value;
                     }
 
-                    $events[$postId]['distance'] = $distanceQuery->distance;
                 }
             }
         }

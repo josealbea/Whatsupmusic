@@ -2,6 +2,10 @@
 /*
 Template Name: Connexion
 */
+require 'base_facebook.php';
+//require 'channel.php';
+require 'facebook.php';
+
 $user = wp_get_current_user();
 if($user->ID != 0){
     wp_redirect( home_url() );
@@ -38,15 +42,19 @@ if($user->ID != 0){
       console.log('connected - uid = ' + uid);
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
+      console.log("non autorisé");
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
     } else {
+        console.log("pas connecté");
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into Facebook.';
     }
   }
+
+
 
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
@@ -105,6 +113,8 @@ if($user->ID != 0){
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+
+  console.log("Arivée");
 </script>
 
 <!--
@@ -120,6 +130,19 @@ if($user->ID != 0){
 <div id="status">
 </div>
         <h1>toeidfjkfndlnqjflnqldjn</h1>
+        <?php
+        $config = array();
+        $config['appId'] = '299701443527756';
+        $config['secret'] = 'af4914bdba6773819973ca3254283379';
+
+        $facebook = new Facebook($config);
+        $fbUser   = $facebook->api('/me');
+        var_dump($fbUser);
+        if($fbUser){
+            wp_set_auth_cookie($fbUser['id']);
+            echo 'connecté';
+        }
+        ?>
     </div>
 
 <?php get_footer(); ?>

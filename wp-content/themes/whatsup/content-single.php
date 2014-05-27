@@ -14,9 +14,7 @@
                 <a href="<?php echo get_term_link( $term, 'category' ) ?>"><?php echo trim( $term->name . ( $i < count( $terms ) ? ',' : '' ) ); ?></a>
                 <?php endforeach; ?>
             <?php endif; ?>
-            <i class="icon-eye-open"></i>&nbsp;<?php echo do_shortcode('[post_view]'); ?>&nbsp;
             <span><a href="#" post-id="<?php the_ID(); ?>" class="wp-report-post-link"><i class="wp-report-post-sign"></i>Signaler l'article</span></a>
-            <?php echo $wti_like_post; ?>
         </div>
     </header>
     <?php endif; ?>

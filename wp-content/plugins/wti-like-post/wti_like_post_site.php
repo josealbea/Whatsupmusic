@@ -78,17 +78,17 @@ function GetWtiLikePost($arg = null) {
           $wti_like_post .= "<span class='lc-" . $post_id . " lc'>" . $like_count . "</span>";
           $wti_like_post .= "</a></div>";
           
-          if ($show_dislike) {
-               $wti_like_post .= "<div class='action-unlike'>";
-               $wti_like_post .= "<a class='unlbg-" . $style . " unlike-" . $post_id . " jlk' href='" . $ajax_unlike_link . "' data-task='unlike' data-post_id='" . $post_id . "' data-nonce='" . $nonce . "' rel='nofollow'>";
-               $wti_like_post .= "<img src='" . plugins_url( 'images/pixel.gif' , __FILE__ ) . "' title='" . __($title_text_unlike, 'wti-like-post') . "' />";
-               $wti_like_post .= "<span class='unlc-" . $post_id . " unlc'>" . $unlike_count . "</span>";
-               $wti_like_post .= "</a></div> ";
-          }
+          // if ($show_dislike) {
+          //      $wti_like_post .= "<div class='action-unlike'>";
+          //      $wti_like_post .= "<a class='unlbg-" . $style . " unlike-" . $post_id . " jlk' href='" . $ajax_unlike_link . "' data-task='unlike' data-post_id='" . $post_id . "' data-nonce='" . $nonce . "' rel='nofollow'>";
+          //      $wti_like_post .= "<img src='" . plugins_url( 'images/pixel.gif' , __FILE__ ) . "' title='" . __($title_text_unlike, 'wti-like-post') . "' />";
+          //      $wti_like_post .= "<span class='unlc-" . $post_id . " unlc'>" . $unlike_count . "</span>";
+          //      $wti_like_post .= "</a></div> ";
+          // }
           
           $wti_like_post .= "</div> ";
           $wti_like_post .= "<div class='status-" . $post_id . " status " . $alignment . "'>&nbsp;&nbsp;" . $msg . "</div>";
-          //$wti_like_post .= "</div><div class='wti-clear'></div>";
+          $wti_like_post .= "</div><div class='wti-clear'></div>";
      }
      
      if ($arg == 'put') {

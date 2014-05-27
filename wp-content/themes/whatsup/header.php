@@ -20,6 +20,7 @@
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="<?php bloginfo('template_directory')?>/assets/js/jquery.geocomplete.js"></script>
     <script src="<?php bloginfo('template_directory')?>/assets/js/markerwithlabel.js"></script>
+    <script src="//connect.facebook.net/fr_FR/all.js"></script>
 </head>
 <body <?php body_class(); ?> <?php echo is_page() ? 'data-page-id="' . get_the_ID() . '"' : '';  ?>>
     <div id="header">
@@ -53,7 +54,7 @@
                                         <li><a href="<?php bloginfo('wpurl'); ?>/editer-profil">Modifier mon compte</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/liste-articles">Mes articles</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/proposer-article">Proposer un article</a></li>
-                                        <li><a href="<?php echo wp_logout_url(); ?>">Déconnexion</a></li>
+                                        <li><a title="Déconnexion" href="<?php echo wp_logout_url( home_url() ); ?>">Déconnexion</a></li>
                                     </ul>
                                 <?php } else { ?>
                                     

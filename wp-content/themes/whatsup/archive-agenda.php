@@ -4,109 +4,119 @@ get_header();
 ?>
 
 <style>
-    .acf-map{ width: 700px; height: 430px; border: #ccc solid 1px; margin: 20px auto; }
+    #acf-map{ width: 700px; height: 430px; border: #ccc solid 1px; margin: 20px auto; }
 </style>
 <script type="text/javascript">
 var map;
 var infoWindow;
+var markers = [];   
 (function($) {
-    function render_map($el) {
-        var $markers = $el.find('.marker');
-
-        var latlng = new google.maps.LatLng(48.856614, 2.3522219000000177);
-        
-        var args = {
-            zoom        : 19,
-            center      : latlng,
-            mapTypeId   : google.maps.MapTypeId.ROADMAP
+    function initialize() {
+        var paris = new google.maps.LatLng(48.856614, 2.3522219000000177);
+        var mapOptions = {
+            zoom: 10,
+            center: paris,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        
-        map = new google.maps.Map( $el[0], args);
-        
-        map.markers = [];
-        
-        $markers.each(function(){ 
-            add_marker( $(this), map ); 
-        });
+        map = new google.maps.Map(document.getElementById('acf-map'), mapOptions);
 
-        center_map(map);
-
+        // This event listener will call addMarker() when the map is clicked.
+        // google.maps.event.addListener(map, 'click', function(event) {
+        //     addMarker(event.latLng);
+        // });
+    
+        // Set the infoWindow to default value
         infoWindow = new google.maps.InfoWindow({
-            content: "holding..."
+            content: "En attente..."
         });
-
     }
 
-    function add_marker($marker, map) {
-        var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
-
+    // Add a marker to the map and push to the array.
+    function addMarker(location, html, number) {
         var marker = new google.maps.Marker({
-            position    : latlng,
-            map         : map
+            position: location,
+            map: map,
+            html: html,
+            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + number + '|FE6256|000000',
         });
+        markers.push(marker);
 
-        map.markers.push( marker );
+        google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(this.html);
+            infoWindow.open(map, marker);
+            map.panTo(this.position);
+        });
+    }
 
-        if ( $marker.html() ) {
-            var infowindow = new google.maps.InfoWindow({
-                content     : $marker.html()
-            });
-
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open( map, marker );
-            });
+    // Sets the map on all markers in the array.
+    function setAllMap(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
         }
     }
-     
-    function center_map(map) {
+
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+        setAllMap(null);
+    }
+
+    // Shows any markers currently in the array.
+    function showMarkers() {
+        setAllMap(map);
+    }
+
+    // Deletes all markers in the array by removing references to them.
+    function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+    }
+
+    // Centers map
+    function centerMap(map) {
         var bounds = new google.maps.LatLngBounds();
 
-        if (map.markers.length > 0) {
-            $.each( map.markers, function( i, marker ){
-                var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
+        if (markers.length > 0) {
+            $.each(markers, function(i, marker) {
+                var latlng = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
                 bounds.extend(latlng);
             });
 
-            if ( map.markers.length == 1 ) {
-                map.setCenter( bounds.getCenter() );
+            if (markers.length == 1) {
+                map.setCenter(bounds.getCenter());
                 map.setZoom(16);
             } else {
-                map.fitBounds( bounds );
+                map.fitBounds(bounds);
             }
         } else {
             var latlng = new google.maps.LatLng(48.856614, 2.3522219000000177);
             bounds.extend(latlng);
-            map.setCenter( bounds.getCenter() );
+            map.setCenter(bounds.getCenter());
             map.setZoom(10);
         }
     }
 
-    function show(id) {
-        if(map.markers[id]){
-            map.panTo(map.markers[id].getPoint());
-            setTimeout('google.maps.event.trigger(map.markers[id], "click")', 500);
-            map.hideControls();
-        }
-    }
+    // Display map on page load
+    google.maps.event.addDomListener(window, 'load', initialize);
 
     $(document).ready(function(){
-        $('.acf-map').each(function(){
-            render_map($(this));
-        });
-
-        jQuery('body.post-type-archive-agenda').on('click', '.sidebar-link', function(e){
+        // Click on sidebar event
+        $('body.post-type-archive-agenda').on('click', '.sidebar-link', function(e){
             e.preventDefault();
             var id = $(this).attr('rel');
-            if(map.markers[id]){
-                map.panTo(map.markers[id].getPosition());
-                setTimeout('google.maps.event.trigger(map.markers[' + id + '], "click")', 500);
+            if (id) {
+                if(markers[id]){
+                    map.panTo(markers[id].getPosition());
+                    setTimeout('google.maps.event.trigger(markers[' + id + '], "click")', 500);
+                }
             }
         });
 
-        jQuery('body.post-type-archive-agenda').on('submit', '#search-form', function(e){
+        // Sumbmit search form
+        $('body.post-type-archive-agenda').on('submit', '#search-form', function(e){
             e.preventDefault();
-            var formData = jQuery(this).serialize();
-            jQuery.ajax({
+            deleteMarkers();
+            var formData = $(this).serialize();
+            $.ajax({
                 url:      "<?php echo bloginfo('wpurl') ?>/ajax-agenda",
                 type:     "POST",
                 data:     formData,
@@ -114,32 +124,16 @@ var infoWindow;
             })
             .done(function(data) {
                 // Add sidebar content
-                jQuery('.search-results').html(data.sidebar);
+                $('.search-results').html(data.sidebar);
                 
                 // Add markers to the map
                 for (i = 0; i < data.mapMarkers.length; i++) {
                     var latLng = new google.maps.LatLng(data.mapMarkers[i].lat, data.mapMarkers[i].lng);
-                    var marker = new google.maps.Marker({
-                        position: latLng,
-                        map: map,
-                        html: data.mapMarkers[i].html,
-                        icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + (i+1) + '|FE6256|000000',
-                    });
-
-                    map.markers.push(marker);
-                }
-
-                // Add informations to the window popup
-                for (var i = 0; i < map.markers.length; i++) {
-                    var marker = map.markers[i];
-                    google.maps.event.addListener(marker, 'click', function () {
-                        infoWindow.setContent(this.html);
-                        infoWindow.open(map, this);
-                    });
+                    addMarker(latLng, data.mapMarkers[i].html, i+1);
                 }
                 
                 // Center map
-                center_map(map);
+                centerMap(map);
             })
             .fail(function() {
             });
@@ -218,7 +212,7 @@ var infoWindow;
             </form>
         </div>
         <div class="pull-left" style="margin-left: 150px;">
-            <div class="acf-map">
+            <div id="acf-map">
                 <div class="acf-map-markers"></div>
             </div>
         </div>

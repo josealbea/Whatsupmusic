@@ -2,7 +2,6 @@
 global $paged, $block_class, $paged, $wpdb;
 get_header(); 
 ?>
-
 <style>
     #acf-map{ width: 700px; height: 430px; border: #ccc solid 1px; margin: 20px auto; }
 </style>
@@ -88,7 +87,12 @@ var markers = [];
                 map.fitBounds(bounds);
             }
         } else {
-            var latlng = new google.maps.LatLng(48.856614, 2.3522219000000177);
+            if ($('#lat').val() != "" || $('#lng').val() != "") {
+                var latlng = new google.maps.LatLng($('#lat').val(), $('#lng').val());
+            } else {
+                var latlng = new google.maps.LatLng(48.856614, 2.3522219000000177);
+            }
+            
             bounds.extend(latlng);
             map.setCenter(bounds.getCenter());
             map.setZoom(10);

@@ -87,7 +87,7 @@ var markers = [];
                 map.fitBounds(bounds);
             }
         } else {
-            if ($('#lat').val() != null || $('#lng').val() != null) {
+            if ($('#lat').val() != "" || $('#lng').val() != "") {
                 var latlng = new google.maps.LatLng($('#lat').val(), $('#lng').val());
             } else {
                 var latlng = new google.maps.LatLng(48.856614, 2.3522219000000177);

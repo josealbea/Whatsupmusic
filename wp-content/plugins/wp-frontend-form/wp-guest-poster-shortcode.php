@@ -57,7 +57,7 @@ if(!function_exists('wpgp_listingpage_call')){
 					<form action method="get">
 						<div class="input-append">									
 						  <input value="'.trim($_GET[keyword]).'" placeholder="'.__('Keyword','wpo').'" class="span2" name="keyword" type="text">
-						  <button class="btn" type="submit">Search</button>
+						  <button class="btn" type="submit">Rechercher</button>
 						  '.wp_nonce_field('poster_search_act','poster_search',false).'
 						</div>
 					</form>

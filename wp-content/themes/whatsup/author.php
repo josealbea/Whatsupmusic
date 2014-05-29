@@ -2,14 +2,13 @@
 global $paged, $block_class, $paged;
 
 get_header();   
-?>  
-<?php if( have_posts() ) : the_post(); ?>
+?> 
     <div class="col-grid">
     <div id="page-autor-left" class="headline col-2">
         <div class="headline-wrap">
             <header class="entry-header">
                 <div class="infos">
-		          <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
+                  <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
                   <img class="profil" src="http://lorempixel.com/150/150/sports/" alt="photo-couverture" width="" height=""/>
                     <div class="infos_user">
                         <p class="autor"><?php echo get_the_author(); ?></p>
@@ -29,9 +28,10 @@ get_header();
                 </div>
             </header>
         </div>
-    </div>
+    </div> 
 <div id="page-autor-right" class="col-2">
     <div id="main" role="main" class="masonry" >
+<?php if( have_posts() ) : the_post(); ?>
         <?php $first = true; rewind_posts(); ?>
         <?php  while( have_posts() ) : the_post(); ?>
             <?php 
@@ -47,11 +47,12 @@ get_header();
             <?php get_template_part( 'content', get_post_format() ); ?>
         <?php endwhile; ?>
         <?php dw_paging_nav(); ?>
-    </div>
-</div>
     <?php dw_show_more_button(); ?>
 <?php else: ?>
     <!-- Ici mettre le message si aucun article n'a été rédigé par cet auteur. -->
-    <?php get_template_part( 'content', 'none' ) ?>
+    <h2>Cet auteur n'a posté aucun article pour le moment</h2>
+    <?php // get_template_part( 'content', 'none' ) ?>
 <?php endif; ?>
+    </div>
+</div>
 <?php get_footer(); ?>

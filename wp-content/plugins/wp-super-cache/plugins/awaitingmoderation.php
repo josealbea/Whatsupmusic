@@ -1,7 +1,7 @@
 <?php
 
 function awaitingmoderation_action( $buffer ) {
-	$buffer = str_replace( __( 'Your comment is awaiting moderation.' ), '', $buffer );
+	$buffer = str_replace( __( 'Votre commentaire est en attente de validation.' ), '', $buffer );
 	return $buffer;
 }
 

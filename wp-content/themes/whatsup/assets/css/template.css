@@ -167,3 +167,7 @@ div.control-group input[type="text"], input[type="password"], input[type="email"
 .social-link ul ul a:hover  {
 	color: #FC615D;
 }
+
+#acf-map img {
+	max-width: none;
+}

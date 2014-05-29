@@ -569,47 +569,85 @@ if( ! function_exists('dw_fixel_fb_meta') ) {
 // Register Custom Post Type
 function custom_post_type() {
 
-	$labels = array(
-		'name'                => _x( 'Evènements', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Evènement', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Agendas', 'text_domain' ),
-		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
-		'all_items'           => __( 'Tous les évènements', 'text_domain' ),
-		'view_item'           => __( 'Voir évènement', 'text_domain' ),
-		'add_new_item'        => __( 'Ajouter un évènement', 'text_domain' ),
-		'add_new'             => __( 'Ajouter nouveau', 'text_domain' ),
-		'edit_item'           => __( 'Modifier évènement', 'text_domain' ),
-		'update_item'         => __( 'Mettre à jour', 'text_domain' ),
-		'search_items'        => __( 'Chercher évènement', 'text_domain' ),
-		'not_found'           => __( 'Rien n\'a été trouvé', 'text_domain' ),
-		'not_found_in_trash'  => __( 'Rien n\'a été trouvé dans la corbeille', 'text_domain' ),
-	);
-	$args = array(
-		'label'               => __( 'agenda', 'text_domain' ),
-		'description'         => __( 'Les évènements', 'text_domain' ),
-		'labels'              => $labels,
-		'supports'            => array(),
-		'taxonomies'          => array( 'category', 'post_tag' ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'show_in_nav_menus'   => true,
-		'show_in_admin_bar'   => true,
-		'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-calendar',
-		'can_export'          => true,
-		'has_archive'         => true,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'page',
-	);
+    $labels = array(
+        'name'                => _x( 'Evènements', 'Post Type General Name', 'text_domain' ),
+        'singular_name'       => _x( 'Evènement', 'Post Type Singular Name', 'text_domain' ),
+        'menu_name'           => __( 'Agendas', 'text_domain' ),
+        'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
+        'all_items'           => __( 'Tous les évènements', 'text_domain' ),
+        'view_item'           => __( 'Voir évènement', 'text_domain' ),
+        'add_new_item'        => __( 'Ajouter un évènement', 'text_domain' ),
+        'add_new'             => __( 'Ajouter nouveau', 'text_domain' ),
+        'edit_item'           => __( 'Modifier évènement', 'text_domain' ),
+        'update_item'         => __( 'Mettre à jour', 'text_domain' ),
+        'search_items'        => __( 'Chercher évènement', 'text_domain' ),
+        'not_found'           => __( 'Rien n\'a été trouvé', 'text_domain' ),
+        'not_found_in_trash'  => __( 'Rien n\'a été trouvé dans la corbeille', 'text_domain' ),
+    );
+    $args = array(
+        'label'               => __( 'agenda', 'text_domain' ),
+        'description'         => __( 'Les évènements', 'text_domain' ),
+        'labels'              => $labels,
+        'supports'            => array(),
+        'taxonomies'          => array( 'category', 'post_tag' ),
+        'hierarchical'        => false,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-calendar',
+        'can_export'          => true,
+        'has_archive'         => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'page',
+    );
 	register_post_type( 'agenda', $args );
 
+    $labels_lookbook = array(
+        'name'                => _x( 'Lookbook', 'Post Type General Name', 'text_domain' ),
+        'singular_name'       => _x( 'Lookbook', 'Post Type Singular Name', 'text_domain' ),
+        'menu_name'           => __( 'Lookbook', 'text_domain' ),
+        'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
+        'all_items'           => __( 'Tous les Lookbook', 'text_domain' ),
+        'view_item'           => __( 'Voir Lookbook', 'text_domain' ),
+        'add_new_item'        => __( 'Ajouter un Lookbook', 'text_domain' ),
+        'add_new'             => __( 'Ajouter nouveau', 'text_domain' ),
+        'edit_item'           => __( 'Modifier Lookbook', 'text_domain' ),
+        'update_item'         => __( 'Mettre à jour', 'text_domain' ),
+        'search_items'        => __( 'Chercher Lookbook', 'text_domain' ),
+        'not_found'           => __( 'Rien n\'a été trouvé', 'text_domain' ),
+        'not_found_in_trash'  => __( 'Rien n\'a été trouvé dans la corbeille', 'text_domain' ),
+    );
+    $args_lookbook = array(
+        'label'               => __( 'lookbook', 'text_domain' ),
+        'description'         => __( 'Les Lookbook', 'text_domain' ),
+        'labels'              => $labels_lookbook,
+        'supports'            => array(),
+        'taxonomies'          => array( 'category', 'post_tag' ),
+        'hierarchical'        => false,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-calendar',
+        'can_export'          => true,
+        'has_archive'         => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'page',
+    );
+    register_post_type( 'lookbook', $args_lookbook );
+
+    flush_rewrite_rules( false );
 }
 
 // Hook into the 'init' action
-add_action( 'init', 'custom_post_type', 0 );
+add_action( 'init', 'custom_post_type', 1 );
 }
 
 /**

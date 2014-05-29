@@ -2,9 +2,6 @@
 global $paged, $block_class, $paged, $wpdb;
 get_header(); 
 ?>
-<style>
-    #acf-map{ width: 700px; height: 430px; border: #ccc solid 1px; margin: 20px auto; }
-</style>
 <script type="text/javascript">
 var map;
 var infoWindow;
@@ -129,6 +126,7 @@ var markers = [];
             .done(function(data) {
                 // Add sidebar content
                 $('.search-results').html(data.sidebar);
+                $('.search-results').show();
                 
                 // Add markers to the map
                 for (i = 0; i < data.mapMarkers.length; i++) {
@@ -146,34 +144,38 @@ var markers = [];
     });
 })(jQuery);
 </script>
-<div id="main" role="main">
+<div id="main" role="main" class="col-grid">
     <?php if( have_posts() ) : ?>
-        <div class="col-left pull-left">
+        <div class="span12 position-middle">
             <h1>Les Agendas</h1>
             <form action="" method="post" name="search-form" id="search-form">
-                <label>Type d'événements :</label>
-                <?php $cats = $wpdb->get_results( " SELECT wp_terms.name
-                                                    FROM wp_term_relationships
-                                                    LEFT JOIN wp_term_taxonomy
-                                                    ON (wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id)
-                                                    LEFT JOIN wp_terms on wp_term_taxonomy.term_taxonomy_id = wp_terms.term_id
-                                                    WHERE wp_term_taxonomy.taxonomy = 'category'
-                                                    GROUP BY wp_term_taxonomy.term_id"); ?>
-                <select name="cats">
-                    <?php
-                    foreach ($cats as $cat) {
-                        echo '<option value="' . $cat->name . '">' . $cat->name . '</option><br />'; 
-                    }
-                    ?>
-                </select>
-                        
-                <label>Lieu de l'événement :</label>
-                <input id="geocomplete" type="text" placeholder="Saisir une adresse" size="90" name="geocomplete"/>
+                <div class="span3">
+                    <label>Type d'événements :</label>
+                    <?php $cats = $wpdb->get_results( " SELECT wp_terms.name
+                                                        FROM wp_term_relationships
+                                                        LEFT JOIN wp_term_taxonomy
+                                                        ON (wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id)
+                                                        LEFT JOIN wp_terms on wp_term_taxonomy.term_taxonomy_id = wp_terms.term_id
+                                                        WHERE wp_term_taxonomy.taxonomy = 'category'
+                                                        GROUP BY wp_term_taxonomy.term_id"); ?>
+                    <select name="cats">
+                        <?php
+                        foreach ($cats as $cat) {
+                            echo '<option value="' . $cat->name . '">' . $cat->name . '</option><br />'; 
+                        }
+                        ?>
+                    </select>
+                </div>
+                
+                <div class="span3">     
+                    <label>Lieu de l'événement :</label>
+                    <input id="geocomplete" type="text" placeholder="Saisir une adresse" size="90" name="geocomplete"/>
 
-                <div class="hidden">
-                    <input id="lat" name="lat" type="hidden" value="">
-                    <input id="lng" name="lng" type="hidden" value="">
-                    <input id="formatted_address" name="formatted_address" type="hidden" value="">
+                    <div class="hidden">
+                        <input id="lat" name="lat" type="hidden" value="">
+                        <input id="lng" name="lng" type="hidden" value="">
+                        <input id="formatted_address" name="formatted_address" type="hidden" value="">
+                    </div>
                 </div>
 
                 <script type="text/javascript">
@@ -182,43 +184,40 @@ var markers = [];
                         jQuery( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
                     });
                 </script>
-                
-                <p>Date: <input type="text" id="datepicker" name="datepicker"></p>            
-                <input type="submit" value="Lancer recherche" name="valider" class="button" />
 
-                <div class="search-results"></div>
+
+                <div class="span3">
+                    <label>Date: </label>
+                        <input type="text" id="datepicker" name="datepicker">
+                </div>
+                <div class="span">            
+                    <input type="submit" value="Lancer recherche" name="valider" class="button" />
+                </div>
+
+                <div class="span8">
+                    <div id="acf-map">
+                        <div class="acf-map-markers"></div>
+                    </div>
+                </div>
+                
+                <div class="search-results span" style="display: none;"></div>
 
                 <div id="main" role="main" class="masonry" >
                     <?php
                     $first    = true;
-                    $query    = array('post_type' => 'agenda','posts_per_page' => 15,'order' => 'DESC');
+                    $query    = array('post_type' => 'agenda','order' => 'DESC');
                     $wp_query = new WP_Query($query);
 
                     while ($wp_query->have_posts()):$wp_query->the_post(); 
                         echo '<input type="hidden" name="event_lat[]" value="' . get_field('adresse')['lat'] . '" />';
                         echo '<input type="hidden" name="event_lng[]" value="' . get_field('adresse')['lng'] . '" />';
                         echo '<input type="hidden" name="post_id[]" value="' . $post->ID . '" />';
-                        $block_class = 'block';
-                        if( dw_is_featured_post() ) { 
-                            $block_class .= ' w2';
-                        } 
-                        if ( $first && ! dw_is_featured_post() ) {
-                            $first = false;
-                            $block_class .= ' grid-sizer';
-                        }
-
-                        get_template_part( 'content', get_post_format() );
                     endwhile;
 
                     dw_paging_nav();
                     ?>
                 </div>
             </form>
-        </div>
-        <div class="pull-left" style="margin-left: 150px;">
-            <div id="acf-map">
-                <div class="acf-map-markers"></div>
-            </div>
         </div>
         <div class="clearfix">
         </div>

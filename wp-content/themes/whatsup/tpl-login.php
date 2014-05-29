@@ -2,147 +2,32 @@
 /*
 Template Name: Connexion
 */
-require 'base_facebook.php';
-//require 'channel.php';
-require 'facebook.php';
-
 $user = wp_get_current_user();
 if($user->ID != 0){
     wp_redirect( home_url() );
-}get_header();?>
+}
+get_header();
+?>
 
-    <div class="single">
-        <div class="post background">
-            <h1><?php the_title(); ?></h1>
-            <?php 
-                if ( have_posts() ) {
-                    while ( have_posts() ) {
-                        the_post(); 
-                        the_content();
-                    }
+<div class="single">
+    <div class="post background">
+        <h1><?php the_title(); ?></h1>
+        <?php 
+            if ( have_posts() ) {
+                while ( have_posts() ) {
+                    the_post(); 
+                    the_content();
                 }
-            ?>
-        </div>
-    </div>
-    <div>
-        <script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-      var uid = response.authResponse.userID; 
-      var accessToken = response.authResponse.accessToken; 
-      console.log('connected - uid = ' + uid);
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      console.log("non autorisé");
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-        console.log("pas connecté");
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
-
-
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-
-
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '299701443527756',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.0' // use version 2.0
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-
-  console.log("Arivée");
-</script>
-
-<!--
-  Below we include the Login Button social plugin. This button uses
-  the JavaScript SDK to present a graphical Login button that triggers
-  the FB.login() function when clicked.
--->
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-
-<div id="status">
-</div>
-        <h1>toeidfjkfndlnqjflnqldjn</h1>
-        <?php
-        $config = array();
-        $config['appId'] = '299701443527756';
-        $config['secret'] = 'af4914bdba6773819973ca3254283379';
-
-        $facebook = new Facebook($config);
-        $fbUser   = $facebook->api('/me');
-        var_dump($fbUser);
-        if($fbUser){
-            wp_set_auth_cookie($fbUser['id']);
-            echo 'connecté';
-        }
+            }
         ?>
     </div>
+</div>
+<a href="http://localhost/WhatsUpMusic/wp-login.php?loginFacebook=1&redirect=http://localhost/WhatsUpMusic" onclick="window.location = 'http://localhost/WhatsUpMusic/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;">
+    <div class="new-fb-btn new-fb-1 new-fb-default-anim"><div class="new-fb-1-1"><div class="new-fb-1-1-1">CONNECT WITH</div></div></div>
+</a>
+
+<a href="http://localhost/WhatsUpMusic/wp-login.php?loginTwitter=1&redirect=http://localhost/WhatsUpMusic" onclick="window.location = 'http://localhost/WhatsUpMusic/wp-login.php?loginTwitter=1&redirect='+window.location.href; return false;">
+    <div class="new-twitter-btn new-twitter-1 new-twitter-default-anim"><div class="new-twitter-1-1"><div class="new-twitter-1-1-1">CONNECT WITH</div></div></div>
+</a>
 
 <?php get_footer(); ?>

@@ -24,9 +24,9 @@ $category_id = $categories[0]->cat_ID;
                 <div id="carousel-instagram" class="carousel slide">
                     <div class="carousel-inner">
                         <?php $first = true; ?>
-                        <?php $loop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 3, 'cat' => $category_id ) ); ?>
-                        <?php if ($loop->have_posts()) : ?>
-                            <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                        <?php $sliderloop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 3, 'cat' => $category_id ) ); ?>
+                        <?php if ($sliderloop->have_posts()) : ?>
+                            <?php while ( $sliderloop->have_posts() ) : $sliderloop->the_post(); ?>
                                <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
                                     <a target="_blank" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?>
                                         <div class="carousel-caption">
@@ -74,12 +74,12 @@ $category_id = $categories[0]->cat_ID;
                 </ul>
             </div>
         </article>
-        <?php $loop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 1, 'cat' => $category_id ) ); ?>
-        <?php $i = 0; ?>
-        <?php if ($loop->have_posts()) : ?>
-            <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+        <?php $listloop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 1, 'cat' => $category_id ) ); ?>
+        <?php //$i = 0; ?>
+        <?php if ($listloop->have_posts()) : ?>
+            <?php while ( $listloop->have_posts() ) : $listloop->the_post(); ?>
             <?php $i++; ?>
-            <?php if ($i >= 3) : ?>
+            <?php //if ($i >= 3) : ?>
                 <article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                     <div class="block-inner">
                         <div class="view-video">
@@ -103,7 +103,7 @@ $category_id = $categories[0]->cat_ID;
                         </div>
                     </div>
                 </article>
-                <?php endif; ?>
+                <?php //endif; ?>
             <?php endwhile; ?>
         <?php endif; ?>   
     </div>

@@ -679,3 +679,11 @@ if ( function_exists( 'add_image_size' ) ) {
     add_image_size( 'agenda-thumb', 180, 110, true );
     add_image_size( 'slider-thumb', 598, 598, true );
 }
+
+add_action('admin_menu','wphidenag');
+function wphidenag() {
+    remove_action( 'admin_notices', 'update_nag', 3 );
+}
+
+remove_action( 'load-update-core.php', 'wp_update_plugins' );
+add_filter( 'pre_site_transient_update_plugins', create_function( '$a', "return null;" ) );

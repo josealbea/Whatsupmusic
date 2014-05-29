@@ -119,7 +119,6 @@ function new_twitter_login() {
 }
 
 function new_twitter_login_action() {
-
   global $wp, $wpdb, $new_twitter_settings;
   if (isset($_GET['action']) && $_GET['action'] == 'unlink') {
     $user_info = wp_get_current_user();
@@ -145,10 +144,10 @@ function new_twitter_login_action() {
       $code = tmhUtilities::auto_fix_time_request($tmhOAuth, 'GET', $tmhOAuth->url('1.1/account/verify_credentials'));
     }
     if ($code == 200) {
-      $resp = json_decode($tmhOAuth->response['response']);
+      $user_profile = json_decode($tmhOAuth->response['response']);
       $ID = $wpdb->get_var($wpdb->prepare('
         SELECT ID FROM ' . $wpdb->prefix . 'social_users WHERE type = "twitter" AND identifier = "%d"
-      ', $resp->id));
+      ', $user_profile->id));
       if (!get_user_by('id', $ID)) {
         $wpdb->query($wpdb->prepare('
           DELETE FROM ' . $wpdb->prefix . 'social_users WHERE ID = "%d"
@@ -157,18 +156,16 @@ function new_twitter_login_action() {
       }
       if (!is_user_logged_in()) {
         if ($ID == NULL) { // Register
-
-          if (!isset($user_profile['email'])) $user_profile['email'] = $user_profile['username'] . '@twiiter.com';
-          $ID = email_exists($user_profile['email']);
+          if (!isset($user_profile->email)) $user_profile->email = $user_profile->screen_name . '@twiiter.com';
+          $ID = email_exists($user_profile->email);
           if ($ID == false) { // Real register
-
             require_once (ABSPATH . WPINC . '/registration.php');
             $random_password = wp_generate_password($length = 12, $include_standard_special_chars = false);
             if (!isset($new_twitter_settings['twitter_user_prefix'])) $new_twitter_settings['twitter_user_prefix'] = 'Twitter - ';
-            $sanitized_user_login = sanitize_user($new_twitter_settings['twitter_user_prefix'] . . str_replace(" ", "-", strtolower($user_profile['name'])));
+            $sanitized_user_login = sanitize_user(str_replace("", "-", strtolower($user_profile->name)));
             
             if (!validate_username($sanitized_user_login)) {
-              $sanitized_user_login = sanitize_user('twitter' . $user_profile['id']);
+              $sanitized_user_login = sanitize_user('twitter' . $user_profile->id);
             }
 
             $defaul_user_name = $sanitized_user_login;
@@ -186,9 +183,8 @@ function new_twitter_login_action() {
                 'display_name' => $resp->name,
                 'twitter' => $resp->screen_name*/
                 'ID' => $ID,
-                'display_name' => $user_profile['name'],
-                'first_name' => $user_profile['first_name'],
-                'last_name' => $user_profile['last_name']
+                'display_name' => $user_profile->name,
+                'first_name' => $user_profile->screen_name,
               ));
               do_action('nextend_twitter_user_registered', $ID, $user_profile/*$resp*/, $tmhOAuth);
             } else {
@@ -199,7 +195,7 @@ function new_twitter_login_action() {
             $wpdb->insert($wpdb->prefix . 'social_users', array(
               'ID' => $ID,
               'type' => 'twitter',
-              'identifier' => $resp->id
+              'identifier' => $user_profile->id
             ) , array(
               '%d',
               '%s',
@@ -220,8 +216,8 @@ function new_twitter_login_action() {
           wp_set_auth_cookie($ID, true, $secure_cookie);
           $user_info = get_userdata($ID);
           do_action('wp_login', $user_info->user_login, $user_info);
-          update_user_meta($ID, 'twitter_profile_picture', $resp->profile_image_url);
-          do_action('nextend_twitter_user_logged_in', $ID, $resp, $tmhOAuth);
+          update_user_meta($ID, 'twitter_profile_picture', $user_profile->profile_image_url);
+          do_action('nextend_twitter_user_logged_in', $ID, $user_profile, $tmhOAuth);
         }
       } else {
         if (new_twitter_is_user_connected()) {
@@ -234,13 +230,13 @@ function new_twitter_login_action() {
           $wpdb->insert($wpdb->prefix . 'social_users', array(
             'ID' => $current_user->ID,
             'type' => 'twitter',
-            'identifier' => $resp->id
+            'identifier' => $user_profile->id
           ) , array(
             '%d',
             '%s',
             '%s'
           ));
-          do_action('nextend_twitter_user_account_linked', $ID, $resp, $tmhOAuth);
+          do_action('nextend_twitter_user_account_linked', $ID, $user_profile, $tmhOAuth);
           $user_info = wp_get_current_user();
           set_site_transient($user_info->ID.'_new_twitter_admin_notice', __('Your Twitter profile is successfully linked with your account. Now you can sign in with Twitter easily.', 'nextend-twitter-connect'), 3600);
         } else {

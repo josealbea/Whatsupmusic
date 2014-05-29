@@ -158,16 +158,19 @@ function new_twitter_login_action() {
       if (!is_user_logged_in()) {
         if ($ID == NULL) { // Register
 
-          $email = new_twitter_request_email();
+          if (!isset($user_profile['email'])) $user_profile['email'] = $user_profile['username'] . '@twiiter.com';
+          $ID = email_exists($user_profile['email']);
           if ($ID == false) { // Real register
 
             require_once (ABSPATH . WPINC . '/registration.php');
             $random_password = wp_generate_password($length = 12, $include_standard_special_chars = false);
             if (!isset($new_twitter_settings['twitter_user_prefix'])) $new_twitter_settings['twitter_user_prefix'] = 'Twitter - ';
-            $sanitized_user_login = sanitize_user($new_twitter_settings['twitter_user_prefix'] . $resp->screen_name);
+            $sanitized_user_login = sanitize_user($new_twitter_settings['twitter_user_prefix'] . . str_replace(" ", "-", strtolower($user_profile['name'])));
+            
             if (!validate_username($sanitized_user_login)) {
               $sanitized_user_login = sanitize_user('twitter' . $user_profile['id']);
             }
+
             $defaul_user_name = $sanitized_user_login;
             $i = 1;
             while (username_exists($sanitized_user_login)) {
@@ -179,11 +182,15 @@ function new_twitter_login_action() {
               wp_new_user_notification($ID, $random_password);
               $user_info = get_userdata($ID);
               wp_update_user(array(
-                'ID' => $ID,
+                /*'ID' => $ID,
                 'display_name' => $resp->name,
-                'twitter' => $resp->screen_name
+                'twitter' => $resp->screen_name*/
+                'ID' => $ID,
+                'display_name' => $user_profile['name'],
+                'first_name' => $user_profile['first_name'],
+                'last_name' => $user_profile['last_name']
               ));
-              do_action('nextend_twitter_user_registered', $ID, $resp, $tmhOAuth);
+              do_action('nextend_twitter_user_registered', $ID, $user_profile/*$resp*/, $tmhOAuth);
             } else {
               return;
             }

@@ -274,12 +274,11 @@ h2.agenda-title {
     height: 100% !important;
 }
 .checkbox input{width: inherit;}
+.btn-connect {
+    margin: 0 auto;
+    width: 320px;
+}
 	@media screen and (max-width: 980px) {
-	body.inscription #outer-wrap,body.login #outer-wrap,body.proposer-article #outer-wrap, #header{
-		background:url(assets/img/bg-floue.jpg);
-		background-size:cover;
-		background-repeat: no-repeat;
-	}
 	.agenda-description{
 		padding-left: 0;
 	}

@@ -110,7 +110,7 @@ foreach ($events as $event) {
 		$mapMarkers[$i]['html'] = '<div class="event-title">' . $event['title'] . '</div><div class="event-address">' . $event['address']['address'] . '</div><div class="event-distance">' . $event['distance'] . '</div>';
         // Construct sidebar HTML
         $sidebar .= '<a href="'.get_permalink().'" rel="' . $i . '" class="sidebar-link">';
-	        $sidebar .= '<div class="sidebar-event">' . '</div>';
+	        $sidebar .= '<div class="sidebar-event">';
                 $sidebar .= '<div class="event-thumb">' . get_the_post_thumbnail($event['id'], 'thumbnail') . '</div>';
 	        	$sidebar .= '<div class="event-number">' . ($i+1) . '</div>';
 	        	$sidebar .= '<div class="event-title">' . $event['title'] . '</div>';

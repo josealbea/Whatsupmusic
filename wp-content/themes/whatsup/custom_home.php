@@ -278,7 +278,28 @@ get_header();
                 </article> 
             <?php endwhile; ?>
         <?php endif; ?> 
-        <?php $results = $wpdb->get_results("SELECT COUNT( p.id ) post_count, SUM(value) AS like_count, u.ID, DATE_FORMAT( post_date, '%Y-%m' ) post_month FROM wp_wti_like_post L, `wp_posts` p, `wp_users` u WHERE post_status = 'publish' AND post_type = 'post' AND u.ID = post_author GROUP BY post_author, post_month ORDER BY post_count DESC LIMIT 0,1");?> 
+        <?php //$results = $wpdb->get_results("SELECT COUNT( p.id ) post_count, SUM(value) AS like_count, u.ID, DATE_FORMAT( post_date, '%Y-%m' ) post_month FROM wp_wti_like_post L, `wp_posts` p, `wp_users` u WHERE post_status = 'publish' AND post_type = 'post' AND u.ID = post_author GROUP BY post_author, post_month ORDER BY post_count DESC LIMIT 0,1");?> 
+        <?php
+        // Récuparation du post_id qui a le plus de like
+        $mostLikedPost = $wpdb->get_row('SELECT L.post_id, COUNT(L.id) as like_count
+                            FROM wp_wti_like_post L
+                            GROUP BY L.post_id
+                            LIMIT 1;');
+        // @todo Récuparation de l'auteur par le post_id
+        // ///////////////
+
+        // Récupération de l'auteur qui a le plus de like (à partir de la requête précédente)
+        $mostLikedAutor = $wpdb->get_row('SELECT L.post_id, COUNT(p.id) AS post_count, DATE_FORMAT(post_date, "%Y-%m") post_month, post_author
+                            FROM wp_wti_like_post L
+                            INNER JOIN `wp_posts` p ON p.ID = L.post_id
+                            INNER JOIN `wp_users` u ON u.ID = L.user_id
+                            WHERE post_status = "publish"
+                            AND post_type = "post"
+                            AND post_author = "' . $postAuthor->id . '"
+                            GROUP BY post_author, post_month
+                            ORDER BY post_count DESC;');
+                            var_dump($mostLikedAutor); die;
+        ?>
             <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
                     <?php $user_info = get_userdata($results[0]->ID);?>
@@ -296,7 +317,16 @@ get_header();
                     </div>
                 </div>
             </article>
-            <?php $results = $wpdb->get_results('SELECT post_id, SUM(value) AS like_count, post_title, post_date, post_name FROM wp_wti_like_post L, wp_posts P WHERE L.post_id = P.ID AND post_status = "publish" AND value > 0 AND MONTH(date_time) = MONTH(CURDATE()) GROUP BY post_id ORDER BY like_count DESC, post_title LIMIT 0,1');?> 
+            <?php $results = $wpdb->get_results('SELECT post_id, SUM(value) AS like_count, post_title, post_date, post_name 
+                                                FROM wp_wti_like_post L, wp_posts P 
+                                                WHERE L.post_id = P.ID 
+                                                AND post_status = "publish" 
+                                                AND value > 0 
+                                                AND MONTH(date_time) = MONTH(CURDATE()) 
+                                                GROUP BY post_id, post_title, post_date, post_name 
+                                                ORDER BY like_count DESC, post_title 
+                                                LIMIT 0,1');
+            ?> 
             <article id="post-<?php $results[0]->post_id; ?>" class="post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
                     <div class="view-video">

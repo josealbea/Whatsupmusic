@@ -280,25 +280,31 @@ get_header();
         <?php endif; ?> 
         <?php //$results = $wpdb->get_results("SELECT COUNT( p.id ) post_count, SUM(value) AS like_count, u.ID, DATE_FORMAT( post_date, '%Y-%m' ) post_month FROM wp_wti_like_post L, `wp_posts` p, `wp_users` u WHERE post_status = 'publish' AND post_type = 'post' AND u.ID = post_author GROUP BY post_author, post_month ORDER BY post_count DESC LIMIT 0,1");?> 
         <?php
-        // Récuparation du post_id qui a le plus de like
-        $mostLikedPost = $wpdb->get_row('SELECT L.post_id, COUNT(L.id) as like_count
-                            FROM wp_wti_like_post L
-                            GROUP BY L.post_id
-                            LIMIT 1;');
-        // @todo Récuparation de l'auteur par le post_id
-        // ///////////////
+        // Récuparation du post qui a le plus de like
+        // @todo Comment gérer si égalité?
+        $mostLikedPost = $wpdb->get_row('SELECT L.post_id, COUNT(L.id) as like_count, U.ID as author_id, U.display_name AS author
+                                            FROM wp_wti_like_post L
+                                            INNER JOIN wp_posts P ON P.ID = L.post_id
+                                            INNER JOIN wp_users U ON U.ID = P.post_author
+                                            GROUP BY L.post_id
+                                            LIMIT 1;');
 
         // Récupération de l'auteur qui a le plus de like (à partir de la requête précédente)
-        $mostLikedAutor = $wpdb->get_row('SELECT L.post_id, COUNT(p.id) AS post_count, DATE_FORMAT(post_date, "%Y-%m") post_month, post_author
+        /*$mostLikedAutor = $wpdb->get_row('SELECT L.post_id, COUNT(p.id) AS post_count, DATE_FORMAT(post_date, "%Y-%m") post_month, post_author
                             FROM wp_wti_like_post L
                             INNER JOIN `wp_posts` p ON p.ID = L.post_id
                             INNER JOIN `wp_users` u ON u.ID = L.user_id
                             WHERE post_status = "publish"
                             AND post_type = "post"
-                            AND post_author = "' . $postAuthor->id . '"
+                            AND post_author = "' . $mostLikedPost->author_id . '"
                             GROUP BY post_author, post_month
-                            ORDER BY post_count DESC;');
-                            var_dump($mostLikedAutor); die;
+                            ORDER BY post_count DESC;');*/
+        $mostLikedAutor = $wpdb->get_row('SELECT MAX(like_count) as total_likes, author_id, author
+                                            FROM (SELECT COUNT(L.id) as like_count, U.ID as author_id, U.display_name AS author
+                                                    FROM wp_wti_like_post L
+                                                    INNER JOIN wp_posts P ON P.ID = L.post_id
+                                                    INNER JOIN wp_users U ON U.ID = P.post_author
+                                                    GROUP BY U.ID) AS best_author;');
         ?>
             <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">

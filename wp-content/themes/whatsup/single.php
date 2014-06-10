@@ -32,10 +32,10 @@
                             <div class="span4">
                                 <h4>A propos de l'auteur :  <?php the_author_posts_link(); ?></h4>
                             </div>
-                            <div class="span2">
+                            <div class="span12">
                                 <?php echo get_avatar( get_the_author_id() , 100 ); ?>
                             </div>
-                            <div class="span4">
+                            <div class="span12">
                                 <p><?php the_author_description(); ?></p>
                             </div>
                             <div class="span12">

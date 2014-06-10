@@ -305,6 +305,9 @@ get_header();
                                                     INNER JOIN wp_posts P ON P.ID = L.post_id
                                                     INNER JOIN wp_users U ON U.ID = P.post_author
                                                     GROUP BY U.ID) AS best_author;');
+        var_dump($mostLikedPost);
+        var_dump('expression');
+        var_dump($mostLikedAutor);
         ?>
             <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
@@ -323,7 +326,7 @@ get_header();
                     </div>
                 </div>
             </article>
-            <?php $results = $wpdb->get_results('SELECT post_id, SUM(value) AS like_count, post_title, post_date, post_name 
+            <?php /*$results = $wpdb->get_results('SELECT post_id, SUM(value) AS like_count, post_title, post_date, post_name 
                                                 FROM wp_wti_like_post L, wp_posts P 
                                                 WHERE L.post_id = P.ID 
                                                 AND post_status = "publish" 
@@ -331,7 +334,8 @@ get_header();
                                                 AND MONTH(date_time) = MONTH(CURDATE()) 
                                                 GROUP BY post_id, post_title, post_date, post_name 
                                                 ORDER BY like_count DESC, post_title 
-                                                LIMIT 0,1');
+                                                LIMIT 0,1');*/
+            var_dump($results);
             ?> 
             <article id="post-<?php $results[0]->post_id; ?>" class="post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">

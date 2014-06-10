@@ -305,20 +305,17 @@ get_header();
                                                     INNER JOIN wp_posts P ON P.ID = L.post_id
                                                     INNER JOIN wp_users U ON U.ID = P.post_author
                                                     GROUP BY U.ID) AS best_author;');
-        var_dump($mostLikedPost);
-        var_dump('expression');
-        var_dump($mostLikedAutor);
         ?>
             <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
-                    <?php $user_info = get_userdata($results[0]->ID);?>
+                    <?php $user_info = get_userdata($mostLikedAutor->author_id);?>
                     <div class="view-video">
-                           <?php echo get_avatar($results[0]->ID); ?>
+                           <?php echo get_avatar($mostLikedAutor->author_id); ?>
                         <div class="mask">
                             <a href="<?php bloginfo('url');?>/author/<?php echo $user_info->data->user_login;?>/" class="info">
                                 <div class="mask-content">
-                                    <h2 class="block-title"><?php echo $user_info->data->display_name;?></h2>
-                                    <h3 class="line">Auteur du mois avec <?php echo $results[0]->like_count;?> Likes</h3>
+                                    <h2 class="block-title"><?php echo $mostLikedAutor->author;?></h2>
+                                    <h3 class="line">Auteur du mois avec <?php echo $mostLikedAutor->total_likes;?> Likes</h3>
                                     <a href="">Voir son profil</a>
                                 </div>
                             </a>
@@ -326,16 +323,15 @@ get_header();
                     </div>
                 </div>
             </article>
-            <?php /*$results = $wpdb->get_results('SELECT post_id, SUM(value) AS like_count, post_title, post_date, post_name 
-                                                FROM wp_wti_like_post L, wp_posts P 
-                                                WHERE L.post_id = P.ID 
-                                                AND post_status = "publish" 
-                                                AND value > 0 
-                                                AND MONTH(date_time) = MONTH(CURDATE()) 
-                                                GROUP BY post_id, post_title, post_date, post_name 
-                                                ORDER BY like_count DESC, post_title 
-                                                LIMIT 0,1');*/
-            var_dump($results);
+            <?php $results = $wpdb->get_results(
+                'SELECT post_id, SUM( value ) AS like_count, post_title, post_date, post_name
+                FROM wp_wti_like_post L, wp_posts P
+                WHERE L.post_id = P.ID
+                AND post_status = "publish"
+                AND post_date = MONTH(CURDATE())
+                GROUP BY post_id, post_title, post_date, post_name
+                ORDER BY like_count DESC , post_title
+                LIMIT 0 , 1');
             ?> 
             <article id="post-<?php $results[0]->post_id; ?>" class="post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">

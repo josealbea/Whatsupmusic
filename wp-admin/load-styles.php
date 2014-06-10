@@ -25,7 +25,6 @@ function _x() {}
  * @ignore
  */
 function add_filter() {}
-
 /**
  * @ignore
  */

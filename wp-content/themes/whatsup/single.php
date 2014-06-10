@@ -29,13 +29,13 @@
                     <?php get_template_part('content','single'); ?>
                     <div id="author-meta">
                         <div class="row">
-                            <div class="span12">
+                            <div class="span4">
                                 <h4>A propos de l'auteur :  <?php the_author_posts_link(); ?></h4>
                             </div>
                             <div class="span2">
                                 <?php echo get_avatar( get_the_author_id() , 100 ); ?>
                             </div>
-                            <div class="span10">
+                            <div class="span4">
                                 <p><?php the_author_description(); ?></p>
                             </div>
                             <div class="span12">
@@ -52,6 +52,55 @@
                                     <?php } ?>
                                 </div>
                             </div>
+                             <div class="span12">
+                             	<p>Ses 5 derniers articles</p>
+                             	
+								<?php
+								$id_auteur = get_the_author_id();
+								$args = array( 
+									'numberposts' => 5, 
+									'order'=> 'ASC', 
+									'orderby' => 'date', 
+									'author' => $id_auteur
+								);
+								$postslist = get_posts( $args );
+								foreach ($postslist as $post) :  setup_postdata($post);
+								?> 
+									<div class="last_post post-<?php echo $post->ID; ?>">
+										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+											<p><?php echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?></p>
+											<p><?php the_title(); ?></p>
+										</a>
+									</div>
+								<?php endforeach; ?>
+                             </div>
+                             <div class="span12">
+                             	<p> Ses articles les plus likés</p>
+                             	<?php $pluslikes = $wpdb->get_results('SELECT L.post_id, COUNT( L.id ) AS like_count, U.ID AS author_id, U.display_name AS author
+																		FROM wp_wti_like_post L
+																		INNER JOIN wp_posts P ON P.ID = L.post_id
+																		INNER JOIN wp_users U ON U.ID = P.post_author
+																		WHERE U.ID = '.$id_auteur.'
+																		GROUP BY L.post_id
+																		LIMIT 5');
+                             	
+                             	if(empty($pluslikes)){
+                             		echo 'L\'auteur n\'a pas encore d\'articles likés';
+                             	}else{
+                             		foreach ($pluslikes as $postlike) {
+                             		?>
+                             		<div class="liked_post post-<?php echo $postlike->post_id; ?>">
+										<a href="<?php echo get_permalink($postlike->post_id); ?>" title="<?php the_title(); ?>">
+											<p><?php echo get_the_post_thumbnail( $postlike->post_id, 'thumbnail'); ?></p>
+											<p><?php echo get_the_title($postlike->post_id); ?></p>
+											<p>Avec <?php echo $postlike->like_count;?> Likes</p>
+										</a>
+									</div>
+								<?php
+							}
+                             	}
+								?>
+                             </div>
                         </div>
                     </div>
                     <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'dw' ), 'after' => '</div>' ) ); ?>

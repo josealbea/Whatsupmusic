@@ -269,6 +269,7 @@ h2.agenda-title {
 	.infos_user {
     	margin-top: -50px;
 	}
+	.last_post,.liked_post{display:inline-block;}
 	h3.line{color: inherit;font-size: 16px;}
 	article.auteur img {
     width: 100% !important;

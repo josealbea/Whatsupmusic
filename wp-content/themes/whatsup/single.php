@@ -83,21 +83,20 @@
 																		WHERE U.ID = '.$id_auteur.'
 																		GROUP BY L.post_id
 																		LIMIT 5');
-                             	
                              	if(empty($pluslikes)){
                              		echo 'L\'auteur n\'a pas encore d\'articles likés';
                              	}else{
                              		foreach ($pluslikes as $postlike) {
-                             		?>
-                             		<div class="liked_post post-<?php echo $postlike->post_id; ?>">
-										<a href="<?php echo get_permalink($postlike->post_id); ?>" title="<?php the_title(); ?>">
-											<p><?php echo get_the_post_thumbnail( $postlike->post_id, 'thumbnail'); ?></p>
-											<p><?php echo get_the_title($postlike->post_id); ?></p>
-											<p>Avec <?php echo $postlike->like_count;?> Likes</p>
-										</a>
-									</div>
+                             	?>
+	                             		<div class="liked_post post-<?php echo $postlike->post_id; ?>">
+											<a href="<?php echo get_permalink($postlike->post_id); ?>" title="<?php the_title(); ?>">
+												<p><?php echo get_the_post_thumbnail( $postlike->post_id, 'thumbnail'); ?></p>
+												<p><?php echo get_the_title($postlike->post_id); ?></p>
+												<p>Avec <?php echo $postlike->like_count;?> Likes</p>
+											</a>
+										</div>
 								<?php
-							}
+									}
                              	}
 								?>
                              </div>

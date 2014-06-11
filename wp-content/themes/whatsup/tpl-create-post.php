@@ -43,7 +43,7 @@ if (isset( $_POST['featured_nonce'], $post_ID ) && wp_verify_nonce( $_POST['feat
 	echo "probleme de verification";
 }
 	
-	//wp_redirect( home_url() );
+	header('Location: http://www.google.fr/');
 }
 
 

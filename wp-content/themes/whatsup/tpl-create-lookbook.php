@@ -21,6 +21,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] )) {
 	$tags = $_POST['post_tags'];
 	// Ajout du contenu
 	$post = array(
+		'post_type' => 'lookbook',
 		'post_title'	=> $title,
 		'post_content'	=> $description,
 		'post_category'	=> array($_POST['cat']),
@@ -28,7 +29,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] )) {
 		'post_status'	=> 'pending',
 		'tax_input'		=> array( 'category' => array($_POST['cat']), )
 	);
-	$post_ID = wp_insert_post($post);	// http://codex.wordpress.org/Function_Reference/wp_insert_post
+	$post_ID = wp_insert_post($post, true);	// http://codex.wordpress.org/Function_Reference/wp_insert_post
 
 
 if (isset( $_POST['featured_nonce'], $post_ID ) && wp_verify_nonce( $_POST['featured_nonce'], 'featured' ) && current_user_can( 'edit_post', $post_ID )) {
@@ -44,6 +45,7 @@ if (isset( $_POST['featured_nonce'], $post_ID ) && wp_verify_nonce( $_POST['feat
 }
 	
 	//wp_redirect( home_url() );
+	header('Location: http://www.google.fr/');
 }
 
 

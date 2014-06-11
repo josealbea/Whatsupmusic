@@ -54,6 +54,7 @@
                                         <li><a href="<?php bloginfo('wpurl'); ?>/editer-profil">Modifier mon compte</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/liste-articles">Mes articles</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/proposer-article">Proposer un article</a></li>
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/proposer-lookbook">Proposer un lookbook</a></li>
                                         <li><a title="Déconnexion" href="<?php echo wp_logout_url( home_url() ); ?>">Déconnexion</a></li>
                                     </ul>
                                 <?php } else { ?>

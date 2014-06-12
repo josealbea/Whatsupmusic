@@ -323,20 +323,20 @@ get_header();
                     </div>
                 </div>
             </article>
-            <?php $results = $wpdb->get_results(
-                'SELECT post_id, SUM( value ) AS like_count, post_title, post_date, post_name
+            <?php 
+            // recupere année et mois courrant
+            $today = date("Y-m"); 
+            $results = $wpdb->get_results(
+                'SELECT post_id, MAX(value) AS like_count, post_title, post_date, post_name, date_time
                 FROM wp_wti_like_post L, wp_posts P
                 WHERE L.post_id = P.ID
-                AND post_status = "publish"
-                AND post_date = MONTH(CURDATE())
-                GROUP BY post_id, post_title, post_date, post_name
-                ORDER BY like_count DESC , post_title
-                LIMIT 0 , 1');
+                AND post_date LIKE "%'.$today.'%"
+                AND post_status = "publish"');
             ?> 
             <article id="post-<?php $results[0]->post_id; ?>" class="post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
                     <div class="view-video">
-                           <?php echo get_the_post_thumbnail($results[0]->post_id); ?>
+                           <?php echo get_the_post_thumbnail($results[0]->post_id,'large'); ?>
                         <div class="mask">
                             <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info">
                                 <div class="mask-content">

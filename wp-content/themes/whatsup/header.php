@@ -30,6 +30,7 @@
                     <div class="top-wrap">
                         <div class="logo">
                             <?php dw_fixel_logo() ?>
+                            <!--<img src="<?php bloginfo('wpurl');?>/wp-content/uploads/2014/04/logo1.png" alt="Logo What's Up Music"/>-->
                         </div>
                     </div>
                 </header> <!--/# top {banner} -->

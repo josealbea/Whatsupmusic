@@ -356,6 +356,45 @@ get_header();
                     </div>
                 </div>
             </article> 
+            <?php // affiche les 12 derniers articles
+	            $args = array(
+	            	'posts_per_page' => 12,
+	            	'post_status' => 'publish',
+	            	'post_type' => 'post',
+	            	'order' => 'DESC',
+					'orderby' => 'date', 
+	            	);
+	            $the_query = new WP_Query( $args );
+				if ( $the_query->have_posts() ) :
+					while ( $the_query->have_posts() ) : $the_query->the_post();?>
+		                <article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
+		                    <div class="block-inner">
+		                        <div class="view-video">
+		                            <?php if( has_post_thumbnail() ) : ?>
+		                                <?php the_post_thumbnail() ?>
+		                            <?php endif; ?>
+		                            <div class="mask">
+		                                <a href="<?php the_permalink(); ?>" class="info">
+		                                    <div class="mask-content">
+		                                        <h2 class="block-title"><?php the_title(); ?></h2>
+		                                        <span class="line"></span>
+		                                        <div class="block-meta">
+		                                            <?php printf(' <span class="date"><i class="icon-time"></i> <time pubdate datetime="%s">%s</time></span>',
+		                                            get_day_link( get_the_time('Y'), get_the_time('m'), get_the_time('d') ),
+		                                            get_the_date()
+		                                            ); ?>    
+		                                        </div>
+		                                    </div>
+		                                </a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </article>
+                	<?php   
+            		endwhile;
+				endif;
+			wp_reset_postdata();
+		?>	
     </div>
 <?php endwhile; ?>
 <?php endif; ?>

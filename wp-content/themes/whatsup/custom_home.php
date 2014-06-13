@@ -127,22 +127,24 @@ get_header();
             <div class="block-inner">
                 <div id="carousel-instagram" class="carousel slide">
                     <div class="carousel-inner">
-                        <?php $first = true; ?>
-                        <?php while (has_sub_field('slider', 'option')) : ?>
-                            <?php $post_object = get_sub_field('article'); ?>
-                            <?php if ($post_object) : ?>
-                            <?php setup_postdata($post_object); ?>
-                               <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
-                                    <a target="_blank" href="<?php the_permalink(); ?>"><img src="http://distilleryimage4.s3.amazonaws.com/6a67e0cebf5211e3997b0002c9d36120_6.jpg"></a>
-                                    <div class="carousel-caption">
-                                        <h2><?php echo get_the_title(); ?> </h2>
-                                        <p><?php the_excerpt(); ?></p>
-                                    </div>
+                    <?php $first = true; ?>
+                    <?php while (has_sub_field('slider_lookbook', 'option')) : ?>
+                        <?php $post_object = get_sub_field('lookbook'); ?>
+                        <?php $post = $post_object; ?>
+                        <?php if ($post) : ?>
+                        <?php setup_postdata($post_object); ?>
+                           <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
+                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('slider-thumb'); ?>
+                                <div class="carousel-caption">
+                                    <h2><?php echo get_the_title(); ?> </h2>
+                                    <p><?php the_excerpt(); ?></p>
                                 </div>
-                                <?php wp_reset_postdata(); ?>
-                            <?php endif; ?>
-                        <?php endwhile; ?>
-                    </div>
+                                </a>
+                            </div>
+                            <?php wp_reset_postdata(); ?>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
+                </div>
                     <a class="carousel-control left" href="#carousel-instagram" data-slide="prev"><i class="icon-chevron-left"></i></a>
                     <a class="carousel-control right" href="#carousel-instagram" data-slide="next"><i class="icon-chevron-right"></i></a>
                 </div>

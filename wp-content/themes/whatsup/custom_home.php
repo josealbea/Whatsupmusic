@@ -123,33 +123,42 @@ get_header();
                 </article>   
             <?php endwhile; ?>
         <?php endif; ?>  
-        <article id="block-lookbook" class="block w2 format-gallery" >
-            <div class="block-inner">
-                <div id="carousel-instagram" class="carousel slide">
-                    <div class="carousel-inner">
-                    <?php $first = true; ?>
-                    <?php while (has_sub_field('slider_lookbook', 'option')) : ?>
-                        <?php $post_object = get_sub_field('lookbook'); ?>
-                        <?php $post = $post_object; ?>
-                        <?php if ($post) : ?>
-                        <?php setup_postdata($post_object); ?>
-                           <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
-                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('slider-thumb'); ?>
-                                <div class="carousel-caption">
-                                    <h2><?php echo get_the_title(); ?> </h2>
-                                    <p><?php the_excerpt(); ?></p>
+         <?php 
+            // recupere année et mois courrant
+            $today = date("Y-m"); 
+            $results = $wpdb->get_results(
+                'SELECT post_id, post_title, post_date, post_name, date_time, MAX( value ) AS like_count
+				FROM wp_wti_like_post L, wp_posts P
+				WHERE L.post_id = P.ID
+				AND post_type = "lookbook"
+				AND value = (
+				SELECT max( value )
+				FROM wp_wti_like_post )
+				AND post_status = "publish"
+                AND post_date LIKE "%'.$today.'%"
+                AND post_status = "publish"');
+            ?> 
+            <article id="post-<?php $results[0]->post_id; ?>" class="block w2">
+                <div class="block-inner">
+                    <div class="view-video">
+                           <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info"><?php echo get_the_post_thumbnail($results[0]->post_id,'large'); ?></a>
+                        <div class="mask">
+                            <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info">
+                                <div class="mask-content">
+                                    <h2 class="block-title"><?php echo $results[0]->post_title;?></h2>
+                                    <h3 class="line">Lookbook du mois avec <?php echo $results[0]->like_count;?> Likes</h3>
+                                    <?php 
+                                        $date_i  = $results[0]->post_date;
+                                        $date_f = explode("-",$date_i,4);
+                                        $date = preg_split("/[\s-]+/", $date_f[2]); 
+                                    ?>
+                                    <p><?php echo "Publié le ".$date[0]."/".$date_f[1]."/".$date_f[0];?></p>
                                 </div>
-                                </a>
-                            </div>
-                            <?php wp_reset_postdata(); ?>
-                        <?php endif; ?>
-                    <?php endwhile; ?>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                    <a class="carousel-control left" href="#carousel-instagram" data-slide="prev"><i class="icon-chevron-left"></i></a>
-                    <a class="carousel-control right" href="#carousel-instagram" data-slide="next"><i class="icon-chevron-right"></i></a>
-                </div>
-            </div>
-        </article>
+            </article> 
         <?php $loop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 1, 'cat' => '5' ) ); ?>
         <?php if ($loop->have_posts()) : ?>
             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>

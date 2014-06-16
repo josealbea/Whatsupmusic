@@ -123,31 +123,42 @@ get_header();
                 </article>   
             <?php endwhile; ?>
         <?php endif; ?>  
-        <article id="block-lookbook" class="block w2 format-gallery" >
-            <div class="block-inner">
-                <div id="carousel-instagram" class="carousel slide">
-                    <div class="carousel-inner">
-                        <?php $first = true; ?>
-                        <?php while (has_sub_field('slider', 'option')) : ?>
-                            <?php $post_object = get_sub_field('article'); ?>
-                            <?php if ($post_object) : ?>
-                            <?php setup_postdata($post_object); ?>
-                               <div class="item <?php if ($first == true) : $first = false; echo 'active'; endif; ?>">
-                                    <a target="_blank" href="<?php the_permalink(); ?>"><img src="http://distilleryimage4.s3.amazonaws.com/6a67e0cebf5211e3997b0002c9d36120_6.jpg"></a>
-                                    <div class="carousel-caption">
-                                        <h2><?php echo get_the_title(); ?> </h2>
-                                        <p><?php the_excerpt(); ?></p>
-                                    </div>
+         <?php 
+            // recupere année et mois courrant
+            $today = date("Y-m"); 
+            $results = $wpdb->get_results(
+                'SELECT post_id, post_title, post_date, post_name, date_time, MAX( value ) AS like_count
+				FROM wp_wti_like_post L, wp_posts P
+				WHERE L.post_id = P.ID
+				AND post_type = "lookbook"
+				AND value = (
+				SELECT max( value )
+				FROM wp_wti_like_post )
+				AND post_status = "publish"
+                AND post_date LIKE "%'.$today.'%"
+                AND post_status = "publish"');
+            ?> 
+            <article id="post-<?php $results[0]->post_id; ?>" class="block w2">
+                <div class="block-inner">
+                    <div class="view-video">
+                           <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info"><?php echo get_the_post_thumbnail($results[0]->post_id,'large'); ?></a>
+                        <div class="mask">
+                            <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info">
+                                <div class="mask-content">
+                                    <h2 class="block-title"><?php echo $results[0]->post_title;?></h2>
+                                    <h3 class="line">Lookbook du mois avec <?php echo $results[0]->like_count;?> Likes</h3>
+                                    <?php 
+                                        $date_i  = $results[0]->post_date;
+                                        $date_f = explode("-",$date_i,4);
+                                        $date = preg_split("/[\s-]+/", $date_f[2]); 
+                                    ?>
+                                    <p><?php echo "Publié le ".$date[0]."/".$date_f[1]."/".$date_f[0];?></p>
                                 </div>
-                                <?php wp_reset_postdata(); ?>
-                            <?php endif; ?>
-                        <?php endwhile; ?>
+                            </a>
+                        </div>
                     </div>
-                    <a class="carousel-control left" href="#carousel-instagram" data-slide="prev"><i class="icon-chevron-left"></i></a>
-                    <a class="carousel-control right" href="#carousel-instagram" data-slide="next"><i class="icon-chevron-right"></i></a>
                 </div>
-            </div>
-        </article>
+            </article> 
         <?php $loop = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 1, 'cat' => '5' ) ); ?>
         <?php if ($loop->have_posts()) : ?>
             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
@@ -323,20 +334,20 @@ get_header();
                     </div>
                 </div>
             </article>
-            <?php $results = $wpdb->get_results(
-                'SELECT post_id, SUM( value ) AS like_count, post_title, post_date, post_name
+            <?php 
+            // recupere année et mois courrant
+            $today = date("Y-m"); 
+            $results = $wpdb->get_results(
+                'SELECT post_id, MAX(value) AS like_count, post_title, post_date, post_name, date_time
                 FROM wp_wti_like_post L, wp_posts P
                 WHERE L.post_id = P.ID
-                AND post_status = "publish"
-                AND post_date = MONTH(CURDATE())
-                GROUP BY post_id, post_title, post_date, post_name
-                ORDER BY like_count DESC , post_title
-                LIMIT 0 , 1');
+                AND post_date LIKE "%'.$today.'%"
+                AND post_status = "publish"');
             ?> 
             <article id="post-<?php $results[0]->post_id; ?>" class="post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
                 <div class="block-inner">
                     <div class="view-video">
-                           <?php echo get_the_post_thumbnail($results[0]->post_id); ?>
+                           <?php echo get_the_post_thumbnail($results[0]->post_id,'large'); ?>
                         <div class="mask">
                             <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info">
                                 <div class="mask-content">
@@ -356,6 +367,45 @@ get_header();
                     </div>
                 </div>
             </article> 
+            <?php // affiche les 12 derniers articles
+	            $args = array(
+	            	'posts_per_page' => 12,
+	            	'post_status' => 'publish',
+	            	'post_type' => 'post',
+	            	'order' => 'DESC',
+					'orderby' => 'date', 
+	            	);
+	            $the_query = new WP_Query( $args );
+				if ( $the_query->have_posts() ) :
+					while ( $the_query->have_posts() ) : $the_query->the_post();?>
+		                <article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
+		                    <div class="block-inner">
+		                        <div class="view-video">
+		                            <?php if( has_post_thumbnail() ) : ?>
+		                                <?php the_post_thumbnail() ?>
+		                            <?php endif; ?>
+		                            <div class="mask">
+		                                <a href="<?php the_permalink(); ?>" class="info">
+		                                    <div class="mask-content">
+		                                        <h2 class="block-title"><?php the_title(); ?></h2>
+		                                        <span class="line"></span>
+		                                        <div class="block-meta">
+		                                            <?php printf(' <span class="date"><i class="icon-time"></i> <time pubdate datetime="%s">%s</time></span>',
+		                                            get_day_link( get_the_time('Y'), get_the_time('m'), get_the_time('d') ),
+		                                            get_the_date()
+		                                            ); ?>    
+		                                        </div>
+		                                    </div>
+		                                </a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </article>
+                	<?php   
+            		endwhile;
+				endif;
+			wp_reset_postdata();
+		?>	
     </div>
 <?php endwhile; ?>
 <?php endif; ?>

@@ -602,7 +602,7 @@ function custom_post_type() {
         'has_archive'         => true,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
-        'capability_type'     => 'page',
+        'capability_type'     => 'post',
     );
 	register_post_type( 'agenda', $args );
 
@@ -625,7 +625,7 @@ function custom_post_type() {
         'label'               => __( 'lookbook', 'text_domain' ),
         'description'         => __( 'Les Lookbook', 'text_domain' ),
         'labels'              => $labels_lookbook,
-        'supports'            => array(),
+        'supports'            => array('title','thumbnail','editor','page-attributes'),
         'taxonomies'          => array( 'category', 'post_tag' ),
         'hierarchical'        => false,
         'public'              => true,
@@ -639,7 +639,7 @@ function custom_post_type() {
         'has_archive'         => true,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
-        'capability_type'     => 'page',
+        'capability_type'     => 'post',
     );
     register_post_type( 'lookbook', $args_lookbook );
 

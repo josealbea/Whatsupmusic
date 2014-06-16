@@ -30,6 +30,7 @@
                     <div class="top-wrap">
                         <div class="logo">
                             <?php dw_fixel_logo() ?>
+                            <!--<img src="<?php bloginfo('wpurl');?>/wp-content/uploads/2014/04/logo1.png" alt="Logo What's Up Music"/>-->
                         </div>
                     </div>
                 </header> <!--/# top {banner} -->
@@ -54,6 +55,7 @@
                                         <li><a href="<?php bloginfo('wpurl'); ?>/editer-profil">Modifier mon compte</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/liste-articles">Mes articles</a></li>
                                         <li><a href="<?php bloginfo('wpurl'); ?>/proposer-article">Proposer un article</a></li>
+                                        <li><a href="<?php bloginfo('wpurl'); ?>/proposer-lookbook">Proposer un lookbook</a></li>
                                         <li><a title="Déconnexion" href="<?php echo wp_logout_url( home_url() ); ?>">Déconnexion</a></li>
                                     </ul>
                                 <?php } else { ?>

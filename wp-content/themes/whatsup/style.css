@@ -283,6 +283,9 @@ h2.agenda-title {
 #main, footer {
     clear: both;
 }
+#qt_post_content_toolbar input, 
+#qt_post_content_toolbar textarea {width:inherit !important; height:inherit !important;}
+.single-lookbook .carousel{margin: 0 auto;width: 50%;}
 .position-middle{margin:0 auto;float: none;width:80%;}
 .position-middle select{height: 40px;padding-top: 9px;}
 .position-middle input.button{margin-top: 23px;}

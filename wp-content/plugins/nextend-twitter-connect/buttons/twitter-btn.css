@@ -21,7 +21,7 @@
 */
 .new-twitter-1,
 .new-twitter-1 div{
-  height: 42px;
+  height: 42px ;
   line-height: 42px;
   background: url('twitter-btn.png') no-repeat 0 0;
 }

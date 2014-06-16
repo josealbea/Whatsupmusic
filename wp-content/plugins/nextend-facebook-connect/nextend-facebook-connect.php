@@ -47,7 +47,6 @@ if(!function_exists('nextend_uniqid')){
 /*
 Loading style for buttons
 */
-
 function nextend_fb_connect_stylesheet() {
 
   wp_register_style('nextend_fb_connect_stylesheet', plugins_url('buttons/facebook-btn.css', __FILE__));

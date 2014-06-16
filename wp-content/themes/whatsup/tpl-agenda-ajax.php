@@ -113,7 +113,12 @@ foreach ($events as $event) {
         $sidebar .= "<li>";
         $sidebar .= '<a href="'.get_permalink().'" rel="' . $i . '" class="sidebar-link">';
 	        $sidebar .= '<div class="sidebar-event">';
+<<<<<<< HEAD
                 $sidebar .= '<div class="event-thumb"><img src="' . get_field('image')['sizes']['agenda-thumb'] . '" /></div>';
+=======
+                $sidebar .= '<div class="event-thumb">' . get_the_post_thumbnail($event['id'], 'thumbnail') . '</div>';
+                $sidebar .= '<div class="event-thumb">' . $event['id'] . '</div>';
+>>>>>>> 5bba081a73573f96dd19ab9e32bffe4b6ecd52e1
 	        	$sidebar .= '<div class="event-number">' . ($i+1) . '</div>';
 	        	$sidebar .= '<div class="event-title">' . $event['title'] . '</div>';
 		        $sidebar .= '<div class="event-address">' . $event['address']['address'] . '</div>';

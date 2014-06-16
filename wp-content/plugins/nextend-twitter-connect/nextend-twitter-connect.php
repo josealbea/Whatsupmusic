@@ -52,6 +52,7 @@ function nextend_twitter_connect_stylesheet() {
   wp_register_style('nextend_twitter_connect_stylesheet', plugins_url('buttons/twitter-btn.css', __FILE__));
   wp_enqueue_style('nextend_twitter_connect_stylesheet');
 }
+if (!isset($new_twitter_settings['twitter_load_style'])) $new_twitter_settings['twitter_load_style'] = 1;
 if ($new_twitter_settings['twitter_load_style']) {
   add_action('wp_enqueue_scripts', 'nextend_twitter_connect_stylesheet');
   add_action('login_enqueue_scripts', 'nextend_twitter_connect_stylesheet');

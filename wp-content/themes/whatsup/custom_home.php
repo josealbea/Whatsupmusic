@@ -39,7 +39,7 @@ get_header();
         </article>
         <article id="block-agenda" class="block w2" >
             <div class="block-inner">
-                <h2 class="agenda-title">Evenements à venir</h2>
+                <h2 class="agenda-title">Evenements à venir</h2><a class="goto-allevents" href="<?php echo bloginfo('wpurl'); ?>/agenda">Tous les évènements</a>
                 <ul id="agenda">
                     <?php $loop = new WP_Query( array( 'post_type' => 'agenda', 'posts_per_page' => 7, 'meta_key' => 'date','orderby' => 'meta_value_num', 'order' => 'ASC' ) ); ?>
 

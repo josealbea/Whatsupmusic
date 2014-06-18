@@ -101,30 +101,32 @@ foreach ($_POST['event_lat'] as $latitude) {
 $mapMarkers = array();
 $sidebar    = '';
 $i          = 0;
-$sidebar .= "<ul>";
-foreach ($events as $event) {
-    if ($event['address']['lat'] != "" && $event['address']['lng'] != "") {
-        $post = get_post($event['id']);
-    	// Set markers lat and lng
-		$mapMarkers[$i]['lat']  = $event['address']['lat'];
-		$mapMarkers[$i]['lng']  = $event['address']['lng'];
-		$mapMarkers[$i]['html'] = '<div class="event-title">' . $event['title'] . '</div><div class="event-address">' . $event['address']['address'] . '</div><div class="event-distance">' . $event['distance'] . '</div>';
-        // Construct sidebar HTML
-        $sidebar .= "<li>";
-        $sidebar .= '<a href="'.get_permalink().'" rel="' . $i . '" class="sidebar-link">';
-	        $sidebar .= '<div class="sidebar-event">';
-                $sidebar .= '<div class="event-thumb"><img src="' . get_field('image')['sizes']['agenda-thumb'] . '" /></div>';
-	        	$sidebar .= '<div class="event-number">' . ($i+1) . '</div>';
-	        	$sidebar .= '<div class="event-title">' . $event['title'] . '</div>';
-		        $sidebar .= '<div class="event-address">' . $event['address']['address'] . '</div>';
-		        $sidebar .= '<div class="event-distance">' . $event['distance'] . '</div>';
-		    $sidebar .= '</div>';
-		$sidebar .= '</a>';
-        $sidebar .= '</li>';
-        $i++;
+if ($events) {
+    $sidebar .= "<ul>";
+    foreach ($events as $event) {
+        if ($event['address']['lat'] != "" && $event['address']['lng'] != "") {
+            $post = get_post($event['id']);
+        	// Set markers lat and lng
+    		$mapMarkers[$i]['lat']  = $event['address']['lat'];
+    		$mapMarkers[$i]['lng']  = $event['address']['lng'];
+    		$mapMarkers[$i]['html'] = '<div class="event-title">' . $event['title'] . '</div><div class="event-address">' . $event['address']['address'] . '</div><div class="event-distance">' . $event['distance'] . '</div>';
+            // Construct sidebar HTML
+            $sidebar .= "<li>";
+            $sidebar .= '<a href="'.get_permalink().'" rel="' . $i . '" class="sidebar-link">';
+    	        $sidebar .= '<div class="sidebar-event">';
+                    $sidebar .= '<div class="event-thumb"><img src="' . get_field('image')['sizes']['agenda-thumb'] . '" /></div>';
+    	        	$sidebar .= '<div class="event-number">' . ($i+1) . '</div>';
+    	        	$sidebar .= '<div class="event-title">' . $event['title'] . '</div>';
+    		        $sidebar .= '<div class="event-address">' . $event['address']['address'] . '</div>';
+    		        $sidebar .= '<div class="event-distance">' . $event['distance'] . '</div>';
+    		    $sidebar .= '</div>';
+    		$sidebar .= '</a>';
+            $sidebar .= '</li>';
+            $i++;
+        }
     }
+    $sidebar .= "</ul>";
 }
-$sidebar .= "</ul>";
 header('Content-Type: application/json');
 echo json_encode(array('mapMarkers' => $mapMarkers, 'sidebar' => $sidebar));
 ?>

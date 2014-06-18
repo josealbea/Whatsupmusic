@@ -7,99 +7,128 @@ var map;
 var infoWindow;
 var markers = [];   
 (function($) {
-    function initialize() {
-        var paris = new google.maps.LatLng(48.856614, 2.3522219000000177);
-        var mapOptions = {
-            zoom: 10,
-            center: paris,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('acf-map'), mapOptions);
-
-        // This event listener will call addMarker() when the map is clicked.
-        // google.maps.event.addListener(map, 'click', function(event) {
-        //     addMarker(event.latLng);
-        // });
-    
-        // Set the infoWindow to default value
-        infoWindow = new google.maps.InfoWindow({
-            content: "En attente..."
-        });
-    }
-
-    // Add a marker to the map and push to the array.
-    function addMarker(location, html, number) {
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            html: html,
-            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + number + '|FE6256|000000',
-        });
-        markers.push(marker);
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infoWindow.setContent(this.html);
-            infoWindow.open(map, marker);
-            map.panTo(this.position);
-        });
-    }
-
-    // Sets the map on all markers in the array.
-    function setAllMap(map) {
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
-        }
-    }
-
-    // Removes the markers from the map, but keeps them in the array.
-    function clearMarkers() {
-        setAllMap(null);
-    }
-
-    // Shows any markers currently in the array.
-    function showMarkers() {
-        setAllMap(map);
-    }
-
-    // Deletes all markers in the array by removing references to them.
-    function deleteMarkers() {
-        clearMarkers();
-        markers = [];
-    }
-
-    // Centers map
-    function centerMap(map) {
-        var bounds = new google.maps.LatLngBounds();
-
-        if (markers.length > 0) {
-            $.each(markers, function(i, marker) {
-                var latlng = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
-                bounds.extend(latlng);
+    $(document).ready(function(){
+        function initialize() {
+            var paris = new google.maps.LatLng(48.856614, 2.3522219000000177);
+            var mapOptions = {
+                zoom: 10,
+                center: paris,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('acf-map'), mapOptions);
+        
+            // Set the infoWindow to default value
+            infoWindow = new google.maps.InfoWindow({
+                content: "En attente..."
             });
+        }
 
-            if (markers.length == 1) {
-                map.setCenter(bounds.getCenter());
-                map.setZoom(16);
-            } else {
-                map.fitBounds(bounds);
+        // Add a marker to the map and push to the array.
+        function addMarker(location, html, number) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                html: html,
+                icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + number + '|FE6256|000000',
+            });
+            markers.push(marker);
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.setContent(this.html);
+                infoWindow.open(map, marker);
+                map.panTo(this.position);
+            });
+        }
+
+        // Sets the map on all markers in the array.
+        function setAllMap(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
             }
-        } else {
-            if ($('#lat').val() != "" || $('#lng').val() != "") {
-                var latlng = new google.maps.LatLng($('#lat').val(), $('#lng').val());
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+            setAllMap(null);
+        }
+
+        // Shows any markers currently in the array.
+        function showMarkers() {
+            setAllMap(map);
+        }
+
+        // Deletes all markers in the array by removing references to them.
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
+
+        // Centers map
+        function centerMap(map) {
+            var bounds = new google.maps.LatLngBounds();
+
+            if (markers.length > 0) {
+                $.each(markers, function(i, marker) {
+                    var latlng = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
+                    bounds.extend(latlng);
+                });
+
+                if (markers.length == 1) {
+                    map.setCenter(bounds.getCenter());
+                    map.setZoom(16);
+                } else {
+                    map.fitBounds(bounds);
+                }
             } else {
-                var latlng = new google.maps.LatLng(48.856614, 2.3522219000000177);
+                if ($('#lat').val() != "" || $('#lng').val() != "") {
+                    var latlng = new google.maps.LatLng($('#lat').val(), $('#lng').val());
+                } else {
+                    var latlng = new google.maps.LatLng(48.856614, 2.3522219000000177);
+                }
+                
+                bounds.extend(latlng);
+                map.setCenter(bounds.getCenter());
+                map.setZoom(10);
+            }
+        }
+
+        function scrollToMap(){
+            // Add "65", which correspons to the header's height
+            $('html,body').animate({
+                scrollTop: $("#acf-map").offset().top - 210
+            }, 'slow');
+        }
+
+
+        // Display every event
+        var formData = $('#search-form').serialize();
+        $.ajax({
+            url:      "<?php echo bloginfo('wpurl') ?>/ajax-agenda",
+            type:     "POST",
+            data:     formData,
+            dataType: "JSON"
+        })
+        .done(function(data) {
+            // Add sidebar content
+            if (data.sidebar.length > 0) {
+                $('.search-results').html(data.sidebar);
+            } else {
+                $('.search-results').html('Aucun évènement trouvé');
+            }
+            $('.search-results').show();
+            
+            // Add markers to the map
+            for (i = 0; i < data.mapMarkers.length; i++) {
+                var latLng = new google.maps.LatLng(data.mapMarkers[i].lat, data.mapMarkers[i].lng);
+                addMarker(latLng, data.mapMarkers[i].html, i+1);
             }
             
-            bounds.extend(latlng);
-            map.setCenter(bounds.getCenter());
-            map.setZoom(10);
-        }
-    }
+            // Center map
+            centerMap(map);
+        })
+        .fail(function() {
+        });
 
-    // Display map on page load
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    $(document).ready(function(){
         // Click on sidebar event
         $('body.post-type-archive-agenda').on('click', '.sidebar-link', function(e){
             e.preventDefault();
@@ -107,6 +136,7 @@ var markers = [];
             if (id) {
                 if(markers[id]){
                     map.panTo(markers[id].getPosition());
+                    scrollToMap();
                     setTimeout('google.maps.event.trigger(markers[' + id + '], "click")', 500);
                 }
             }
@@ -125,7 +155,11 @@ var markers = [];
             })
             .done(function(data) {
                 // Add sidebar content
-                $('.search-results').html(data.sidebar);
+                if (data.sidebar.length > 0) {
+                    $('.search-results').html(data.sidebar);
+                } else {
+                    $('.search-results').html('Aucun évènement trouvé');
+                }
                 $('.search-results').show();
                 
                 // Add markers to the map
@@ -141,6 +175,7 @@ var markers = [];
             });
             return false;
         });
+        initialize();
     });
 })(jQuery);
 </script>

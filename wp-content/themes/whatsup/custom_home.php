@@ -321,7 +321,7 @@ get_header();
                 <div class="block-inner">
                     <?php $user_info = get_userdata($mostLikedAutor->author_id);?>
                     <div class="view-video">
-                           <?php echo get_avatar($mostLikedAutor->author_id); ?>
+                           <?php echo get_avatar($mostLikedAutor->author_id, 512); ?>
                         <div class="mask">
                             <a href="<?php bloginfo('url');?>/author/<?php echo $user_info->data->user_login;?>/" class="info">
                                 <div class="mask-content">

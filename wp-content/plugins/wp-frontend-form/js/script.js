@@ -145,6 +145,7 @@ function wpposter_showResponse(responseText, statusText, xhr, $form){
 		if(responseText.url_post==null){
 			jQuery('form#wp-guest-poster-form').slideUp();
 			jQuery('div.div-wp-guest-poster-form').html(responseText.mess);
+			window.setTimeout(function(){location.reload()},1000)
 		}
 		else{
 			window.location.href = responseText.url_post;

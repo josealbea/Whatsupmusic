@@ -4,7 +4,7 @@ Template Name: Connexion
 */
 $user = wp_get_current_user();
 if($user->ID != 0){
-    //pas de redirection
+    wp_redirect( home_url() ); exit;
     } 
 get_header();
 ?>

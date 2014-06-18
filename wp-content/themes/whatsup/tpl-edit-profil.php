@@ -11,18 +11,12 @@ if(!empty($_POST)){
    if (!empty( $_FILES ) ) {
     require_once(ABSPATH . 'wp-admin/includes/admin.php');
     $id = media_handle_upload('async-upload', $post_id); 
-    $file = $id['file'];
-    $upload_dir = wp_upload_dir();
-    //var_dump(wp_get_attachment_image($id, array(500,200), 0, array('width' => 500, 'height' => 200)));
     unset($_FILES);
     if ( is_wp_error($id) ) {
         $errors['upload_error'] = $id;
         $id = false;
     }
-
-    if ($errors) {
-        echo "<p>Une erreur est survenue durant l'envoi de l'image.</p>";
-    } else {
+    if (!$errors) {
         update_user_meta(get_current_user_id(),'cover', $id); 
     }
 }

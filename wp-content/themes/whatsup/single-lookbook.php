@@ -63,7 +63,7 @@ get_header();
                                 </div>
                             </div>
                              <div class="span12">
-                             	<p>Ses 5 derniers lookbook</p>
+                             	<h4>Ses 5 derniers lookbook</h4>
                              	
 								<?php
 								$id_auteur = get_the_author_id();
@@ -86,7 +86,7 @@ get_header();
 								<?php endforeach; ?>
                              </div>
                              <div class="span12">
-                             	<p> Ses lookbooks les plus likés</p>
+                             	<h4> Ses lookbooks les plus likés</h4>
                              	<?php $pluslikes = $wpdb->get_results('SELECT L.post_id, COUNT( L.id ) AS like_count, U.ID AS author_id, U.display_name AS author
 																		FROM wp_wti_like_post L
 																		INNER JOIN wp_posts P ON P.ID = L.post_id

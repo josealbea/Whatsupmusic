@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                              <div class="span12">
-                             	<p>Ses 5 derniers articles</p>
+                             	<h4>Ses 5 derniers articles</h4>
                              	
 								<?php
 								$id_auteur = get_the_author_id();
@@ -75,7 +75,7 @@
 								<?php endforeach; ?>
                              </div>
                              <div class="span12">
-                             	<p> Ses articles les plus likés</p>
+                             	<h4> Ses articles les plus likés</h4>
                              	<?php $pluslikes = $wpdb->get_results('SELECT L.post_id, COUNT( L.id ) AS like_count, U.ID AS author_id, U.display_name AS author
 																		FROM wp_wti_like_post L
 																		INNER JOIN wp_posts P ON P.ID = L.post_id

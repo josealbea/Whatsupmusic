@@ -283,9 +283,14 @@ a.goto-allevents {
 	body.author .site-footer,
 	.page-template-tpl-register-php .site-footer,
 	.page-template-tpl-create-lookbook-php .site-footer{display:none;}
-
+	#insert-media-button{width: 100%;}
 	.edit-author{display: block;}
-	.last_post,.liked_post{display:inline-block;}
+	.last_post,.liked_post{display:inline-block;width: 200px;padding: 5px;}
+	.last_post a,.liked_post a{text-align: center;}
+	.last_post p,.liked_post p{
+		padding:0 !important;
+	}
+	body.single #author-meta {padding: 0;}
 	h3.line{color: inherit;font-size: 16px;}
 	article.auteur img {
     width: 100% !important;

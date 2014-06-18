@@ -689,7 +689,8 @@ function modify_contact_methods($profile_fields) {
     // Add new fields
     $profile_fields['twitter'] = 'Twitter Username';
     $profile_fields['facebook'] = 'Facebook URL';
-    $profile_fields['years'] = 'Age';
+    $profile_fields['years'] = 'age';
+    $profile_fields['cover'] = 'Image de couverture';
 
     return $profile_fields;
 }
@@ -716,6 +717,8 @@ function my_neat_body_class( $classes ) {
 if ( function_exists( 'add_image_size' ) ) { 
     add_image_size( 'agenda-thumb', 180, 110, true );
     add_image_size( 'slider-thumb', 598, 598, true );
+    add_image_size( 'cover-thumb', 640, 300, true );
+
 }
 
 add_action('admin_menu','wphidenag');
@@ -725,3 +728,11 @@ function wphidenag() {
 
 remove_action( 'load-update-core.php', 'wp_update_plugins' );
 add_filter( 'pre_site_transient_update_plugins', create_function( '$a', "return null;" ) );
+
+function make_filename_hash($filename) {
+    $info = pathinfo($filename);
+    $ext = empty($info['extension']) ? '' : '.' . $info['extension'];
+    $name = basename($filename, $ext);
+    return md5($name) . $ext;
+}
+add_filter('sanitize_file_name', 'make_filename_hash', 10);

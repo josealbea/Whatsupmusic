@@ -1,30 +1,42 @@
 <?php 
 global $paged, $block_class, $paged;
 
-get_header();   
+get_header(); 
+
+$author = get_current_user_id(); 
+$current_author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+$post_id = $post->ID;
 ?> 
     <div class="col-grid">
     <div id="page-autor-left" class="headline col-2">
         <div class="headline-wrap">
             <header class="entry-header">
                 <div class="infos">
-                  <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
-                  <img class="profil" src="http://lorempixel.com/150/150/sports/" alt="photo-couverture" width="" height=""/>
+                    <?php if (get_user_meta(get_the_author_id(),'cover',true)) { ?>
+                        <?php echo wp_get_attachment_image(get_user_meta(get_the_author_id(),'cover',true),'cover-thumb');
+                    } else { ?>
+                            <img class="couverture"src="http://lorempixel.com/582/300/sports/" alt="photo-couverture" width="" height=""/>
+                    <?php } ?>
+                  <div class="profil"><?php echo get_avatar($author, 512); ?></div>
                     <div class="infos_user">
                         <p class="autor"><?php echo get_the_author(); ?></p>
-                            <?php $author = get_current_user_id(); 
-                              $current_author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+                            <?php
                               if ($current_author->ID == $author) : 
                                 echo "<p class='edit-author'><i class='icon-user'></i> <a href='".home_url()."/editer-profil/' title='Editer mon profil'>Modifier mon profil </a></p>";
-                                echo "<p class='edit-author'><i class='icon-list'></i> <a href='".home_url()."/liste-article/' title='Editer mes articles'>Ma liste d'articles</a></p>";  
+                                echo "<p class='edit-author'><i class='icon-list'></i> <a href='".home_url()."/liste-article/' title='Editer mes articles'>Mes articles</a> & <a href='".home_url()."/liste-lookbooks/' title='Editer mes lookbook'>Mes lookbooks</a></p>";  
                               endif; ?>
                     </div>
                 </div>
-                <div id="reseaux-sociaux">
-                    <a href="#"><img src="<?php bloginfo('template_directory')?>/social/facebook.jpg" alt="" width="" height=""></a>
-                    <a href="#"><img src="<?php bloginfo('template_directory')?>/social/twitter.jpg" alt="" width="" height=""></a>
-                    <a href="#"><img src="<?php bloginfo('template_directory')?>/social/google.jpg" alt="" width="" height=""></a>
-                    <a href="#"><img src="<?php bloginfo('template_directory')?>/social/youtube.jpg" alt="" width="" height=""></a>
+                <div id="author-info">
+                    <?php if (get_user_meta(get_the_author_id(),'facebook',true)) { ?>
+                    <a class="fb_link" href="<?php echo get_user_meta(get_the_author_id(),'facebook',true); ?>" title="<?php _e('Voir sa page Facebook','dw') ?>" target='_blank'><i class="icon-facebook"></i></a>
+                    <?php } if (get_user_meta(get_the_author_id(),'twitter',true)) { ?>
+                    <a class="twitter_link" href="<?php echo get_user_meta(get_the_author_id(),'twitter',true); ?>" title="<?php _e('Voir sa page Twitter','dw') ?>" target='_blank'><i class="icon-twitter"></i></a>
+                    <?php } if (get_user_meta(get_the_author_id(),'googleplus',true)) { ?>
+                    <a class="googleplus_link" href="<?php echo get_user_meta(get_the_author_id(),'googleplus',true); ?>" title="<?php _e('Voir sa page Google Plus','dw') ?>" target='_blank'><i class="icon-google-plus"></i></a>
+                    <?php } if (get_the_author_meta('user_url')) { ?>
+                        <a class="website_link" href="<?php echo get_the_author_meta('user_url'); ?>" title="<?php _e('Voir son site','dw') ?>" target='_blank'><i class="icon-link"></i></a>
+                    <?php } ?>
                 </div>
             </header>
         </div>

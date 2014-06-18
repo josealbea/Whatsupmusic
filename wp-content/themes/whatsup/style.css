@@ -1,10 +1,10 @@
 /**
- * Theme Name: What's Up Music
- * Theme URI: http://whatsupmusic.fr
- * Author: José Albea, Yohann Teisseire
- * Author URI: http://josealbea.Com
- * Version: 1.0
- **/
+* Theme Name: What's Up Music
+* Theme URI: http://whatsupmusic.fr
+* Author: José Albea, Yohann Teisseire
+* Author URI: http://josealbea.Com
+* Version: 1.0
+**/
 
 .wp-caption {}
 .wp-caption-text {}
@@ -61,28 +61,33 @@ body.category-sport h2.entry-title{color:yellow;}
 body.author #main{width:100%;}
 body.author .headline-wrap{background-color:#FFF;}
 body.author article{display: inline-block;
-    margin: 10px;
-    width: 29% !important;}
-body.author .infos img{border-bottom: 1px solid #555555;box-shadow: 0 1px 4px #555555;}
-body.author .profil img{
-	background-color: #FFFFFF;
-    border-bottom: 1px solid #555555;
-    border-radius: 50%;
-    height: 80px;
-    padding: 5px;
-    position: relative;
-    top: -50px;
-    width: 85px;
-    z-index: 5;}
+	margin: 10px;
+	width: 29% !important;
+}
+body.author .couverture{
+	border-bottom: 1px solid #555555;
+	box-shadow: 0 1px 4px #555555;
+}
+body.author .profil{
+	border-bottom: 1px solid #555555;
+	background-color:#FFF;
+	border-radius: 50%;
+	padding: 5px;
+	position: relative;
+	top: -60px;
+	width: 100px;
+	z-index: 5;
+}
 body.author p.autor{
 	position: relative;
 	top: -20px;
 }
-body.author .infos_user{margin-top: -25px;}
 body.author #reseaux-sociaux{
 	padding-bottom: 20px;
 }
-body.author #reseaux-sociaux a{margin-right: 4px}
+body.author #reseaux-sociaux a{
+	margin-right: 4px
+}
 #page-autor-left{
 	position: fixed;
 	margin-left: 0;
@@ -91,10 +96,11 @@ body.author #reseaux-sociaux a{margin-right: 4px}
 #page-autor-right{float: right;margin-left:0;}
 .headline .headline-wrap {margin:0 !important;}
 body.author small{
-    float: right;
-    font-size: 14px;
-    padding: 1em;
-    width: 53%;}
+	float: right;
+	font-size: 14px;
+	padding: 1em;
+	width: 53%;
+}
 
 /* AGENDA */
 h2.agenda-title {
@@ -161,10 +167,10 @@ a.goto-allevents {
 
 .image-agenda img {
 	height: 110px !important;
-    left: 0px !important;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
+	left: 0px !important;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
 }
 
 .image-agenda .agenda-date {
@@ -211,7 +217,8 @@ a.goto-allevents {
 	padding: 6px 12px; 
 	transition: border-color 0.15s ease-in-out 0s;
 	box-shadow 0.15s ease-in-out 0s; 
-	width: 100% !important; }
+	width: 100% !important; 
+}
 
 .button,.input-append button{ 
 	background: #F0793F;
@@ -228,38 +235,38 @@ a.goto-allevents {
 	vertical-align: middle; 
 	white-space: nowrap; 
 	width:100%; 
-	} 
-	.page-template-tpl-create-post-php .button,.page-template-tpl-create-lookbook-php .button{
+} 
+.page-template-tpl-create-post-php .button,.page-template-tpl-create-lookbook-php .button{
 	width:88%; 
-	} 
-	.input-append button{
-		padding: 11px 0;
-		width: 60%;
-	}
-	.page-template-tpl-login-php,.page-template-tpl-register-php,.page-template-tpl-edit-profil-php,.page-template-tpl-create-post-php,.page-template-forgot-password-php,.page-template-tpl-create-lookbook-php{
-		background:url(assets/img/bg-floue.jpg) !important;
-		background-size:cover !important;
-		background-repeat: no-repeat !important;
-	}
-	.position-middle h1,.page-template-tpl-login-php h1,.page-template-tpl-register-php h1,.page-template-tpl-edit-profil-php h1,.page-template-tpl-create-post-php h1,.page-template-forgot-password-php h1,.page-template-tpl-create-lookbook-php h1{
-		font-family: 'Novecentowide Normal';
-		color:#FFF;
-		text-shadow:1px 1px 2px #555;
-		text-align: center;
-	}
+} 
+.input-append button{
+	padding: 11px 0;
+	width: 60%;
+}
+.page-template-tpl-login-php,.page-template-tpl-register-php,.page-template-tpl-edit-profil-php,.page-template-tpl-create-post-php,.page-template-forgot-password-php,.page-template-tpl-create-lookbook-php{
+	background:url(assets/img/bg-floue.jpg) !important;
+	background-size:cover !important;
+	background-repeat: no-repeat !important;
+}
+.position-middle h1,.page-template-tpl-login-php h1,.page-template-tpl-register-php h1,.page-template-tpl-edit-profil-php h1,.page-template-tpl-create-post-php h1,.page-template-forgot-password-php h1,.page-template-tpl-create-lookbook-php h1{
+	font-family: 'Novecentowide Normal';
+	color:#FFF;
+	text-shadow:1px 1px 2px #555;
+	text-align: center;
+}
 
-	.align{display:inline-block;}
+.align{display:inline-block;}
 
-	/******* AGENDA *****/
-	.single-agenda h1{
-		text-align: center;
-	}
-	.single-agenda p{
-		text-align: justify;
-	}
-	.agenda-description{
-		padding-left: 20px;
-	}
+/******* AGENDA *****/
+.single-agenda h1{
+	text-align: center;
+}
+.single-agenda p{
+	text-align: justify;
+}
+.agenda-description{
+	padding-left: 20px;
+}
 
 	/******* FIN AGENDA *****/
 	.site-footer small {border-top: 1px solid #666}
@@ -293,11 +300,11 @@ a.goto-allevents {
 }
 .checkbox input{width: inherit;}
 .btn-connect {
-    margin: 0 auto;
-    width: 320px;
+	margin: 0 auto;
+	width: 320px;
 }
 #main, footer {
-    clear: both;
+	clear: both;
 }
 #qt_post_content_toolbar input, 
 #qt_post_content_toolbar textarea {width:inherit !important; height:inherit !important;}
@@ -305,25 +312,32 @@ a.goto-allevents {
 .position-middle{margin:0 auto;float: none;width:80%;}
 .position-middle select{height: 40px;padding-top: 9px;}
 .position-middle input.button{margin-top: 23px;}
-.search-results{background: #FFF;border-radius: 3px;padding: 10px;}
-#acf-map{ width: 100%; height: 400px; border: #ccc solid 1px; }
-	@media screen and (max-width: 980px) {
-		div.control-group input[type="text"], input[type="password"], input[type="email"]{width:100% !important;}
+.search-results{
+	background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 3px;
+    height: 552px;
+    overflow: scroll;
+    padding: 10px;
+    width: 270px;
+}
+#acf-map{ width: 100%; height: 570px; border: #ccc solid 1px; }
+@media screen and (max-width: 980px) {
+	div.control-group input[type="text"], input[type="password"], input[type="email"]{width:100% !important;}
 	.agenda-description{
 		padding-left: 0;
 	}
 }
 
-	/********* RESPONSIVE ***********/
+/********* RESPONSIVE ***********/
 @media screen and (max-width: 910px) {
 	#page-autor-right {
 		float:none;
 		width:100%;
 	}
 	#page-autor-left {
-	    float: none;
-	    position:inherit;
-	    width: 100%;
+		float: none;
+		position:inherit;
+		width: 100%;
 	}
 	span.label{display: none;}
 	body.author small{width: 100%;}
@@ -355,4 +369,14 @@ a.goto-allevents {
 .event-title {
 	display: inline-block;
 	margin-left: 15px;
+}
+
+.sidebar-event {
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #D1D1D1;
+}
+
+.pac-container {
+	z-index:9999;
 }

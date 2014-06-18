@@ -280,6 +280,7 @@ a.goto-allevents {
 	.page-template-tpl-edit-profil-php .site-footer,
 	.page-template-tpl-create-post-php .site-footer,
 	.page-template-forgot-password-php .site-footer,
+	body.author .site-footer,
 	.page-template-tpl-register-php .site-footer,
 	.page-template-tpl-create-lookbook-php .site-footer{display:none;}
 

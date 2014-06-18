@@ -71,13 +71,14 @@ body.author .profil img{
     height: 80px;
     padding: 5px;
     position: relative;
-    top: -30px;
+    top: -50px;
     width: 85px;
     z-index: 5;}
 body.author p.autor{
 	position: relative;
 	top: -20px;
 }
+body.author .infos_user{margin-top: -25px;}
 body.author #reseaux-sociaux{
 	padding-bottom: 20px;
 }

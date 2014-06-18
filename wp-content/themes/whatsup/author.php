@@ -23,7 +23,7 @@ $post_id = $post->ID;
                             <?php
                               if ($current_author->ID == $author) : 
                                 echo "<p class='edit-author'><i class='icon-user'></i> <a href='".home_url()."/editer-profil/' title='Editer mon profil'>Modifier mon profil </a></p>";
-                                echo "<p class='edit-author'><i class='icon-list'></i> <a href='".home_url()."/liste-article/' title='Editer mes articles'>Ma liste d'articles</a> & <a href='".home_url()."/liste-lookbooks/' title='Editer mes lookbook'>Ma liste de lookbooks</a></p>";  
+                                echo "<p class='edit-author'><i class='icon-list'></i> <a href='".home_url()."/liste-article/' title='Editer mes articles'>Mes articles</a> & <a href='".home_url()."/liste-lookbooks/' title='Editer mes lookbook'>Mes lookbooks</a></p>";  
                               endif; ?>
                     </div>
                 </div>

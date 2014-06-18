@@ -182,7 +182,8 @@ var markers = [];
 <div id="main" role="main" class="col-grid">
     <?php if( have_posts() ) : ?>
         <div class="span12 position-middle">
-            <h1>Les Agendas</h1>
+            <h1>Les Evènements</h1>
+            <p>Une envie de sortie ? Une soirée de libre que vous souhaitez occuper ? <br />Utilisez le formulaire de recherche ci-dessous pour filtrer en fonction de vos envies, de la ville ou vous souhaitez trouver un évènement ou de la date.</p>
             <form action="" method="post" name="search-form" id="search-form">
                 <div class="span3">
                     <label>Type d'événements :</label>
@@ -235,9 +236,11 @@ var markers = [];
                     </div>
                 </div>
                 
-                <div class="search-results span" style="display: none;"></div>
+                <div class="search-results span" style="display: none;">
+                    <h3>Les évènements à venir</h3>
+                </div>
 
-                <div id="main" role="main" class="masonry" >
+                <div id="main" role="main" class="masonry" style="display: none;">
                     <?php
                     $first    = true;
                     $query    = array('post_type' => 'agenda','order' => 'DESC');

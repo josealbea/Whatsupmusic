@@ -29,15 +29,19 @@
                     <?php get_template_part('content','single'); ?>
                     <div id="author-meta">
                         <div class="row">
-                            <div class="span4">
+                            <div class="span12">
                                 <h4>A propos de l'auteur :  <?php the_author_posts_link(); ?></h4>
                             </div>
-                            <div class="span12">
+                        </div>
+                        <div class="row">
+                            <div class="span2">
                                 <?php echo get_avatar( get_the_author_id() , 100 ); ?>
                             </div>
-                            <div class="span12">
+                            <div class="span10">
                                 <p><?php the_author_description(); ?></p>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="span12">
                                 <p><?php the_author_posts_link(); ?> a écrit <?php the_author_posts(); ?> articles sur <a href="<?php echo bloginfo('wpurl'); ?>">What's Up Music</a>.</p>
                                 <div id="author-info">
@@ -52,7 +56,9 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                             <div class="span12">
+                        </div>
+                         <div class="row">
+                            <div class="span12">
                              	<h4>Ses 5 derniers articles</h4>
                              	
 								<?php
@@ -74,7 +80,9 @@
 									</div>
 								<?php endforeach; ?>
                              </div>
-                             <div class="span12">
+                         </div>
+                         <div class="row">
+                            <div class="span12">
                              	<h4> Ses articles les plus likés</h4>
                              	<?php $pluslikes = $wpdb->get_results('SELECT L.post_id, COUNT( L.id ) AS like_count, U.ID AS author_id, U.display_name AS author
 																		FROM wp_wti_like_post L
@@ -91,15 +99,18 @@
 	                             		<div class="liked_post post-<?php echo $postlike->post_id; ?>">
 											<a href="<?php echo get_permalink($postlike->post_id); ?>" title="<?php the_title(); ?>">
 												<p><?php echo get_the_post_thumbnail( $postlike->post_id, 'thumbnail'); ?></p>
-												<p><?php echo get_the_title($postlike->post_id); ?></p>
-												<p>Avec <?php echo $postlike->like_count;?> Likes</p>
+												<p>
+                                                    <?php echo get_the_title($postlike->post_id); ?>
+                                                    <br />
+												    Avec <?php echo $postlike->like_count;?> Likes
+                                                </p>
 											</a>
 										</div>
 								<?php
 									}
                              	}
 								?>
-                             </div>
+                            </div>
                         </div>
                     </div>
                     <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'dw' ), 'after' => '</div>' ) ); ?>

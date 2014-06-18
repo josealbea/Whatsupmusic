@@ -39,7 +39,7 @@ get_header();
                     <?php get_template_part('content','single'); ?>
                     <div id="author-meta">
                         <div class="row">
-                            <div class="span4">
+                            <div class="span12">
                                 <h4>A propos de l'auteur :  <?php the_author_posts_link(); ?></h4>
                             </div>
                             <div class="span12">

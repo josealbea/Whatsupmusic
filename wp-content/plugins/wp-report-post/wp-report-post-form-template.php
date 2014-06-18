@@ -23,7 +23,7 @@ function wp_report_post_form_template($post_id)
 ?>
 <div class="wp-report-post-box">
     <div class="wp-report-post-sent" style="display: block;">
-        <p><?php _e('You must be <a href="'. wp_login_url(). '">registered and logged in</a> to report inappropriate post.'); ?></p>
+        <p><?php _e('Vous devez être <a href="'. wp_login_url(). '">inscrit et connecté</a> pour signaler un article.'); ?></p>
         <a class="wp-report-post-button" id="wp-report-post-dismiss"><?php _e("Dismiss"); ?></a>
     </div>
 </div>
@@ -37,7 +37,7 @@ function wp_report_post_form_template($post_id)
 ?>
 <div class="wp-report-post-box">
     <div class="wp-report-post-sent">
-        <p><?php _e("Your report has been successfully sent. We will review it soon and contact you back."); ?></p>
+        <p><?php _e("Votre signalement a bien été envoyé. Nous le traiterons et vous recontacterons dans les plus brefs délai."); ?></p>
         <a class="wp-report-post-button" id="wp-report-post-dismiss"><?php _e("Dismiss"); ?></a>
     </div>
     <form method="post" id="wp-report-post-form" class="wp-report-post-form">

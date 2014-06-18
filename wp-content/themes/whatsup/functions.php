@@ -729,10 +729,7 @@ function wphidenag() {
 remove_action( 'load-update-core.php', 'wp_update_plugins' );
 add_filter( 'pre_site_transient_update_plugins', create_function( '$a', "return null;" ) );
 
-function make_filename_hash($filename) {
-    $info = pathinfo($filename);
-    $ext = empty($info['extension']) ? '' : '.' . $info['extension'];
-    $name = basename($filename, $ext);
-    return md5($name) . $ext;
-}
-add_filter('sanitize_file_name', 'make_filename_hash', 10);
+register_sidebars(2, array('name'=>'Footer %d'));
+
+// Hook into the 'widgets_init' action
+add_action( 'widgets_init', 'custom_sidebar' );

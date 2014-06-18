@@ -12,9 +12,9 @@
         <div class="social-bar">
             <ul>
                 <?php $url = get_permalink(); ?>
+                <li><a class="home" href="" title="Whats's Up ?!"><i class="icon-home"></i><span>Accueil</span></a></li>
                 <li><a href="#"><i class="icon-eye-open"></i>&nbsp;<span><?php echo do_shortcode('[post_view]'); ?></span></a></li>
                 <li><span><?php echo $wti_like_post; ?></span></li>
-                <li><a class="home" href="" title="Whats's Up ?!"><i class="icon-home"></i><span>Accueil</span></a></li>
                 <li><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo rawurlencode($url); ?>" title="<?php _e('Publier sur Facebook','dw') ?>" target='_blank'><i class="icon-facebook"></i><span><?php echo dw_get_facebook_count( $url ) ?></span></a></li>
                 <li><a class="twitter" href="https://twitter.com/intent/tweet?source=webclient&amp;text=<?php echo get_the_title() . rawurlencode( $url ) ?>" title="<?php _e('Publier sur Twitter','dw') ?>"  target='_blank'><i class="icon-twitter"></i><span><?php echo dw_get_twitter_count( $url ); ?></span></a></li>
                 <li><a class="googleplus" href="https://plus.google.com/share?url=<?php echo rawurlencode($url ); ?>" title="<?php _e('Publier sur Google+','dw') ?>" target='_blank'><i class="icon-google-plus"></i><span><?php echo dw_get_plusones_share_count( $url ) ?></span></a></li>

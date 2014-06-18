@@ -356,3 +356,40 @@ a.goto-allevents {
 	display: inline-block;
 	margin-left: 15px;
 }
+
+footer {
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.1);
+	overflow: hidden;
+	clear: both;
+    margin: 40px auto 0;
+    padding: 20px 3%;
+    text-align: center;
+    width: 94%;
+}
+
+footer li {
+	display: inline-block;
+}
+
+footer h2.widgettitle {
+	font-size: 18px;
+	font-family: Arial;
+	color: #EEE;
+	text-transform: none;
+}
+
+.social-bar ul li {
+	position: relative;
+}
+
+.lbg-style1 img, .unlbg-style1 img {
+	top: 15px !important;
+}
+
+.lbg-style1 .lc {
+	top: 50px !important;
+}
+
+.status {
+	display: none;
+}

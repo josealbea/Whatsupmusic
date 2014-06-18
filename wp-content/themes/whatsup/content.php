@@ -7,7 +7,7 @@ global $block_class;
             <div class="view-pic">
                 <?php the_post_thumbnail() ?>
                 <div class="mask">
-                <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" class="info">
+                <a href="<?php the_permalink(); ?>" class="info">
                     <div class="mask-content">
                         <h1 class="block-title"><?php the_title(); ?></h1>
                         <span class="line"></span>
@@ -24,7 +24,7 @@ global $block_class;
         <?php else: ?>
             <header class="block-header">
                 <h1 class="block-title">
-                    <a href="<?php the_permalink(); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>"><?php the_title() ?></a>
+                    <a href="<?php the_permalink(); ?>" ><?php the_title() ?></a>
                 </h1>
                 <div class="block-meta">
                     <?php printf('<i class="icon-user"></i> <a href="%s" rel="author">%s</a> <span class="date"><i class="icon-time"></i> <a href="%5$s"><time pubdate datetime="%s">%s</time></a></span>',

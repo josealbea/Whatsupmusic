@@ -91,6 +91,15 @@ var markers = [];
                 map.setZoom(10);
             }
         }
+
+        function scrollToMap(){
+            // Add "65", which correspons to the header's height
+            $('html,body').animate({
+                scrollTop: $("#acf-map").offset().top - 210
+            }, 'slow');
+        }
+
+
         // Display every event
         var formData = $('#search-form').serialize();
         $.ajax({
@@ -127,6 +136,7 @@ var markers = [];
             if (id) {
                 if(markers[id]){
                     map.panTo(markers[id].getPosition());
+                    scrollToMap();
                     setTimeout('google.maps.event.trigger(markers[' + id + '], "click")', 500);
                 }
             }

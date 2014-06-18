@@ -90,6 +90,7 @@
 																		INNER JOIN wp_users U ON U.ID = P.post_author
 																		WHERE U.ID = '.$id_auteur.'
 																		GROUP BY L.post_id
+                                                                        ORDER BY like_count DESC
 																		LIMIT 5');
                              	if(empty($pluslikes)){
                              		echo 'L\'auteur n\'a pas encore d\'articles likés';

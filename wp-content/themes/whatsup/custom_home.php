@@ -141,7 +141,7 @@ get_header();
             <article id="post-<?php $results[0]->post_id; ?>" class="block w2">
                 <div class="block-inner">
                     <div class="view-video">
-                           <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info"><?php echo get_the_post_thumbnail($results[0]->post_id,'large'); ?></a>
+                           <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info"><?php echo get_the_post_thumbnail($results[0]->post_id,'slider-thumb'); ?></a>
                         <div class="mask">
                             <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info">
                                 <div class="mask-content">

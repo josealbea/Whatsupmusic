@@ -142,6 +142,7 @@ a.goto-allevents {
 	font-weight: bold;
 	font-size: 18px;
 	width: 100%;
+	margin: 0;
 }
 
 .desc-agenda .event-where {
@@ -383,15 +384,12 @@ footer {
     width: 94%;
 }
 
-footer li {
-	display: inline-block;
-}
-
 footer h2.widgettitle {
 	font-size: 18px;
 	font-family: Arial;
 	color: #EEE;
 	text-transform: none;
+	text-align: left;
 }
 
 .social-bar ul li {
@@ -408,4 +406,29 @@ footer h2.widgettitle {
 
 .status {
 	display: none;
+}
+
+.site-footer a {
+	color: #FFFFFF;
+}
+
+footer li {
+	padding: 0 0 0 10px !important;
+	text-align: left !important;
+	display: block !important;
+}
+
+footer li a {
+	color: #AAAAAA;
+}
+.site-footer li a:hover {
+	color: #FFFFFF;
+}
+
+.widget_archive li:before, .widget_categories > ul > li:before {
+	content: "" !important;
+}
+
+.site-footer .span3:first-child {
+	margin-right: 100px;
 }

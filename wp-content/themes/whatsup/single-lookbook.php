@@ -91,9 +91,10 @@ get_header();
 																		FROM wp_wti_like_post L
 																		INNER JOIN wp_posts P ON P.ID = L.post_id
 																		INNER JOIN wp_users U ON U.ID = P.post_author
-																		WHERE U.ID = '.$id_auteur.'
+																		WHERE U.ID = ' . $id_auteur . '
 																		GROUP BY L.post_id
-																		LIMIT 5');
+                                                                        ORDER BY like_count DESC
+																		LIMIT 0,5');
                              	if(empty($pluslikes)){
                              		echo 'L\'auteur n\'a pas encore d\'articles likés';
                              	}else{

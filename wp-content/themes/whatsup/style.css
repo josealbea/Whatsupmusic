@@ -63,15 +63,16 @@ body.author .headline-wrap{background-color:#FFF;}
 body.author article{display: inline-block;
     margin: 10px;
     width: 29% !important;}
-body.author .couverture{border-bottom: 1px solid #555555;box-shadow: 0 1px 4px #555555;}
-body.author .profil{
-	border-bottom: 1px solid #555555;
-	background-color:#FFF;
+body.author .infos img{border-bottom: 1px solid #555555;box-shadow: 0 1px 4px #555555;}
+body.author .profil img{
+	background-color: #FFFFFF;
+    border-bottom: 1px solid #555555;
     border-radius: 50%;
+    height: 80px;
     padding: 5px;
     position: relative;
-    top: -60px;
-    width: 100px;
+    top: -30px;
+    width: 85px;
     z-index: 5;}
 body.author p.autor{
 	position: relative;
@@ -282,9 +283,6 @@ a.goto-allevents {
 	.page-template-tpl-create-lookbook-php .site-footer{display:none;}
 
 	.edit-author{display: block;}
-	.infos_user {
-    	margin-top: -50px;
-	}
 	.last_post,.liked_post{display:inline-block;}
 	h3.line{color: inherit;font-size: 16px;}
 	article.auteur img {

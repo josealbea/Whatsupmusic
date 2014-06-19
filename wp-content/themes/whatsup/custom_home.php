@@ -289,19 +289,38 @@ get_header();
                 </article> 
             <?php endwhile; ?>
         <?php endif; ?> 
-        <?php //$results = $wpdb->get_results("SELECT COUNT( p.id ) post_count, SUM(value) AS like_count, u.ID, DATE_FORMAT( post_date, '%Y-%m' ) post_month FROM wp_wti_like_post L, `wp_posts` p, `wp_users` u WHERE post_status = 'publish' AND post_type = 'post' AND u.ID = post_author GROUP BY post_author, post_month ORDER BY post_count DESC LIMIT 0,1");?> 
         <?php
         // Récuparation du post qui a le plus de like
-        // @todo Comment gérer si égalité?
+        /*
         $mostLikedPost = $wpdb->get_row('SELECT L.post_id, COUNT(L.id) as like_count, U.ID as author_id, U.display_name AS author
                                             FROM wp_wti_like_post L
                                             INNER JOIN wp_posts P ON P.ID = L.post_id
                                             INNER JOIN wp_users U ON U.ID = P.post_author
                                             GROUP BY L.post_id
                                             LIMIT 1;');
+        */
+        $postsLikes = $wpdb->get_results('SELECT COUNT(L.id) as like_count, U.ID as author_id, U.display_name AS author, L.post_id as post_id, P.post_name, P.post_title, P.post_date
+                                            FROM wp_wti_like_post L
+                                            INNER JOIN wp_posts P ON P.ID = L.post_id
+                                            INNER JOIN wp_users U ON U.ID = P.post_author
+                                            WHERE EXTRACT(MONTH from NOW()) = EXTRACT(MONTH from L.date_time)
+                                            GROUP BY L.post_id;');
+        $mostLikedPost = array();
+        foreach ($postsLikes as $postLike) {
+            if (!isset($mostLikedPost['like_count']) || $mostLikedPost['like_count'] < $postLike->like_count) {
+                $mostLikedPost['like_count'] = $postLike->like_count;
+                $mostLikedPost['author_id']  = $postLike->author_id;
+                $mostLikedPost['author']     = $postLike->author;
+                $mostLikedPost['post_id']    = $postLike->post_id;
+                $mostLikedPost['post_title']    = $postLike->post_title;
+                $mostLikedPost['post_name']    = $postLike->post_name;
+                $mostLikedPost['post_date']    = $postLike->post_date;
+            }
+        }
 
         // Récupération de l'auteur qui a le plus de like (à partir de la requête précédente)
-        /*$mostLikedAutor = $wpdb->get_row('SELECT L.post_id, COUNT(p.id) AS post_count, DATE_FORMAT(post_date, "%Y-%m") post_month, post_author
+        /*
+        $mostLikedAutor = $wpdb->get_row('SELECT L.post_id, COUNT(p.id) AS post_count, DATE_FORMAT(post_date, "%Y-%m") post_month, post_author
                             FROM wp_wti_like_post L
                             INNER JOIN `wp_posts` p ON p.ID = L.post_id
                             INNER JOIN `wp_users` u ON u.ID = L.user_id
@@ -309,7 +328,8 @@ get_header();
                             AND post_type = "post"
                             AND post_author = "' . $mostLikedPost->author_id . '"
                             GROUP BY post_author, post_month
-                            ORDER BY post_count DESC;');*/
+                            ORDER BY post_count DESC;');
+        */
         $mostLikedAutor = $wpdb->get_row('SELECT MAX(like_count) as total_likes, author_id, author
                                             FROM (SELECT COUNT(L.id) as like_count, U.ID as author_id, U.display_name AS author
                                                     FROM wp_wti_like_post L
@@ -317,94 +337,94 @@ get_header();
                                                     INNER JOIN wp_users U ON U.ID = P.post_author
                                                     GROUP BY U.ID) AS best_author;');
         ?>
-            <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
-                <div class="block-inner">
-                    <?php $user_info = get_userdata($mostLikedAutor->author_id);?>
-                    <div class="view-video">
-                           <?php echo get_avatar($mostLikedAutor->author_id, 512); ?>
-                        <div class="mask">
-                            <a href="<?php bloginfo('url');?>/author/<?php echo $user_info->data->user_login;?>/" class="info">
-                                <div class="mask-content">
-                                    <h2 class="block-title"><?php echo $mostLikedAutor->author;?></h2>
-                                    <h3 class="line">Auteur du mois avec <?php echo $mostLikedAutor->total_likes;?> Likes</h3>
-                                    <a href="">Voir son profil</a>
-                                </div>
-                            </a>
-                        </div>
+        <article id="post-<?php $results[0]->post_id; ?>" class="auteur post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
+            <div class="block-inner">
+                <?php $user_info = get_userdata($mostLikedAutor->author_id);?>
+                <div class="view-video">
+                       <?php echo get_avatar($mostLikedAutor->author_id, 512); ?>
+                    <div class="mask">
+                        <a href="<?php bloginfo('url');?>/author/<?php echo $user_info->data->user_login;?>/" class="info">
+                            <div class="mask-content">
+                                <h2 class="block-title"><?php echo $mostLikedAutor->author;?></h2>
+                                <h3 class="line">Auteur du mois avec <?php echo $mostLikedAutor->total_likes;?> Likes</h3>
+                                <a href="">Voir son profil</a>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </article>
-            <?php 
-            // recupere année et mois courrant
-            $today = date("Y-m"); 
-            $results = $wpdb->get_results(
-                'SELECT post_id, MAX(value) AS like_count, post_title, post_date, post_name, date_time
-                FROM wp_wti_like_post L, wp_posts P
-                WHERE L.post_id = P.ID
-                AND post_date LIKE "%'.$today.'%"
-                AND post_status = "publish"');
-            ?> 
-            <article id="post-<?php $results[0]->post_id; ?>" class="post-<?php $results[0]->post_id; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
-                <div class="block-inner">
-                    <div class="view-video">
-                           <?php echo get_the_post_thumbnail($results[0]->post_id,'large'); ?>
-                        <div class="mask">
-                            <a href="<?php home_url();?><?php echo $results[0]->post_name;?>/" class="info">
-                                <div class="mask-content">
-                                    <h2 class="block-title"><?php echo $results[0]->post_title;?></h2>
-                                    <h3 class="line">Article du mois avec <?php echo $results[0]->like_count;?> Likes</h3>
-                                    <div class="block-meta">
-                                        <?php 
-                                        $date_i  = $results[0]->post_date;
-                                        $date_f = explode("-",$date_i,4);
-                                        $date = preg_split("/[\s-]+/", $date_f[2]);
-                                        echo "Publié le ".$date[0]."/".$date_f[1]."/".$date_f[0];
-                                        ?>    
-                                    </div>
+            </div>
+        </article>
+        <?php 
+        // recupere année et mois courrant
+        $today = date("Y-m"); 
+        $results = $wpdb->get_results(
+            'SELECT post_id, MAX(value) AS like_count, post_title, post_date, post_name, date_time
+            FROM wp_wti_like_post L, wp_posts P
+            WHERE L.post_id = P.ID
+            AND post_date LIKE "%'.$today.'%"
+            AND post_status = "publish"');
+        ?> 
+        <article id="post-<?php $mostLikedPost['post_id']; ?>" class="post-<?php $mostLikedPost['post_id']; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
+            <div class="block-inner">
+                <div class="view-video">
+                       <?php echo get_the_post_thumbnail($mostLikedPost['post_id'],'large'); ?>
+                    <div class="mask">
+                        <a href="<?php home_url();?><?php echo $mostLikedPost['post_name'];?>/" class="info">
+                            <div class="mask-content">
+                                <h2 class="block-title"><?php echo $mostLikedPost['post_title'];?></h2>
+                                <h3 class="line">Article du mois avec <?php echo $mostLikedPost['like_count'];?> Likes</h3>
+                                <div class="block-meta">
+                                    <?php 
+                                    $date_i  = $results[0]->post_date;
+                                    $date_f = explode("-",$date_i,4);
+                                    $date = preg_split("/[\s-]+/", $date_f[2]);
+                                    echo "Publié le " . date('d/m/Y', strtotime($mostLikedPost['post_date']));
+                                    ?>    
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </article> 
-            <?php // affiche les 12 derniers articles
-	            $args = array(
-	            	'posts_per_page' => 12,
-	            	'post_status' => 'publish',
-	            	'post_type' => 'post',
-	            	'order' => 'DESC',
-					'orderby' => 'date', 
-	            	);
-	            $the_query = new WP_Query( $args );
-				if ( $the_query->have_posts() ) :
-					while ( $the_query->have_posts() ) : $the_query->the_post();?>
-		                <article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
-		                    <div class="block-inner">
-		                        <div class="view-video">
-		                            <?php if( has_post_thumbnail() ) : ?>
-		                                <?php the_post_thumbnail() ?>
-		                            <?php endif; ?>
-		                            <div class="mask">
-		                                <a href="<?php the_permalink(); ?>" class="info">
-		                                    <div class="mask-content">
-		                                        <h2 class="block-title"><?php the_title(); ?></h2>
-		                                        <span class="line"></span>
-		                                        <div class="block-meta">
-		                                            <?php printf(' <span class="date"><i class="icon-time"></i> <time pubdate datetime="%s">%s</time></span>',
-		                                            get_day_link( get_the_time('Y'), get_the_time('m'), get_the_time('d') ),
-		                                            get_the_date()
-		                                            ); ?>    
-		                                        </div>
-		                                    </div>
-		                                </a>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </article>
-                	<?php   
-            		endwhile;
-				endif;
-			wp_reset_postdata();
+            </div>
+        </article> 
+        <?php // affiche les 12 derniers articles
+            $args = array(
+            	'posts_per_page' => 12,
+            	'post_status' => 'publish',
+            	'post_type' => 'post',
+            	'order' => 'DESC',
+				'orderby' => 'date', 
+            	);
+            $the_query = new WP_Query( $args );
+			if ( $the_query->have_posts() ) :
+				while ( $the_query->have_posts() ) : $the_query->the_post();?>
+	                <article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
+	                    <div class="block-inner">
+	                        <div class="view-video">
+	                            <?php if( has_post_thumbnail() ) : ?>
+	                                <?php the_post_thumbnail() ?>
+	                            <?php endif; ?>
+	                            <div class="mask">
+	                                <a href="<?php the_permalink(); ?>" class="info">
+	                                    <div class="mask-content">
+	                                        <h2 class="block-title"><?php the_title(); ?></h2>
+	                                        <span class="line"></span>
+	                                        <div class="block-meta">
+	                                            <?php printf(' <span class="date"><i class="icon-time"></i> <time pubdate datetime="%s">%s</time></span>',
+	                                            get_day_link( get_the_time('Y'), get_the_time('m'), get_the_time('d') ),
+	                                            get_the_date()
+	                                            ); ?>    
+	                                        </div>
+	                                    </div>
+	                                </a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </article>
+            	<?php   
+        		endwhile;
+			endif;
+		wp_reset_postdata();
 		?>	
     </div>
 <?php endwhile; ?>

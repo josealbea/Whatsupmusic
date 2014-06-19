@@ -247,8 +247,9 @@ var markers = [];
                     $wp_query = new WP_Query($query);
 
                     while ($wp_query->have_posts()):$wp_query->the_post(); 
-                        echo '<input type="hidden" name="event_lat[]" value="' . get_field('adresse')['lat'] . '" />';
-                        echo '<input type="hidden" name="event_lng[]" value="' . get_field('adresse')['lng'] . '" />';
+                        $address = get_field('adresse');
+                        echo '<input type="hidden" name="event_lat[]" value="' . $address['lat'] . '" />';
+                        echo '<input type="hidden" name="event_lng[]" value="' . $address['lng'] . '" />';
                         echo '<input type="hidden" name="post_id[]" value="' . $post->ID . '" />';
                     endwhile;
 

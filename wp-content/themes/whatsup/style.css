@@ -385,11 +385,12 @@ footer {
 }
 
 footer h2.widgettitle {
-	font-size: 18px;
-	font-family: Arial;
-	color: #EEE;
-	text-transform: none;
-	text-align: left;
+	color: #777772;
+    font-family: Arial !important;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    text-transform: none !important;
 }
 
 .social-bar ul li {
@@ -431,4 +432,22 @@ footer li a {
 
 .site-footer .span3:first-child {
 	margin-right: 100px;
+}
+
+h3.line {
+	color: #FFFFFF !important;
+}
+
+.block-inner:hover > h3.line {
+	color: #FC615C;
+}
+
+a.details-event {
+	background: #B94A48;
+	color: #FFFFFF;
+	display: inline-block;
+	padding: 3px 5px;
+	vertical-align: middle;
+	border-radius: 5px;
+	margin: 10px 15px 0 0;
 }

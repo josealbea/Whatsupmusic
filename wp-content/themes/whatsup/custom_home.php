@@ -356,13 +356,13 @@ get_header();
         </article>
         <?php 
         // recupere année et mois courrant
-        $today = date("Y-m"); 
-        $results = $wpdb->get_results(
-            'SELECT post_id, MAX(value) AS like_count, post_title, post_date, post_name, date_time
-            FROM wp_wti_like_post L, wp_posts P
-            WHERE L.post_id = P.ID
-            AND post_date LIKE "%'.$today.'%"
-            AND post_status = "publish"');
+        // $today = date("Y-m"); 
+        // $results = $wpdb->get_results(
+        //     'SELECT post_id, MAX(value) AS like_count, post_title, post_date, post_name, date_time
+        //     FROM wp_wti_like_post L, wp_posts P
+        //     WHERE L.post_id = P.ID
+        //     AND post_date LIKE "%'.$today.'%"
+        //     AND post_status = "publish"');
         ?> 
         <article id="post-<?php $mostLikedPost['post_id']; ?>" class="post-<?php $mostLikedPost['post_id']; ?> post type-post status-publish format-video hentry category-blog category-relax category-work tag-freelancing tag-workstation block grid-sizer">
             <div class="block-inner">
@@ -375,9 +375,9 @@ get_header();
                                 <h3 class="line">Article du mois avec <?php echo $mostLikedPost['like_count'];?> Likes</h3>
                                 <div class="block-meta">
                                     <?php 
-                                    $date_i  = $results[0]->post_date;
-                                    $date_f = explode("-",$date_i,4);
-                                    $date = preg_split("/[\s-]+/", $date_f[2]);
+                                    // $date_i  = $results[0]->post_date;
+                                    // $date_f = explode("-",$date_i,4);
+                                    // $date = preg_split("/[\s-]+/", $date_f[2]);
                                     echo "Publié le " . date('d/m/Y', strtotime($mostLikedPost['post_date']));
                                     ?>    
                                 </div>

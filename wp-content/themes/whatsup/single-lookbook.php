@@ -80,7 +80,9 @@ get_header();
 									<div class="last_post post-<?php echo $post->ID; ?>">
 										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 											<p><?php echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?></p>
-											<p><?php the_title(); ?></p>
+											<p><?php $titre = get_the_title(); 
+                                            echo substr($titre,0, 20).'...';
+                                            ?></p>
 										</a>
 									</div>
 								<?php endforeach; ?>
@@ -103,7 +105,9 @@ get_header();
 	                             		<div class="liked_post post-<?php echo $postlike->post_id; ?>">
 											<a href="<?php echo get_permalink($postlike->post_id); ?>" title="<?php the_title(); ?>">
 												<p><?php echo get_the_post_thumbnail( $postlike->post_id, 'thumbnail'); ?></p>
-												<p><?php echo get_the_title($postlike->post_id); ?></p>
+												<p><?php $titre2 = get_the_title($postlike->post_id); 
+                                                echo substr($titre2,0, 20).'...';
+                                                ?></p>
 												<p>Avec <?php echo $postlike->like_count;?> Likes</p>
 											</a>
 										</div>

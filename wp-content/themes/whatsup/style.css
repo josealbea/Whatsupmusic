@@ -320,6 +320,9 @@ a.goto-allevents {
 		padding-left: 0;
 	}
 }
+#nav li {
+    margin: 0 20px 0 0;
+}
 
 	/********* RESPONSIVE ***********/
 @media screen and (max-width: 910px) {
